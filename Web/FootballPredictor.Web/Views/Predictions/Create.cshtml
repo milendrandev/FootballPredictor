@@ -1,0 +1,27 @@
+﻿<h1 class="text-center mt-2">Create Prediction</h1>
+<hr class="bg-primary w-75">
+<form class="mx-auto w-50" method="post">
+    <div class="form-group">
+        <div class="text-dark d-flex justify-content-center">
+            <label for="HomeGoals" class="h3 mb-2">HomeGoals</label>
+        </div>
+        <input class="form-control" id="HomeGoals" name="HomeGoals"></input>
+    </div>
+    <div class="form-group">
+        <div class="text-dark d-flex justify-content-center">
+            <label for="AwayGoals" class="h3 mb-2">AwayGoals</label>
+        </div>
+        <input class="form-control" id="AwayGoals" name="AwayGoals"></input>
+    </div>
+    <div class="form-group">
+        <div class="text-dark d-flex justify-content-center">
+            <label for="description" class="h3 mb-2">Description</label>
+        </div>
+        <textarea row="20" class="form-control" id="description" name="description"></textarea>
+    </div>
+    <input type="text" hidden id="matchId" name="matchId" value="@Model.MatchId" />
+   
+    <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-block btn-primary text-white mb-3">Save Prediction</button>
+    </div>
+</form>

@@ -1,0 +1,16 @@
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web.ViewModels\bin\Debug\netstandard2.1\FootballPredictor.Web.ViewModels.deps.json
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web.ViewModels\bin\Debug\netstandard2.1\FootballPredictor.Web.ViewModels.dll
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web.ViewModels\bin\Debug\netstandard2.1\FootballPredictor.Web.ViewModels.pdb
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web.ViewModels\bin\Debug\netstandard2.1\FootballPredictor.Data.Common.dll
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web.ViewModels\bin\Debug\netstandard2.1\FootballPredictor.Data.Models.dll
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web.ViewModels\bin\Debug\netstandard2.1\FootballPredictor.Services.Mapping.dll
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web.ViewModels\bin\Debug\netstandard2.1\FootballPredictor.Data.Models.pdb
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web.ViewModels\bin\Debug\netstandard2.1\FootballPredictor.Services.Mapping.pdb
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web.ViewModels\bin\Debug\netstandard2.1\FootballPredictor.Data.Common.pdb
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web.ViewModels\obj\Debug\netstandard2.1\FootballPredictor.Web.ViewModels.csprojAssemblyReference.cache
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web.ViewModels\obj\Debug\netstandard2.1\FootballPredictor.Web.ViewModels.AssemblyInfoInputs.cache
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web.ViewModels\obj\Debug\netstandard2.1\FootballPredictor.Web.ViewModels.AssemblyInfo.cs
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web.ViewModels\obj\Debug\netstandard2.1\FootballPredictor.Web.ViewModels.csproj.CoreCompileInputs.cache
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web.ViewModels\obj\Debug\netstandard2.1\FootballPredictor.Web.ViewModels.csproj.CopyComplete
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web.ViewModels\obj\Debug\netstandard2.1\FootballPredictor.Web.ViewModels.dll
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web.ViewModels\obj\Debug\netstandard2.1\FootballPredictor.Web.ViewModels.pdb

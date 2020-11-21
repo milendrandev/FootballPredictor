@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "aqRv1yWeqCxX0QZALo6DKqL8N+IOYTZqLa5RVwMYrZ+pu7me3sRFveigEVc0G183cB/y8OnHZIbaM35OuHHdkg==",
+  "success": true,
+  "projectFilePath": "D:\\IT course\\FootballPredictor\\Services\\FootballPredictor.Services.Mapping\\FootballPredictor.Services.Mapping.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Acer\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\Acer\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\Acer\\.nuget\\packages\\stylecop.analyzers\\1.2.0-beta.205\\stylecop.analyzers.1.2.0-beta.205.nupkg.sha512",
+    "C:\\Users\\Acer\\.nuget\\packages\\stylecop.analyzers.unstable\\1.2.0.205\\stylecop.analyzers.unstable.1.2.0.205.nupkg.sha512",
+    "C:\\Users\\Acer\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

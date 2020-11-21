@@ -1,0 +1,19 @@
+﻿[
+  {
+    "name": "English Premier League",
+    "country": "England"
+  },
+  {
+    "name": "Italian Serie A",
+    "country": "Italy"
+  },
+  {
+
+    "name": "Spain Primera Division",
+    "country": "Spain"
+  },
+  {
+    "name": "German 1. Bundesliga",
+    "country": "Germany"
+  }
+]

@@ -1,0 +1,8 @@
+D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Common\bin\Debug\netstandard2.1\FootballPredictor.Data.Common.deps.json
+D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Common\bin\Debug\netstandard2.1\FootballPredictor.Data.Common.dll
+D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Common\bin\Debug\netstandard2.1\FootballPredictor.Data.Common.pdb
+D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Common\obj\Debug\netstandard2.1\FootballPredictor.Data.Common.AssemblyInfoInputs.cache
+D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Common\obj\Debug\netstandard2.1\FootballPredictor.Data.Common.AssemblyInfo.cs
+D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Common\obj\Debug\netstandard2.1\FootballPredictor.Data.Common.csproj.CoreCompileInputs.cache
+D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Common\obj\Debug\netstandard2.1\FootballPredictor.Data.Common.dll
+D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Common\obj\Debug\netstandard2.1\FootballPredictor.Data.Common.pdb

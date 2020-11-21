@@ -1,0 +1,28 @@
+﻿@{
+    this.ViewData["Title"] = "Predictions";
+}
+
+<div class="d-flex justify-content-center">
+    <a class="btn btn-block btn-primary text-white mb-3" href="/Predictions/Create">Create a prediction</a>
+</div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Home</th>
+            <th scope="col">Away</th>
+            <th scope="col">Bet</th>
+            <th scope="col">Commit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var prediction in Model)
+        {
+            <tr class="table-light">
+                <th scope="row">@prediction.Username</th>
+                <td>@prediction.HomeTeamName</td>
+                <td>@prediction.Bet</td>
+                <td>@prediction.HomeGoals : @prediction.AwayGoals</td>
+            </tr>
+        }
+    </tbody>

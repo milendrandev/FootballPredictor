@@ -1,0 +1,27 @@
+﻿
+<h1> Games this week</h1>
+
+@foreach (var match in Model)
+{
+
+    <div class="d-flex justify-content-left">
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">League</th>
+                <th scope="col">Home</th>
+                <th scope="col">Away</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr class="table-light">
+                <th scope="row">@match.LeagueName</th>
+                <td>@match.HomeName</td>
+                <td>@match.AwayName</td>
+            </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-block btn-primary text-white mb-3" href="/Predictions/Create?id=@match.Id ">Create a prediction</a>
+}

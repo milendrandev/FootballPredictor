@@ -1,0 +1,9 @@
+D:\IT course\FootballPredictor\Services\FootballPredictor.Services.Mapping\bin\Debug\netstandard2.1\FootballPredictor.Services.Mapping.deps.json
+D:\IT course\FootballPredictor\Services\FootballPredictor.Services.Mapping\bin\Debug\netstandard2.1\FootballPredictor.Services.Mapping.dll
+D:\IT course\FootballPredictor\Services\FootballPredictor.Services.Mapping\bin\Debug\netstandard2.1\FootballPredictor.Services.Mapping.pdb
+D:\IT course\FootballPredictor\Services\FootballPredictor.Services.Mapping\obj\Debug\netstandard2.1\FootballPredictor.Services.Mapping.csprojAssemblyReference.cache
+D:\IT course\FootballPredictor\Services\FootballPredictor.Services.Mapping\obj\Debug\netstandard2.1\FootballPredictor.Services.Mapping.AssemblyInfoInputs.cache
+D:\IT course\FootballPredictor\Services\FootballPredictor.Services.Mapping\obj\Debug\netstandard2.1\FootballPredictor.Services.Mapping.AssemblyInfo.cs
+D:\IT course\FootballPredictor\Services\FootballPredictor.Services.Mapping\obj\Debug\netstandard2.1\FootballPredictor.Services.Mapping.csproj.CoreCompileInputs.cache
+D:\IT course\FootballPredictor\Services\FootballPredictor.Services.Mapping\obj\Debug\netstandard2.1\FootballPredictor.Services.Mapping.dll
+D:\IT course\FootballPredictor\Services\FootballPredictor.Services.Mapping\obj\Debug\netstandard2.1\FootballPredictor.Services.Mapping.pdb

@@ -1,0 +1,9 @@
+D:\IT course\FootballPredictor\Services\FootballPredictor.Services.Messaging\bin\Debug\netstandard2.1\FootballPredictor.Services.Messaging.deps.json
+D:\IT course\FootballPredictor\Services\FootballPredictor.Services.Messaging\bin\Debug\netstandard2.1\FootballPredictor.Services.Messaging.dll
+D:\IT course\FootballPredictor\Services\FootballPredictor.Services.Messaging\bin\Debug\netstandard2.1\FootballPredictor.Services.Messaging.pdb
+D:\IT course\FootballPredictor\Services\FootballPredictor.Services.Messaging\obj\Debug\netstandard2.1\FootballPredictor.Services.Messaging.csprojAssemblyReference.cache
+D:\IT course\FootballPredictor\Services\FootballPredictor.Services.Messaging\obj\Debug\netstandard2.1\FootballPredictor.Services.Messaging.AssemblyInfoInputs.cache
+D:\IT course\FootballPredictor\Services\FootballPredictor.Services.Messaging\obj\Debug\netstandard2.1\FootballPredictor.Services.Messaging.AssemblyInfo.cs
+D:\IT course\FootballPredictor\Services\FootballPredictor.Services.Messaging\obj\Debug\netstandard2.1\FootballPredictor.Services.Messaging.csproj.CoreCompileInputs.cache
+D:\IT course\FootballPredictor\Services\FootballPredictor.Services.Messaging\obj\Debug\netstandard2.1\FootballPredictor.Services.Messaging.dll
+D:\IT course\FootballPredictor\Services\FootballPredictor.Services.Messaging\obj\Debug\netstandard2.1\FootballPredictor.Services.Messaging.pdb

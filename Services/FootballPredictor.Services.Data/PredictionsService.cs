@@ -1,0 +1,49 @@
+﻿using FootballPredictor.Data.Common.Repositories;
+using FootballPredictor.Data.Models;
+using FootballPredictor.Data.Models.Enums;
+using FootballPredictor.Web.ViewModels.Predictions;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FootballPredictor.Services.Data
+{
+    public class PredictionsService : IPredictionsService
+    {
+        private readonly IDeletableEntityRepository<Prediction> repository;
+
+        public PredictionsService(IDeletableEntityRepository<Prediction> repository)
+        {
+            this.repository = repository;
+        }
+        public async Task CreateAsync(int id, int homeGoals, int awayGoals, string description, string userId)
+        {
+            var bet = "";
+            if (homeGoals>awayGoals)
+            {
+                bet = "Home";
+            }
+            else if (homeGoals == awayGoals)
+            {
+                bet = "Draw";
+            }
+            else
+            {
+                bet = "Away";
+            }
+            var prediction = new Prediction
+            {
+                MatchId = id,
+                HomeTeamGoals = homeGoals,
+                AwayTeamGoals = awayGoals,
+                Bet = (BetType)Enum.Parse(typeof(BetType),bet),
+                Description = description,
+            };
+
+            await this.repository.AddAsync(prediction);
+            await this.repository.SaveChangesAsync();
+
+        }
+    }
+}

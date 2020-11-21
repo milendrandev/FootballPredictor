@@ -1,0 +1,12 @@
+D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Models\bin\Debug\netstandard2.1\FootballPredictor.Data.Models.deps.json
+D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Models\bin\Debug\netstandard2.1\FootballPredictor.Data.Models.dll
+D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Models\bin\Debug\netstandard2.1\FootballPredictor.Data.Models.pdb
+D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Models\bin\Debug\netstandard2.1\FootballPredictor.Data.Common.dll
+D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Models\bin\Debug\netstandard2.1\FootballPredictor.Data.Common.pdb
+D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Models\obj\Debug\netstandard2.1\FootballPredictor.Data.Models.csprojAssemblyReference.cache
+D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Models\obj\Debug\netstandard2.1\FootballPredictor.Data.Models.AssemblyInfoInputs.cache
+D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Models\obj\Debug\netstandard2.1\FootballPredictor.Data.Models.AssemblyInfo.cs
+D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Models\obj\Debug\netstandard2.1\FootballPredictor.Data.Models.csproj.CoreCompileInputs.cache
+D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Models\obj\Debug\netstandard2.1\FootballPredictor.Data.Models.csproj.CopyComplete
+D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Models\obj\Debug\netstandard2.1\FootballPredictor.Data.Models.dll
+D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Models\obj\Debug\netstandard2.1\FootballPredictor.Data.Models.pdb

@@ -1,0 +1,103 @@
+[
+  {
+    "name": "Elche CF",
+    "code": "ELC",
+    "country": "Spain",
+  },
+  {
+    "name": "SD Huesca",
+    "code": "HUE",
+    "country": "Spain",
+
+  },
+  {
+    "name": "Cadiz CF",
+    "code": "CAD",
+    "country": "Spain",
+  },
+  {
+    "name": "Athletic Club Bilbao",
+    "code": "ATH",
+    "country": "Spain",
+  },
+  {
+    "name": "FC Barcelona",
+    "code": "BAR",
+    "country": "Spain",
+  },
+  {
+    "name": "RC Celta Vigo",
+    "code": "CEL",
+    "country": "Spain"
+  },
+  {
+    "name": "Real Madrid",
+    "code": "RMD",
+    "country": "Spain"
+  },
+  {
+    "name": "Valencia CF",
+    "code": "VAL",
+    "country": "Spain"
+  },
+  {
+    "name": "Real Sociedad",
+    "code": "RSO",
+    "country": "Spain"
+  },
+  {
+    "name": "SD Eibar",
+    "code": "EIB",
+    "country": "Spain"
+  },
+  {
+    "name": "Villarreal CF",
+    "code": "VLL",
+    "country": "Spain"
+  },
+  {
+    "name": "Granada CF",
+    "code": "GRA",
+    "country": "Spain"
+  },
+  {
+    "name": "CA Osasuna",
+    "code": "OSA",
+    "country": "Spain"
+  },
+  {
+    "name": "Deportivo Alaves",
+    "code": "ALV",
+    "country": "Spain"
+  },
+  {
+    "name": "Levante UD",
+    "code": "LEV",
+    "country": "Spain"
+  },
+  {
+    "name": "Sevilla FC",
+    "code": "SEV",
+    "country": "Spain"
+  },
+  {
+    "name": "Real Betis",
+    "code": "BET",
+    "country": "Spain"
+  },
+  {
+    "name": "Real Valladolid CF",
+    "code": "VID",
+    "country": "Spain"
+  },
+  {
+    "name": "Atletico Madrid",
+    "code": "ATL",
+    "country": "Spain"
+  },
+  {
+    "name": "Getafe CF",
+    "code": "GET",
+    "country": "Spain"
+  }
+]

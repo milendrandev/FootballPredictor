@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\FootballPredictor.Data.Common\FootballPredictor.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\FootballPredictor.Data.Models\FootballPredictor.Data.Models.csproj" />
+    <ProjectReference Include="..\..\FootballPredictor.Common\FootballPredictor.Common.csproj" />
     <ProjectReference Include="..\..\Web\FootballPredictor.Web.ViewModels\FootballPredictor.Web.ViewModels.csproj" />
     <ProjectReference Include="..\FootballPredictor.Services.Mapping\FootballPredictor.Services.Mapping.csproj" />
   </ItemGroup>

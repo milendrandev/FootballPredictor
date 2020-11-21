@@ -16,3 +16,5 @@ D:\IT course\FootballPredictor\Services\FootballPredictor.Services.Data\obj\Debu
 D:\IT course\FootballPredictor\Services\FootballPredictor.Services.Data\obj\Debug\netstandard2.1\FootballPredictor.Services.Data.pdb
 D:\IT course\FootballPredictor\Services\FootballPredictor.Services.Data\bin\Debug\netstandard2.1\FootballPredictor.Web.ViewModels.dll
 D:\IT course\FootballPredictor\Services\FootballPredictor.Services.Data\bin\Debug\netstandard2.1\FootballPredictor.Web.ViewModels.pdb
+D:\IT course\FootballPredictor\Services\FootballPredictor.Services.Data\bin\Debug\netstandard2.1\FootballPredictor.Common.dll
+D:\IT course\FootballPredictor\Services\FootballPredictor.Services.Data\bin\Debug\netstandard2.1\FootballPredictor.Common.pdb

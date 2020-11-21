@@ -42,6 +42,8 @@
 
         public Task<int> SaveChangesAsync() => this.Context.SaveChangesAsync();
 
+        public virtual void SaveChanges() => this.Context.SaveChanges();
+
         public void Dispose()
         {
             this.Dispose(true);

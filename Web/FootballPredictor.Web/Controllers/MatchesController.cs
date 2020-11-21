@@ -21,5 +21,12 @@ namespace FootballPredictor.Web.Controllers
 
             return this.View(viewModel);
         }
+
+        public IActionResult Simulate()
+        {
+             this.matchesService.Simulate();
+
+            return this.Redirect("/Matches/All");
+        }
     }
 }

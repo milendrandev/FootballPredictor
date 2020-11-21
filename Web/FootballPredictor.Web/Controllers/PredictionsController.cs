@@ -32,16 +32,16 @@ namespace FootballPredictor.Web.Controllers
         }
 
         [HttpPost]
-        public async Task <IActionResult> Create(int id,int homeGoals, int awayGoals,string description)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return this.View();
-            }
-
-            await this.predictionsService.CreateAsync(id,homeGoals, awayGoals,description);
-            return this.Redirect("/Matches/All");
-        }
+       // public async Task <IActionResult> Create(int id,int homeGoals, int awayGoals,string description)
+       // {
+       //     if (!this.ModelState.IsValid)
+       //     {
+       //         return this.View();
+       //     }
+       //
+       //     await this.predictionsService.CreateAsync(id,homeGoals, awayGoals,description);
+       //     return this.Redirect("/Matches/All");
+       // }
 
         public IActionResult All()
         {

@@ -96,7 +96,6 @@
                 this.matchRepository.SaveChanges();
                 this.teamRepository.SaveChanges();
             }
-               
         }
     }
 }

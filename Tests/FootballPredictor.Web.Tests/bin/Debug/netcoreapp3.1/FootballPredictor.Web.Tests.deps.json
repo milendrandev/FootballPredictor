@@ -3125,6 +3125,7 @@
       },
       "FootballPredictor.Services.Data/1.0.0": {
         "dependencies": {
+          "FootballPredictor.Common": "1.0.0",
           "FootballPredictor.Data.Common": "1.0.0",
           "FootballPredictor.Data.Models": "1.0.0",
           "FootballPredictor.Services.Mapping": "1.0.0",

@@ -1,15 +1,15 @@
-﻿
-using FootballPredictor.Services.Data;
-using FootballPredictor.Web.ViewModels.Predictions;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace FootballPredictor.Web.Controllers
+﻿namespace FootballPredictor.Web.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using FootballPredictor.Services.Data;
+    using FootballPredictor.Web.ViewModels.Predictions;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+
     public class PredictionsController : BaseController
     {
         private readonly IPredictionsService predictionsService;

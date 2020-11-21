@@ -19,6 +19,8 @@ namespace FootballPredictor.Data.Models
             this.Predictions = new HashSet<Prediction>();
         }
 
+        public int UserPoints { get; set; }
+
         public virtual ICollection<Prediction> Predictions { get; set; }
 
         // Audit info

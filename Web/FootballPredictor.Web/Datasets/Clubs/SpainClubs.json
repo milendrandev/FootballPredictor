@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "name": "Elche CF",
     "code": "ELC",
@@ -11,22 +11,22 @@
 
   },
   {
-    "name": "Cadiz CF",
+    "name": "Cádiz CF",
     "code": "CAD",
-    "country": "Spain",
+    "country": "Spain"
   },
   {
-    "name": "Athletic Club Bilbao",
+    "name": "Athletic Club de Bilbao",
     "code": "ATH",
-    "country": "Spain",
+    "country": "Spain"
   },
   {
     "name": "FC Barcelona",
     "code": "BAR",
-    "country": "Spain",
+    "country": "Spain"
   },
   {
-    "name": "RC Celta Vigo",
+    "name": "RC Celta",
     "code": "CEL",
     "country": "Spain"
   },
@@ -66,7 +66,7 @@
     "country": "Spain"
   },
   {
-    "name": "Deportivo Alaves",
+    "name": "Deportivo Alavés",
     "code": "ALV",
     "country": "Spain"
   },
@@ -91,7 +91,7 @@
     "country": "Spain"
   },
   {
-    "name": "Atletico Madrid",
+    "name": "Atlético Madrid",
     "code": "ATL",
     "country": "Spain"
   },

@@ -41,7 +41,7 @@
 
                 foreach (var team in teams)
                 {
-                    Console.WriteLine(team.Name +"-" +team.Players.Count);
+                    Console.WriteLine(team.Name + "-" + team.Players.Count());
                 }
             }
 

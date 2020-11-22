@@ -10,57 +10,57 @@
     "country": "Italy"
   },
   {
-    "name": "ACF Fiorentina",
+    "name": "Fiorentina",
     "code": "FIO",
     "country": "Italy"
   },
   {
-    "name": "SSC Napoli",
+    "name": "Napoli",
     "code": "NAP",
     "country": "Italy"
   },
   {
-    "name": "UC Sampdoria",
+    "name": "Sampdoria",
     "code": "SAM",
     "country": "Italy"
   },
   {
-    "name": "SS Lazio",
+    "name": "Lazio",
     "code": "LAZ",
     "country": "Italy"
   },
   {
-    "name": "AS Roma",
+    "name": "Roma",
     "code": "ROM",
     "country": "Italy"
   },
   {
-    "name": "Genoa CFC",
+    "name": "Genoa",
     "code": "GEN",
     "country": "Italy"
   },
   {
-    "name": "Udinese Calcio",
+    "name": "Udinese",
     "code": "UDI",
     "country": "Italy"
   },
   {
-    "name": "AC Milan",
+    "name": "Milan",
     "code": "MIL",
     "country": "Italy"
   },
   {
-    "name": "Cagliari Calcio",
+    "name": "Cagliari",
     "code": "CAG",
     "country": "Italy"
   },
   {
-    "name": "Torino FC",
+    "name": "Torino",
     "code": "TOR",
     "country": "Italy"
   },
   {
-    "name": "US Sassuolo Calcio",
+    "name": "Sassuolo",
     "code": "SAS",
     "country": "Italy"
   },
@@ -70,17 +70,17 @@
     "country": "Italy"
   },
   {
-    "name": "Bologna FC",
+    "name": "Bologna",
     "code": "BOL",
     "country": "Italy"
   },
   {
-    "name": "Atalanta Bergamo",
+    "name": "Atalanta",
     "code": "ATA",
     "country": "Italy"
   },
   {
-    "name": "FC Internazionale Milano",
+    "name": "Inter",
     "code": "INT",
     "country": "Italy"
   },
@@ -90,7 +90,7 @@
     "country": "Italy"
   },
   {
-    "name": "FC Crotone",
+    "name": "Crotone",
     "code": "CRO",
     "country": "Italy"
   },

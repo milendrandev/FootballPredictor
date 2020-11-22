@@ -5,7 +5,7 @@
     "country": "Germany"
   },
   {
-    "name": "Bor. Mönchengladbach",
+    "name": "Borussia Mönchengladbach",
     "code": "BMG",
     "country": "Germany"
   },
@@ -25,7 +25,7 @@
     "country": "Germany"
   },
   {
-    "name": "Arminia Bielefeld",
+    "name": "DSC Arminia Bielefeld",
     "code": "DSC",
     "country": "Germany"
   },
@@ -45,7 +45,7 @@
     "country": "Germany"
   },
   {
-    "name": "Werder Bremen",
+    "name": "SV Werder Bremen",
     "code": "BRE",
     "country": "Germany"
   },
@@ -85,7 +85,7 @@
     "country": "Germany"
   },
   {
-    "name": "Bayern München",
+    "name": "FC Bayern München",
     "code": "FCB",
     "country": "Germany"
   }

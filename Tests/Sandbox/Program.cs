@@ -36,6 +36,13 @@
                 dbContext.Database.Migrate();
                 new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider)
                     .GetAwaiter().GetResult();
+
+                var teams = dbContext.Teams.ToList();
+
+                foreach (var team in teams)
+                {
+                    Console.WriteLine(team.Name +"-" +team.Players.Count);
+                }
             }
 
             using (var serviceScope = serviceProvider.CreateScope())

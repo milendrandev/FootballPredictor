@@ -1,17 +1,19 @@
 ﻿namespace FootballPredictor.Data.Models
 {
-    using FootballPredictor.Data.Common.Models;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Text;
 
+    using FootballPredictor.Data.Common.Models;
+
     public class Team : BaseDeletableModel<int>
     {
         public Team()
         {
             this.Matches = new HashSet<Match>();
+            this.Players = new HashSet<Player>();
 
             this.Points = 0;
             this.Wins = 0;
@@ -54,6 +56,8 @@
         public virtual ICollection<Match> Matches { get; set; }
 
         public int MatchesPlayed { get; set; }
+
+        public virtual ICollection<Player> Players { get; set; }
 
     }
 }

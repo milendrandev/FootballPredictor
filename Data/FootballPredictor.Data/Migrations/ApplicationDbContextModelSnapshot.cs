@@ -232,6 +232,69 @@ namespace FootballPredictor.Data.Migrations
                     b.ToTable("Matches");
                 });
 
+            modelBuilder.Entity("FootballPredictor.Data.Models.Player", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("HeightCm")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("LeagueId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LongName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Nationality")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("ShortName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<int>("TeamId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WeightKg")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("LeagueId");
+
+                    b.HasIndex("TeamId");
+
+                    b.ToTable("Players");
+                });
+
             modelBuilder.Entity("FootballPredictor.Data.Models.Prediction", b =>
                 {
                     b.Property<int>("Id")
@@ -492,6 +555,21 @@ namespace FootballPredictor.Data.Migrations
                     b.HasOne("FootballPredictor.Data.Models.Team", null)
                         .WithMany("Matches")
                         .HasForeignKey("TeamId");
+                });
+
+            modelBuilder.Entity("FootballPredictor.Data.Models.Player", b =>
+                {
+                    b.HasOne("FootballPredictor.Data.Models.League", "League")
+                        .WithMany()
+                        .HasForeignKey("LeagueId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("FootballPredictor.Data.Models.Team", "Team")
+                        .WithMany()
+                        .HasForeignKey("TeamId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("FootballPredictor.Data.Models.Prediction", b =>

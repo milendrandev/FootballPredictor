@@ -1,20 +1,19 @@
-﻿using FootballPredictor.Services.Data;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace FootballPredictor.Web.Controllers
+﻿namespace FootballPredictor.Web.Controllers
 {
+    using FootballPredictor.Services.Data;
+    using Microsoft.AspNetCore.Mvc;
+
     public class MatchesController : BaseController
     {
         private readonly IMatchesService matchesService;
+        private readonly IUserPointsCalculateService calculateService;
 
-        public MatchesController(IMatchesService matchesService)
+        public MatchesController(IMatchesService matchesService, IUserPointsCalculateService calculateService)
         {
             this.matchesService = matchesService;
+            this.calculateService = calculateService;
         }
+
         public IActionResult All()
         {
             var viewModel = this.matchesService.GetAll();
@@ -24,7 +23,8 @@ namespace FootballPredictor.Web.Controllers
 
         public IActionResult Simulate()
         {
-             this.matchesService.Simulate();
+            this.matchesService.Simulate();
+            this.calculateService.AddPointsToUser();
 
             return this.Redirect("/Matches/All");
         }

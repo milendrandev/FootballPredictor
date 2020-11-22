@@ -11,6 +11,7 @@
         {
             this.Teams = new HashSet<Team>();
             this.Matches = new HashSet<Match>();
+            this.Players = new HashSet<Player>();
         }
 
         [Required]
@@ -24,5 +25,7 @@
         public virtual ICollection<Team> Teams { get; set; }
 
         public virtual ICollection<Match> Matches { get; set; }
+
+        public virtual ICollection<Player> Players { get; set; }
     }
 }

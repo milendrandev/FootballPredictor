@@ -466,3 +466,8 @@ D:\IT course\FootballPredictor\Web\FootballPredictor.Web\bin\Debug\netcoreapp3.1
 D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Predictions\Create.cshtml.g.cs
 D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Predictions\All.cshtml.g.cs
 D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Matches\All.cshtml.g.cs
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Standings\EnglishPremierLeague.cshtml.g.cs
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Standings\ItalianSerieA.cshtml.g.cs
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Standings\Leagues.cshtml.g.cs
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Standings\SpainPrimeraDivision.cshtml.g.cs
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Standings\LeagueStandings.cshtml.g.cs

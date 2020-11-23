@@ -37,11 +37,11 @@
                 new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider)
                     .GetAwaiter().GetResult();
 
-                var teams = dbContext.Teams.ToList();
+                var teams = dbContext.Teams;
 
                 foreach (var team in teams)
                 {
-                    Console.WriteLine(team.Name + "-" + team.Players.Count());
+                    Console.WriteLine(team.Name + " " + team.Players.Count);
                 }
             }
 

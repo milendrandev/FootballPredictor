@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FootballPredictor.Web.ViewModels.Matches
+﻿namespace FootballPredictor.Web.ViewModels.Matches
 {
     public class AllMatchesForTheWeekViewModel
     {
         public int Id { get; set; }
+
         public int LeagueId { get; set; }
 
         public string LeagueName { get; set; }

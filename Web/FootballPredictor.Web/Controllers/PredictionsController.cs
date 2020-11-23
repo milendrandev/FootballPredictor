@@ -18,6 +18,7 @@
         {
             this.predictionsService = predictionsService;
         }
+
         [HttpGet]
         public IActionResult Create(string homeTeam, string awayTeam, int matchId)
         {

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FootballPredictor.Web.ViewModels.Standings
+﻿namespace FootballPredictor.Web.ViewModels.Standings
 {
+    using System.Collections.Generic;
+
     public class LeagueViewModel
     {
         public string Name { get; set; }

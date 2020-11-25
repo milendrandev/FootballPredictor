@@ -7,15 +7,24 @@
     public class StandingsController : BaseController
     {
         private readonly IStandingsService standingsService;
+        private readonly ITeamsService teamsService;
 
-        public StandingsController(IStandingsService standingsService)
+        public StandingsController(IStandingsService standingsService, ITeamsService teamsService)
         {
             this.standingsService = standingsService;
+            this.teamsService = teamsService;
         }
 
         public IActionResult Leagues()
         {
              return this.View();
+        }
+
+        public IActionResult Team(int id)
+        {
+            var model = this.teamsService.TeamDetails(id);
+
+            return this.View("TeamDetails", model);
         }
 
         public IActionResult EnglishPremierLeague()

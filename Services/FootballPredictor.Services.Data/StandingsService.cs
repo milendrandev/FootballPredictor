@@ -25,6 +25,7 @@ namespace FootballPredictor.Services.Data
                     Name = l.Name,
                     Teams = l.Teams.Select(t => new TeamViewModel
                     {
+                        Id = t.Id,
                         Name = t.Name,
                         Wins = t.Wins,
                         Draws = t.Draws,
@@ -35,6 +36,10 @@ namespace FootballPredictor.Services.Data
                         Points = t.Points,
                     })
                     .OrderByDescending(t => t.Points)
+                    .ThenByDescending(t => t.ScoredGoals - t.ConcededGoals)
+                    .ThenByDescending(t => t.ScoredGoals)
+                    .ThenByDescending(t => t.ConcededGoals)
+                    .ThenBy(t => t.Name)
                     .ToList(),
                 }).FirstOrDefault();
 

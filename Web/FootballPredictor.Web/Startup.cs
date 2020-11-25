@@ -68,6 +68,7 @@
             services.AddTransient<IPredictionsService, PredictionsService>();
             services.AddTransient<IUserPointsCalculateService, UserPointsCalculateService>();
             services.AddTransient<IStandingsService, StandingsService>();
+            services.AddTransient<ITeamsService, TeamsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

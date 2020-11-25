@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FootballPredictor.Web.ViewModels.Standings
+﻿namespace FootballPredictor.Web.ViewModels.Standings
 {
    public class TeamViewModel
     {
+        public int Id { get; set; }
+
         public string Name { get; set; }
 
         public int Points { get; set; }
@@ -21,5 +19,6 @@ namespace FootballPredictor.Web.ViewModels.Standings
         public int ConcededGoals { get; set; }
 
         public int MatchesPlayed { get; set; }
+
     }
 }

@@ -3,30 +3,25 @@
 <hr class="bg-primary w-75">
 <form class="mx-auto w-50" method="post">
     <div class="form-group">
-        <label asp-for="HomeGoals"></label>
+        <div class="text-dark d-flex justify-content-center">
+            <label asp-for="HomeGoals" class="h3 mb-2"></label>
+        </div>
         <input asp-for="HomeGoals" class="form-control" />
         <span asp-validation-for="HomeGoals" class="text-danger"></span>
     </div>
     <div class="form-group">
         <div class="text-dark d-flex justify-content-center">
-            <label for="HomeGoals" class="h3 mb-2">HomeGoals</label>
+            <label asp-for="AwayGoals" class="h3 mb-2"></label>
         </div>
-        <input class="form-control" id="HomeGoals" name="Home Goals"></input>
-        <span validation-for="HomeGoals" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <div class="text-dark d-flex justify-content-center">
-            <label for="AwayGoals" class="h3 mb-2">AwayGoals</label>
-        </div>
-        <input class="form-control" id="AwayGoals" name="Away Goals"></input>
+        <input asp-for="AwayGoals" class="form-control" />
         <span validation-for="AwayGoals" class="text-danger"></span>
     </div>
     <div class="form-group">
         <div class="text-dark d-flex justify-content-center">
-            <label for="description" class="h3 mb-2">Description</label>
+            <label asp-for="Description" class="h3 mb-2"></label>
         </div>
-        <textarea row="20" class="form-control" id="description" name="Description"></textarea>
-        <span validation-for="description" class="text-danger"></span>
+        <textarea asp-for="Description" class="form-control" rows="5"></textarea>
+        <span validation-for="Description" class="text-danger"></span>
     </div>
     <input type="text" hidden id="matchId" name="matchId" value="@Model.Id" />
     <div class="d-flex justify-content-center">

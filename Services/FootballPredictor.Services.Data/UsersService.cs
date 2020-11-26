@@ -7,18 +7,19 @@
     using FootballPredictor.Data.Common.Repositories;
     using FootballPredictor.Data.Models;
 
-    public class UserPointsCalculateService : IUserPointsCalculateService
+    public class UsersService : IUsersService
     {
         private readonly IDeletableEntityRepository<ApplicationUser> userRepository;
         private readonly IDeletableEntityRepository<Match> matchRepository;
 
-        public UserPointsCalculateService(
+        public UsersService(
             IDeletableEntityRepository<ApplicationUser> userRepository,
             IDeletableEntityRepository<Match> matchRepository)
         {
             this.userRepository = userRepository;
             this.matchRepository = matchRepository;
         }
+
         public void AddPointsToUser()
         {
             var users = this.userRepository.All().ToList();
@@ -57,7 +58,15 @@
 
                 this.userRepository.Update(user);
             }
+
             this.userRepository.SaveChanges();
+        }
+
+        public ApplicationUser CreateAdmin()
+        {
+            var admin = this.userRepository.All().Where(u => u.Email == "milendrandev@abv.bg").FirstOrDefault();
+
+            return admin;
         }
     }
 }

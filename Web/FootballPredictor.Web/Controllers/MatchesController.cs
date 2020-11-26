@@ -6,9 +6,9 @@
     public class MatchesController : BaseController
     {
         private readonly IMatchesService matchesService;
-        private readonly IUserPointsCalculateService calculateService;
+        private readonly IUsersService calculateService;
 
-        public MatchesController(IMatchesService matchesService, IUserPointsCalculateService calculateService)
+        public MatchesController(IMatchesService matchesService, IUsersService calculateService)
         {
             this.matchesService = matchesService;
             this.calculateService = calculateService;

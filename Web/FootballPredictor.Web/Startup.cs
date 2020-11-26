@@ -1,7 +1,9 @@
 ﻿namespace FootballPredictor.Web
 {
+    using System;
     using System.Reflection;
-
+    using System.Threading.Tasks;
+    using FootballPredictor.Common;
     using FootballPredictor.Data;
     using FootballPredictor.Data.Common;
     using FootballPredictor.Data.Common.Repositories;
@@ -12,10 +14,10 @@
     using FootballPredictor.Services.Mapping;
     using FootballPredictor.Services.Messaging;
     using FootballPredictor.Web.ViewModels;
-
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
@@ -66,7 +68,7 @@
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IMatchesService, MatchesService>();
             services.AddTransient<IPredictionsService, PredictionsService>();
-            services.AddTransient<IUserPointsCalculateService, UserPointsCalculateService>();
+            services.AddTransient<IUsersService, UsersService>();
             services.AddTransient<IStandingsService, StandingsService>();
             services.AddTransient<ITeamsService, TeamsService>();
         }

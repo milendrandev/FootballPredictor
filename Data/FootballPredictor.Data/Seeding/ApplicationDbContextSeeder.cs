@@ -31,6 +31,7 @@
                               new TeamsSeeder(),
                               new MatchsSeeder(),
                               new PlayersSeeder(),
+                              new UsersToRoleSeeder(),
                           };
 
             foreach (var seeder in seeders)

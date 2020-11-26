@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace FootballPredictor.Web.ViewModels.Predictions
 {
-   public class CreateViewModel
+    public class CreateViewModel
     {
-        public int MatchId { get; set; }
+        public int Id { get; set; }
 
-        public string HomeTeam { get; set; }
+        [Range(0, 10)]
+        public int HomeGoals { get; set; }
 
-        public string AwayTeam { get; set; }
+        public int AwayGoals { get; set; }
     }
 }

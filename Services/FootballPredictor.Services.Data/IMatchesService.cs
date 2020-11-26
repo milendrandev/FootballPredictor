@@ -1,14 +1,12 @@
-﻿using FootballPredictor.Web.ViewModels.Matches;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FootballPredictor.Services.Data
+﻿namespace FootballPredictor.Services.Data
 {
+    using System.Collections.Generic;
+
+    using FootballPredictor.Web.ViewModels.Matches;
+
     public interface IMatchesService
     {
-        ICollection<AllMatchesForTheWeekViewModel> GetAll();
+        ListOfLeaguesViewModel GetAll();
 
         void Simulate();
     }

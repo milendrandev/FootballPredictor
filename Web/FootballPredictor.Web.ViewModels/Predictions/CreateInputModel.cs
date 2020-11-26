@@ -1,17 +1,22 @@
-﻿using FootballPredictor.Data.Models.Enums;
-
-namespace FootballPredictor.Web.ViewModels.Predictions
+﻿namespace FootballPredictor.Web.ViewModels.Predictions
 {
+    using System.ComponentModel.DataAnnotations;
+
+    using FootballPredictor.Data.Models.Enums;
+
     public class CreateInputModel
     {
-        public int MatchId { get; set; }
+        public int Id { get; set; }
 
+        [Range(0, 10)]
         public int HomeGoals { get; set; }
 
+        [Range(0, 10)]
         public int AwayGoals { get; set; }
 
-        public BetType Bet { get; set; }
-
+        [Required]
+        [MinLength(20)]
+        [MaxLength(500)]
         public string Description { get; set; }
     }
 }

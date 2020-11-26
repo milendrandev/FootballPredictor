@@ -469,4 +469,4 @@ D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1
 D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Standings\Leagues.cshtml.g.cs
 D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Standings\LeagueStandings.cshtml.g.cs
 D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Teams\TeamDetails.cshtml.g.cs
-D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Standings\TeamDetails.cshtml.g.cs
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Teams\Squad.cshtml.g.cs

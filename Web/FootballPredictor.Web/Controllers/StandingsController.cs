@@ -20,13 +20,6 @@
              return this.View();
         }
 
-        public IActionResult Team(int id)
-        {
-            var model = this.teamsService.TeamDetails(id);
-
-            return this.View("TeamDetails", model);
-        }
-
         public IActionResult EnglishPremierLeague()
         {
             var leagueName = "English Premier League";

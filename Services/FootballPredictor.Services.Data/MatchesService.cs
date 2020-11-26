@@ -14,29 +14,37 @@
     {
         private readonly IDeletableEntityRepository<Match> matchRepository;
         private readonly IDeletableEntityRepository<Team> teamRepository;
+        private readonly IDeletableEntityRepository<League> leagueRepository;
 
         public MatchesService(
-            IDeletableEntityRepository<Match> matchRepository
-            , IDeletableEntityRepository<Team> teamRepository)
+            IDeletableEntityRepository<Match> matchRepository,
+            IDeletableEntityRepository<Team> teamRepository,
+            IDeletableEntityRepository<League> leagueRepository)
         {
             this.matchRepository = matchRepository;
             this.teamRepository = teamRepository;
+            this.leagueRepository = leagueRepository;
         }
 
-        public ICollection<AllMatchesForTheWeekViewModel> GetAll()
+        public ListOfLeaguesViewModel GetAll()
         {
-            var matches = this.matchRepository.AllAsNoTracking().Where(m => m.GameWeek == 1)
-                .Select(m => new AllMatchesForTheWeekViewModel
+            var listLeagues = new ListOfLeaguesViewModel
+            {
+                Leagues = this.leagueRepository.All().Select(l => new ListOfMatchesViewModel
                 {
-                    Id = m.Id,
-                    LeagueId = m.LeagueId,
-                    HomeName = this.teamRepository.AllAsNoTracking().Where(t => t.Id == m.HomeTeamId).Select(t => t.Name).FirstOrDefault(),
-                    AwayName = this.teamRepository.AllAsNoTracking().Where(t => t.Id == m.AwayTeamId).Select(t => t.Name).FirstOrDefault(),
-                    LeagueName = m.League.Name,
-                    GameWeek = m.GameWeek,
-                }).ToList();
+                    LeagueId = l.Id,
+                    LeagueName = l.Name,
+                    Matches = l.Matches.Where(m => m.GameWeek == 1).Select(m => new AllMatchesForTheWeekViewModel
+                    {
+                        Id = m.Id,
+                        HomeName = this.teamRepository.AllAsNoTracking().Where(t => t.Id == m.HomeTeamId).Select(t => t.Name).FirstOrDefault(),
+                        AwayName = this.teamRepository.AllAsNoTracking().Where(t => t.Id == m.AwayTeamId).Select(t => t.Name).FirstOrDefault(),
+                        GameWeek = m.GameWeek,
+                    }),
+                }).ToList(),
+            };
 
-            return matches;
+            return listLeagues;
         }
 
         public void Simulate()

@@ -1,13 +1,11 @@
-﻿using FootballPredictor.Data.Models.Enums;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FootballPredictor.Web.ViewModels.Predictions
+﻿namespace FootballPredictor.Web.ViewModels.Predictions
 {
+    using FootballPredictor.Data.Models.Enums;
+
     public class AllPredictionsViewModel
     {
         public int Id { get; set; }
+
         public string Description { get; set; }
 
         public BetType Bet { get; set; }

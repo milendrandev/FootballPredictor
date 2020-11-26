@@ -1,0 +1,32 @@
+﻿@model FootballPredictor.Web.ViewModels.Players.ListOfPlayerViewModel
+
+<h1> @Model.Players.Count()</h1>
+
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Birth Date</th>
+                <th scope="col">Height</th>
+                <th scope="col">weight</th>
+                <th scope="col">Nationality</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var player in this.Model.Players)
+            {
+
+                <tr class="table-light">
+                    <th scope="row">@player.ShortName</th>
+                    <td>@player.Age</td>
+                    <td>@player.DateOfBirth.ToShortDateString()</td>
+                    <td>@player.HeightCm cm</td>
+                    <td>@player.WeightKg kg</td>
+                    <td>@player.Nationality</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -12,6 +12,13 @@
             this.teamsService = teamsService;
         }
 
+        public IActionResult Squad(int id)
+        {
+            var model = this.teamsService.GetSquad(id);
+
+            return this.View(model);
+        }
+
         public IActionResult Team(int id)
         {
             var model = this.teamsService.TeamDetails(id);

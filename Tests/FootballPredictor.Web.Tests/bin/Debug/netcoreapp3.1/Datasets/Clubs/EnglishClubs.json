@@ -1,101 +1,101 @@
 [
   {
-    "name": "Liverpool FC",
+    "name": "Liverpool",
     "code": "LIV",
     "country": "England"
   },
   {
-    "name": "West Ham United FC",
+    "name": "West Ham United",
     "code": "WHU",
     "country": "England"
   },
   {
-    "name": "Manchester City FC",
+    "name": "Manchester City",
     "code": "MCI",
     "country": "England"
   },
   {
-    "name": "Burnley FC",
+    "name": "Burnley",
     "code": "BUR",
     "country": "England"
   },
   {
-    "name": "Southampton FC",
+    "name": "Southampton",
     "code": "SOU",
     "country": "England"
   },
   {
-    "name": "Sheffield United FC",
+    "name": "Sheffield United",
     "code": "SHU",
     "country": "England"
   },
   {
-    "name": "Crystal Palace FC",
+    "name": "Crystal Palace",
     "code": "CRY",
     "country": "England"
   },
   {
-    "name": "Everton FC",
+    "name": "Everton",
     "code": "EVE",
     "country": "England"
   },
   {
-    "name": "Brighton & Hove Albion FC",
+    "name": "Brighton & Hove Albion",
     "code": "BHA",
     "country": "England"
   },
   {
-    "name": "Tottenham Hotspur FC",
+    "name": "Tottenham Hotspur",
     "code": "TOT",
     "country": "England"
   },
   {
-    "name": "Aston Villa FC",
+    "name": "Aston Villa",
     "code": "AVL",
     "country": "England"
   },
   {
-    "name": "Leicester City FC",
+    "name": "Leicester City",
     "code": "LEI",
     "country": "England"
   },
   {
-    "name": "Wolverhampton Wanderers FC",
+    "name": "Wolverhampton Wanderers",
     "code": "WOL",
     "country": "England"
   },
   {
-    "name": "Newcastle United FC",
+    "name": "Newcastle United",
     "code": "NEW",
     "country": "England"
   },
   {
-    "name": "Arsenal FC",
+    "name": "Arsenal",
     "code": "ARS",
     "country": "England"
   },
   {
-    "name": "Manchester United FC",
+    "name": "Manchester United",
     "code": "MUN",
     "country": "England"
   },
   {
-    "name": "Chelsea FC",
+    "name": "Chelsea",
     "code": "CHE",
     "country": "England"
   },
   {
-    "name": "Fulham FC",
+    "name": "Fulham",
     "code": "FUL",
     "country": "England"
   },
   {
-    "name": "West Bromwich Albion FC",
+    "name": "West Bromwich Albion",
     "code": "WBA",
     "country": "England"
   },
   {
-    "name": "Leeds United FC",
+    "name": "Leeds United",
     "code": null,
     "country": "England"
   }

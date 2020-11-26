@@ -1,12 +1,10 @@
 ﻿namespace FootballPredictor.Services.Data
 {
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
 
     using FootballPredictor.Data.Common.Repositories;
     using FootballPredictor.Data.Models;
+    using FootballPredictor.Web.ViewModels.Players;
     using FootballPredictor.Web.ViewModels.Teams;
 
     public class TeamsService : ITeamsService
@@ -20,9 +18,28 @@
             this.matchRepository = matchRepository;
         }
 
-        public TeamDetailViewModel TeamDetails(int teamId)
+        public ListOfPlayerViewModel GetSquad(int id)
         {
-            var team = this.teamRepository.AllAsNoTracking().Where(t => t.Id == teamId).FirstOrDefault();
+            var team = this.teamRepository.All().Where(t => t.Id == id)
+                .Select(t => new ListOfPlayerViewModel
+                {
+                    Players = t.Players.Select(p => new PlayerViewModel
+                    {
+                        ShortName = p.ShortName,
+                        Age = p.Age,
+                        DateOfBirth = p.DateOfBirth,
+                        HeightCm = p.HeightCm,
+                        WeightKg = p.WeightKg,
+                        Nationality = p.Nationality,
+                    }).ToList(),
+                }).FirstOrDefault();
+
+            return team;
+        }
+
+        public TeamDetailViewModel TeamDetails(int id)
+        {
+            var team = this.teamRepository.AllAsNoTracking().Where(t => t.Id == id).FirstOrDefault();
             var matches = this.matchRepository.AllAsNoTracking()
                 .Where(m => m.HomeTeamId == team.Id || m.AwayTeamId == team.Id).ToList();
 
@@ -30,7 +47,6 @@
             {
                 team.Matches.Add(match);
             }
-
 
             var teamModel = new TeamDetailViewModel
             {

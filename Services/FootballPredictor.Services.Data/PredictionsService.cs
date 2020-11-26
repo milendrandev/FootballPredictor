@@ -26,9 +26,10 @@ namespace FootballPredictor.Services.Data
             this.userRepository = userRepository;
             this.matchRepository = matchRepository;
         }
+
         public async Task CreateAsync(int id, int homeGoals, int awayGoals, string description, string userId)
         {
-            var bet = "";
+            var bet = String.Empty;
             if (homeGoals > awayGoals)
             {
                 bet = "Home";
@@ -41,6 +42,7 @@ namespace FootballPredictor.Services.Data
             {
                 bet = "Away";
             }
+
             var prediction = new Prediction
             {
                 MatchId = id,
@@ -48,6 +50,7 @@ namespace FootballPredictor.Services.Data
                 AwayTeamGoals = awayGoals,
                 Bet = (BetType)Enum.Parse(typeof(BetType), bet),
                 Description = description,
+                UserId = userId,
             };
 
             await this.predictionRepository.AddAsync(prediction);

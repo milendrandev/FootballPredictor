@@ -2,8 +2,6 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    using FootballPredictor.Data.Models.Enums;
-
     public class CreateInputModel
     {
         public int Id { get; set; }

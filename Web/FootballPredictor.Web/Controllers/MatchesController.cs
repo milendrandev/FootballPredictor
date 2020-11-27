@@ -2,6 +2,7 @@
 {
     using FootballPredictor.Services.Data;
     using Microsoft.AspNetCore.Mvc;
+    using System.Security.Claims;
 
     public class MatchesController : BaseController
     {
@@ -16,7 +17,9 @@
 
         public IActionResult All()
         {
-            var viewModel = this.matchesService.GetAll();
+            var id = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            var viewModel = this.matchesService.GetAll(id);
 
             return this.View(viewModel);
         }

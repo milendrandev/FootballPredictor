@@ -6,7 +6,7 @@
 
     public interface IMatchesService
     {
-        ListOfLeaguesViewModel GetAll();
+        ListOfLeaguesViewModel GetAll(string id);
 
         void Simulate();
     }

@@ -1,5 +1,5 @@
-﻿@model FootballPredictor.Web.ViewModels.Matches.ListOfLeaguesViewModel
-
+﻿@using FootballPredictor.Data.Repositories
+@model FootballPredictor.Web.ViewModels.Matches.ListOfLeaguesViewModel
 <head>
     <style>
         h1 {
@@ -9,10 +9,7 @@
 </head>
 
 <h1> Games this week</h1>
-<div>
-    
-
-</div>
+<br />
 
 @foreach (var league in Model.Leagues)
 {
@@ -44,14 +41,14 @@
                     <td>@match.HomeName</td>
                     <td> : </td>
                     <td>@match.AwayName</td>
-                    <td><a class="btn btn-block btn-primary mb-3 text-white mb-3" href="/Predictions/Create?id=@match.Id ">Create a prediction</a></td>
+                    @if (!match.PredictionCreated)
+                    {
+                      <td><a class="btn btn-block btn-primary mb-3 text-white mb-3" href="/Predictions/Create?id=@match.Id ">Create a prediction</a></td>
+                    }
                 </tr>
             }
         </tbody>
     </table>
-    <div>
-
-
-    </div>
+    <br />
 }
 

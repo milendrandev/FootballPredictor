@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Security.Claims;
     using System.Threading.Tasks;
     using FootballPredictor.Data.Models;
     using FootballPredictor.Services.Data;
@@ -49,8 +50,18 @@
 
         public IActionResult All()
         {
-            return this.View();
+            var model = this.predictionsService.All();
+
+            return this.View(model);
         }
 
+        public IActionResult MyPredictions()
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            var model = this.predictionsService.PredictionsByUser(userId);
+
+            return this.View(model);
+        }
     }
 }

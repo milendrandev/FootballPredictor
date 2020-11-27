@@ -14,14 +14,14 @@
             <label asp-for="AwayGoals" class="h3 mb-2"></label>
         </div>
         <input asp-for="AwayGoals" class="form-control" />
-        <span validation-for="AwayGoals" class="text-danger"></span>
+        <span asp-validation-for="AwayGoals" class="text-danger"></span>
     </div>
     <div class="form-group">
         <div class="text-dark d-flex justify-content-center">
             <label asp-for="Description" class="h3 mb-2"></label>
         </div>
         <textarea asp-for="Description" class="form-control" rows="5"></textarea>
-        <span validation-for="Description" class="text-danger"></span>
+        <span asp-validation-for="Description" class="text-danger"></span>
     </div>
     <input type="text" hidden id="matchId" name="matchId" value="@Model.Id" />
     <div class="d-flex justify-content-center">

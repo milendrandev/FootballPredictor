@@ -15,19 +15,24 @@
         private readonly IDeletableEntityRepository<Match> matchRepository;
         private readonly IDeletableEntityRepository<Team> teamRepository;
         private readonly IDeletableEntityRepository<League> leagueRepository;
+        private readonly IDeletableEntityRepository<ApplicationUser> userRepository;
 
         public MatchesService(
             IDeletableEntityRepository<Match> matchRepository,
             IDeletableEntityRepository<Team> teamRepository,
-            IDeletableEntityRepository<League> leagueRepository)
+            IDeletableEntityRepository<League> leagueRepository,
+            IDeletableEntityRepository<ApplicationUser> userRepository)
         {
             this.matchRepository = matchRepository;
             this.teamRepository = teamRepository;
             this.leagueRepository = leagueRepository;
+            this.userRepository = userRepository;
         }
 
-        public ListOfLeaguesViewModel GetAll()
+        public ListOfLeaguesViewModel GetAll(string id)
         {
+            var user = this.userRepository.All().Where(u => u.Id == id).FirstOrDefault();
+
             var listLeagues = new ListOfLeaguesViewModel
             {
                 Leagues = this.leagueRepository.All().Select(l => new ListOfMatchesViewModel
@@ -43,6 +48,17 @@
                     }),
                 }).ToList(),
             };
+
+            foreach (var league in listLeagues.Leagues)
+            {
+                foreach (var match in league.Matches)
+                {
+                    if (user.Predictions.Any(p => p.MatchId == match.Id))
+                    {
+                        match.PredictionCreated = true;
+                    }
+                }
+            }
 
             return listLeagues;
         }

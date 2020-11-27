@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace FootballPredictor.Web.ViewModels.Predictions
+﻿namespace FootballPredictor.Web.ViewModels.Predictions
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class CreateViewModel
     {
         public int Id { get; set; }

@@ -24,6 +24,8 @@
 
         public int WeightKg { get; set; }
 
+        public int TeamNumber { get; set; }
+
         [Required]
         [MaxLength(50)]
         public string Nationality { get; set; }

@@ -1,5 +1,23 @@
 ﻿@model FootballPredictor.Web.ViewModels.Standings.LeagueViewModel
 <h1>@Model.Name</h1>
+
+<div>
+        <style>
+            table {
+                counter-reset: rowNumber;
+            }
+
+                table tr > td:first-child {
+                    counter-increment: rowNumber;
+                }
+
+                table tr td:first-child::before {
+                    content: counter(rowNumber);
+                    min-width: 1em;
+                    margin-right: 0.5em;
+                }
+        </style>
+</div>
 <div>
     <table class="table table-hover">
         <thead>
@@ -20,7 +38,6 @@
             {
 
                 <tr class="table-light">
-                    <td>rank</td>
                     <th scope="row"><a asp-controller="Teams" asp-action="Team" asp-route-id="@team.Id">@team.Name</a></th>
                     <td>@team.MatchesPlayed</td>
                     <td>@team.Wins</td>

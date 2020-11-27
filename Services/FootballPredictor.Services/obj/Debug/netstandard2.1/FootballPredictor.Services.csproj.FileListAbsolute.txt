@@ -6,3 +6,4 @@ D:\IT course\FootballPredictor\Services\FootballPredictor.Services\obj\Debug\net
 D:\IT course\FootballPredictor\Services\FootballPredictor.Services\obj\Debug\netstandard2.1\FootballPredictor.Services.csproj.CoreCompileInputs.cache
 D:\IT course\FootballPredictor\Services\FootballPredictor.Services\obj\Debug\netstandard2.1\FootballPredictor.Services.dll
 D:\IT course\FootballPredictor\Services\FootballPredictor.Services\obj\Debug\netstandard2.1\FootballPredictor.Services.pdb
+D:\IT course\FootballPredictor\Services\FootballPredictor.Services\obj\Debug\netstandard2.1\FootballPredictor.Services.csprojAssemblyReference.cache

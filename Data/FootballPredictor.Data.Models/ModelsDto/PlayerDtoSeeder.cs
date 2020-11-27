@@ -42,5 +42,8 @@
 
         [Required]
         public string LeagueName { get; set; }
+
+        [Range(1, 99)]
+        public int TeamNumber { get; set; }
     }
 }

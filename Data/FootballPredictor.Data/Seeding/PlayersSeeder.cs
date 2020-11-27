@@ -43,6 +43,7 @@
                     HeightCm = int.Parse(playerDto.HeightCm),
                     WeightKg = int.Parse(playerDto.WeightKg),
                     Nationality = playerDto.Nationality,
+                    TeamNumber = playerDto.TeamNumber,
                     Team = team,
                     League = league,
                 };

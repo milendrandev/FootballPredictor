@@ -15,5 +15,7 @@ namespace FootballPredictor.Web.ViewModels.Players
         public int WeightKg { get; set; }
 
         public string Nationality { get; set; }
+
+        public int SquadNumber { get; set; }
     }
 }

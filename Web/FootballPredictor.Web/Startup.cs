@@ -71,6 +71,7 @@
             services.AddTransient<IUsersService, UsersService>();
             services.AddTransient<IStandingsService, StandingsService>();
             services.AddTransient<ITeamsService, TeamsService>();
+            services.AddTransient<IPlayersService, PlayersService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

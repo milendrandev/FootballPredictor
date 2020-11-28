@@ -4,6 +4,6 @@
 
     public interface IPlayersService
     {
-       //ListOfPlayerViewModel GetSquad();
+        ListOfRankigsViewModel Rankings();
     }
 }

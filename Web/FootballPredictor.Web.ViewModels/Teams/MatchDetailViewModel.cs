@@ -9,5 +9,7 @@
         public int? HomeGoals { get; set; }
 
         public int? AwayGoals { get; set; }
+
+        public int Gameweek { get; set; }
     }
 }

@@ -26,6 +26,10 @@
 
         public int TeamNumber { get; set; }
 
+        public int MatchesPlayed { get; set; }
+
+        public int ScoredGoals { get; set; }
+
         [Required]
         [MaxLength(50)]
         public string Nationality { get; set; }

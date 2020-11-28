@@ -1,0 +1,32 @@
+﻿@model FootballPredictor.Web.ViewModels.Players.ListOfRankigsViewModel
+
+<h1> Player Rankings</h1>
+
+@foreach (var league in Model.Leagues)
+{
+    <h2>@league.LeagueName</h2>
+    <table class="table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Squad Number</th>
+                <th scope="col">Name</th>
+                <th scope="col">Team</th>
+                <th scope="col">Goals</th>
+                <th scope="col">Played Matches</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var player in league.Players)
+            {
+                <tr class="table-light">
+                    <td>@player.TeamNumber</td>
+                    <th scope="row">@player.Neam</th>
+                    <td>@player.TeamName</td>
+                    <th scope="row">@player.ScoredGoals</th>
+                    <td>@player.MatchesPlayed</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+}

@@ -6,6 +6,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th scope="col"> Number</th>
                 <th scope="col">Name</th>
                 <th scope="col">Age</th>
                 <th scope="col">Birth Date</th>
@@ -19,6 +20,7 @@
             {
 
                 <tr class="table-light">
+                    <th scope="row">@player.SquadNumber</th>
                     <th scope="row">@player.ShortName</th>
                     <td>@player.Age</td>
                     <td>@player.DateOfBirth.ToShortDateString()</td>

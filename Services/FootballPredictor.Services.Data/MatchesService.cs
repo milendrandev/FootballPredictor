@@ -29,10 +29,8 @@
             this.userRepository = userRepository;
         }
 
-        public ListOfLeaguesViewModel GetAll(string id)
+        public ListOfLeaguesViewModel GetAll()
         {
-            var user = this.userRepository.All().Where(u => u.Id == id).FirstOrDefault();
-
             var listLeagues = new ListOfLeaguesViewModel
             {
                 Leagues = this.leagueRepository.All().Select(l => new ListOfMatchesViewModel
@@ -48,17 +46,6 @@
                     }),
                 }).ToList(),
             };
-
-            foreach (var league in listLeagues.Leagues)
-            {
-                foreach (var match in league.Matches)
-                {
-                    if (user.Predictions.Any(p => p.MatchId == match.Id))
-                    {
-                        match.PredictionCreated = true;
-                    }
-                }
-            }
 
             return listLeagues;
         }

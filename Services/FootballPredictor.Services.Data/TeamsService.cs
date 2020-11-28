@@ -31,7 +31,10 @@
                         HeightCm = p.HeightCm,
                         WeightKg = p.WeightKg,
                         Nationality = p.Nationality,
-                    }).ToList(),
+                        SquadNumber = p.TeamNumber,
+                    })
+                    .OrderBy(p => p.SquadNumber)
+                    .ToList(),
                 }).FirstOrDefault();
 
             return team;
@@ -58,7 +61,8 @@
                     AwayGoals = m.AwayGoals,
                     HomeName = this.teamRepository.All().Where(t => t.Id == m.HomeTeamId).Select(t => t.Name).FirstOrDefault(),
                     AwayName = this.teamRepository.All().Where(t => t.Id == m.AwayTeamId).Select(t => t.Name).FirstOrDefault(),
-                }),
+                    Gameweek = m.GameWeek,
+                }).OrderBy(m => m.Gameweek),
             };
 
             return teamModel;

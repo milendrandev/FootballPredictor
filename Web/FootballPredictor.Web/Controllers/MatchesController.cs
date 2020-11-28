@@ -17,9 +17,7 @@
 
         public IActionResult All()
         {
-            var id = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
-            var viewModel = this.matchesService.GetAll(id);
+            var viewModel = this.matchesService.GetAll();
 
             return this.View(viewModel);
         }

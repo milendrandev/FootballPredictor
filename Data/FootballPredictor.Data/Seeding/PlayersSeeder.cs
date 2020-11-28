@@ -48,6 +48,7 @@
                     League = league,
                 };
 
+                league.Players.Add(player);
                 players.Add(player);
             }
 

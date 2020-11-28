@@ -265,6 +265,9 @@ namespace FootballPredictor.Data.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
+                    b.Property<int>("MatchesPlayed")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
@@ -272,6 +275,9 @@ namespace FootballPredictor.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
+
+                    b.Property<int>("ScoredGoals")
+                        .HasColumnType("int");
 
                     b.Property<string>("ShortName")
                         .IsRequired()

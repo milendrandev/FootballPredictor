@@ -36,8 +36,4 @@
     <ProjectReference Include="..\FootballPredictor.Web.Infrastructure\FootballPredictor.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\FootballPredictor.Web.ViewModels\FootballPredictor.Web.ViewModels.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Players\" />
-  </ItemGroup>
 </Project>

@@ -24,34 +24,33 @@
 
         public ListOfRankigsViewModel Rankings()
         {
-            var leagues = this.leagueRepository.All().ToList();
-            var rankingsLeagues = new ListOfRankigsViewModel();
-
-            foreach (var league in leagues)
+            var leagues = this.leagueRepository.All().Select(l => new
             {
-                var players = this.playerRepository.All().Where(p => p.LeagueId == league.Id).ToList();
+                Name = l.Name,
+                Players = l.Players,
+                Teams = l.Teams,
+            }).ToList();
 
-                rankingsLeagues = new ListOfRankigsViewModel
+            var leaguesModel = new ListOfRankigsViewModel
+            {
+                Leagues = leagues.Select(league => new ListOfRankingPlayerViewModel
                 {
-                    Leagues = leagues.Select(l => new ListOfRankingPlayerViewModel
+                    LeagueName = league.Name,
+                    Players = league.Players.Select(p => new RankingPlayerViewModel
                     {
-                        LeagueName = l.Name,
-                        Players = players.Select(p => new RankingPlayerViewModel
-                        {
-                            Neam = p.ShortName,
-                            TeamName = p.Team.Name,
-                            TeamNumber = p.TeamNumber,
-                            ScoredGoals = p.ScoredGoals,
-                            MatchesPlayed = p.MatchesPlayed,
-                        })
-                        .OrderByDescending(p => p.ScoredGoals)
-                        .ThenBy(p => p.MatchesPlayed)
-                        .Take(10),
-                    }),
-                };
-            }
+                        Neam = p.ShortName,
+                        TeamName = p.Team.Name,
+                        TeamNumber = p.TeamNumber,
+                        ScoredGoals = p.ScoredGoals,
+                        MatchesPlayed = p.MatchesPlayed,
+                    })
+                       .OrderByDescending(p => p.ScoredGoals)
+                       .ThenBy(p => p.MatchesPlayed)
+                       .Take(10),
+                }),
+            };
 
-            return rankingsLeagues;
+            return leaguesModel;
         }
     }
 }

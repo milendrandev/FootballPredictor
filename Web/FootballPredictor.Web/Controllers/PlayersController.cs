@@ -1,6 +1,7 @@
 ﻿namespace FootballPredictor.Web.Controllers
 {
     using FootballPredictor.Services.Data;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
     public class PlayersController : BaseController
@@ -12,6 +13,7 @@
             this.playersService = playersService;
         }
 
+        [Authorize]
         public IActionResult Rankings()
         {
             var model = this.playersService.Rankings();

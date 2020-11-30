@@ -105,5 +105,10 @@
 
             return list;
         }
+
+        public int PredictionsCount(string id)
+        {
+            return this.predictionRepository.All().Where(p => p.UserId.Equals(id)).Count();
+        }
     }
 }

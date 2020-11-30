@@ -4,7 +4,10 @@
 }
 
 <div class="d-flex justify-content-center">
-    <a class="btn btn-block btn-primary text-white mb-3" href="/Predictions/Create">Create a prediction</a>
+    @if (this.User.Identity.IsAuthenticated)
+    {
+        <a class="btn btn-block btn-primary text-white mb-3" href="/Predictions/Create">Create a prediction</a>
+    }
 </div>
 <table class="table table-hover">
     <thead>
@@ -28,7 +31,8 @@
                 <th scope="row">Description</th>
                 <td> @prediction.Description</td>
             </tr>
+            <tr> <td> </td></tr>
         }
     </tbody>
 </table>
-    <br />
+<br />

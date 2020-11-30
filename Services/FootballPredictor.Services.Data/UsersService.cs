@@ -1,9 +1,7 @@
 ﻿namespace FootballPredictor.Services.Data
 {
     using System.Linq;
-    using System.Text;
 
-    using FootballPredictor.Data.Common.Models;
     using FootballPredictor.Data.Common.Repositories;
     using FootballPredictor.Data.Models;
 
@@ -45,19 +43,19 @@
                     if (match.ResultType == prediction.Bet)
                     {
                         user.UserPoints += 10;
-                    }
 
-                    if (match.HomeGoals == prediction.HomeTeamGoals && match.AwayGoals == prediction.AwayTeamGoals)
-                    {
-                        user.UserPoints += 40;
-                    }
-                    else if (match.HomeGoals == prediction.HomeTeamGoals)
-                    {
-                        user.UserPoints += 10;
-                    }
-                    else if (match.AwayGoals == prediction.AwayTeamGoals)
-                    {
-                        user.UserPoints += 10;
+                        if (match.HomeGoals == prediction.HomeTeamGoals && match.AwayGoals == prediction.AwayTeamGoals)
+                        {
+                            user.UserPoints += 40;
+                        }
+                        else if (match.HomeGoals == prediction.HomeTeamGoals)
+                        {
+                            user.UserPoints += 10;
+                        }
+                        else if (match.AwayGoals == prediction.AwayTeamGoals)
+                        {
+                            user.UserPoints += 10;
+                        }
                     }
                 }
 

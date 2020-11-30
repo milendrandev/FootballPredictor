@@ -1,18 +1,22 @@
 ﻿namespace FootballPredictor.Web.Controllers
 {
+    using FootballPredictor.Data.Models;
     using FootballPredictor.Services.Data;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using System.Security.Claims;
 
     public class MatchesController : BaseController
     {
         private readonly IMatchesService matchesService;
-        private readonly IUsersService calculateService;
+        private readonly IUsersService usersService;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public MatchesController(IMatchesService matchesService, IUsersService calculateService)
+        public MatchesController(IMatchesService matchesService, IUsersService usersService, UserManager<ApplicationUser> userManager)
         {
             this.matchesService = matchesService;
-            this.calculateService = calculateService;
+            this.usersService = usersService;
+            this.userManager = userManager;
         }
 
         public IActionResult All()
@@ -22,12 +26,20 @@
             return this.View(viewModel);
         }
 
+        [Authorize(Roles = "Administrator")]
         public IActionResult Simulate()
         {
             this.matchesService.Simulate();
-            this.calculateService.AddPointsToUser();
 
             return this.Redirect("/Matches/All");
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public IActionResult UserPoints()
+        {
+            this.usersService.AddPointsToUser();
+
+            return this.Redirect("/");
         }
     }
 }

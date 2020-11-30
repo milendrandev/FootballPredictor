@@ -5,9 +5,11 @@
     using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
+
     using FootballPredictor.Data.Models;
     using FootballPredictor.Services.Data;
     using FootballPredictor.Web.ViewModels.Predictions;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
@@ -23,8 +25,18 @@
         }
 
         [HttpGet]
-        public IActionResult Create(int matchId)
+        [Authorize]
+        public async Task<IActionResult> Create(int matchId)
         {
+            var user = await this.userManager.GetUserAsync(this.User);
+
+            var predictionsCount = this.predictionsService.PredictionsCount(user.Id);
+
+            if (predictionsCount > 5)
+            {
+                return this.Redirect("/");
+            }
+
             var model = new CreateViewModel
             {
                 Id = matchId,
@@ -34,6 +46,7 @@
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create(CreateInputModel model)
         {
             if (!this.ModelState.IsValid)
@@ -43,6 +56,8 @@
 
             // var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var user = await this.userManager.GetUserAsync(this.User);
+
+            var predictionsCount = this.predictionsService.PredictionsCount(user.Id);
 
             await this.predictionsService.CreateAsync(model.Id, model.HomeGoals, model.AwayGoals, model.Description, user.Id);
             return this.Redirect("/Matches/All");

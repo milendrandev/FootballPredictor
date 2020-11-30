@@ -41,7 +41,10 @@
                     <td>@match.HomeName</td>
                     <td> : </td>
                     <td>@match.AwayName</td>
-                    <td><a class="btn btn-block btn-primary mb-3 text-white mb-3" href="/Predictions/Create?id=@match.Id ">Create a prediction</a></td>
+                    @if (this.User.Identity.IsAuthenticated)
+                    {
+                        <td><a class="btn btn-block btn-primary mb-3 text-white mb-3" href="/Predictions/Create?id=@match.Id ">Create a prediction</a></td>
+                    }
                 </tr>
             }
         </tbody>

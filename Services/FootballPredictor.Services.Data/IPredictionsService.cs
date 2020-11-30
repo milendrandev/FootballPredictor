@@ -11,5 +11,7 @@
         ListOfPredictionsViewModel All();
 
         ListOfPredictionsViewModel PredictionsByUser(string id);
+
+        int PredictionsCount(string id);
     }
 }

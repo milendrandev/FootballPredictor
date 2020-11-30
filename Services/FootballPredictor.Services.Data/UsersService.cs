@@ -11,13 +11,16 @@
     {
         private readonly IDeletableEntityRepository<ApplicationUser> userRepository;
         private readonly IDeletableEntityRepository<Match> matchRepository;
+        private readonly IDeletableEntityRepository<Prediction> predictionRepository;
 
         public UsersService(
             IDeletableEntityRepository<ApplicationUser> userRepository,
-            IDeletableEntityRepository<Match> matchRepository)
+            IDeletableEntityRepository<Match> matchRepository,
+            IDeletableEntityRepository<Prediction> predictionRepository)
         {
             this.userRepository = userRepository;
             this.matchRepository = matchRepository;
+            this.predictionRepository = predictionRepository;
         }
 
         public void AddPointsToUser()
@@ -28,7 +31,9 @@
 
             foreach (var user in users)
             {
-                foreach (var prediction in user.Predictions)
+                var predictions = this.predictionRepository.All().Where(p => p.UserId.Equals(user.Id)).ToList();
+
+                foreach (var prediction in predictions)
                 {
                     var match = matches.Where(m => m.Id == prediction.MatchId).FirstOrDefault();
 
@@ -60,13 +65,6 @@
             }
 
             this.userRepository.SaveChanges();
-        }
-
-        public ApplicationUser CreateAdmin()
-        {
-            var admin = this.userRepository.All().Where(u => u.Email == "milendrandev@abv.bg").FirstOrDefault();
-
-            return admin;
         }
     }
 }

@@ -5,7 +5,5 @@ namespace FootballPredictor.Services.Data
     public interface IUsersService
     {
         void AddPointsToUser();
-
-        ApplicationUser CreateAdmin();
     }
 }

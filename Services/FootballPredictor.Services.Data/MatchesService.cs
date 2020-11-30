@@ -1,11 +1,10 @@
 ﻿namespace FootballPredictor.Services.Data
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using FootballPredictor.Common;
+
     using FootballPredictor.Data.Common.Repositories;
     using FootballPredictor.Data.Models;
     using FootballPredictor.Web.ViewModels.Matches;
@@ -15,18 +14,18 @@
         private readonly IDeletableEntityRepository<Match> matchRepository;
         private readonly IDeletableEntityRepository<Team> teamRepository;
         private readonly IDeletableEntityRepository<League> leagueRepository;
-        private readonly IDeletableEntityRepository<ApplicationUser> userRepository;
+        private readonly IDeletableEntityRepository<Player> playerRepository;
 
         public MatchesService(
             IDeletableEntityRepository<Match> matchRepository,
             IDeletableEntityRepository<Team> teamRepository,
             IDeletableEntityRepository<League> leagueRepository,
-            IDeletableEntityRepository<ApplicationUser> userRepository)
+            IDeletableEntityRepository<Player> playerRepository)
         {
             this.matchRepository = matchRepository;
             this.teamRepository = teamRepository;
             this.leagueRepository = leagueRepository;
-            this.userRepository = userRepository;
+            this.playerRepository = playerRepository;
         }
 
         public ListOfLeaguesViewModel GetAll()
@@ -60,14 +59,20 @@
             {
                 var homeTeamId = 0;
                 var awayTeamId = 0;
-                match.HomeGoals = random.Next(10) + 1;
-                match.AwayGoals = random.Next(10) + 1;
+                match.HomeGoals = random.Next(6) + 1;
+                match.AwayGoals = random.Next(6) + 1;
 
                 homeTeamId = match.HomeTeamId;
                 awayTeamId = match.AwayTeamId;
 
                 var homeTeam = this.teamRepository.All().Where(t => t.Id == homeTeamId).FirstOrDefault();
                 var awayTeam = this.teamRepository.All().Where(t => t.Id == awayTeamId).FirstOrDefault();
+
+                var homePlayers = this.teamRepository.All().Where(t => t.Id == homeTeamId)
+                    .Select(t => t.Players.OrderBy(p => p.TeamNumber).Take(11)).FirstOrDefault();
+
+                var awayPlayers = this.teamRepository.All().Where(t => t.Id == awayTeamId)
+                   .Select(t => t.Players.OrderBy(p => p.TeamNumber).Take(11)).FirstOrDefault();
 
                 if (match.HomeGoals > match.AwayGoals)
                 {
@@ -104,8 +109,55 @@
                 this.teamRepository.Update(homeTeam);
                 this.teamRepository.Update(awayTeam);
 
-                this.matchRepository.SaveChanges();
-                this.teamRepository.SaveChanges();
+                this.PlayedPlayers(homePlayers, awayPlayers, homeTeam.ScoredGoals, awayTeam.ScoredGoals);
+
+            }
+
+            this.matchRepository.SaveChanges();
+            this.teamRepository.SaveChanges();
+        }
+
+        private void PlayedPlayers(IEnumerable<Player> homePlayers, IEnumerable<Player> awayPlayers, int homeGoals, int awayGoals)
+        {
+            var random = new Random();
+
+            var playedPlayers = new List<Player>();
+            var homePlayersList = new List<Player>();
+            var awayPlayersList = new List<Player>();
+
+            homePlayersList.AddRange(homePlayers);
+            awayPlayersList.AddRange(awayPlayers);
+
+            playedPlayers.AddRange(homePlayers);
+            playedPlayers.AddRange(awayPlayers);
+
+            foreach (var player in playedPlayers)
+            {
+                player.MatchesPlayed++;
+
+                this.playerRepository.Update(player);
+            }
+
+            for (int i = 0; i < homeGoals; i++)
+            {
+                var scorePlayerIndex = random.Next(homePlayers.Count());
+
+                var scorePlayer = homePlayersList[scorePlayerIndex];
+
+                scorePlayer.ScoredGoals++;
+
+                this.playerRepository.Update(scorePlayer);
+            }
+
+            for (int i = 0; i < awayGoals; i++)
+            {
+                var scorePlayerIndex = random.Next(awayPlayers.Count());
+
+                var scorePlayer = awayPlayersList[scorePlayerIndex];
+
+                scorePlayer.ScoredGoals++;
+
+                this.playerRepository.Update(scorePlayer);
             }
         }
     }

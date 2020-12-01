@@ -28,5 +28,25 @@
             </tr>
         }
     </tbody>
-    <br />
 </table>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item @if (Model.PageNumber==1){<text>disabled</text>} ">
+            <a class="page-link" asp-action="MyPredictions" asp-route-id="@Model.PreviousPage">Previous</a>
+        </li>
+        @if (Model.PageNumber != 1)
+        {
+            <li class="page-item"><a class="page-link" asp-action="MyPredictions" asp-route-id="@Model.PreviousPage">@Model.PreviousPage</a></li>
+        }
+        <li class="page-item"><a class="page-link" asp-action="MyPredictions" asp-route-id="@Model.PageNumber">@Model.PageNumber</a></li>
+        @if (!Model.LastPage)
+        {
+
+            <li class="page-item"><a class="page-link" asp-action="MyPredictions" asp-route-id="@Model.NextPage">@Model.NextPage</a></li>
+        }
+        <li class="page-item @if (Model.LastPage) { <text>disabled</text>} ">
+            <a class="page-link" asp-action="MyPredictions" asp-route-id="@Model.NextPage">Next</a>
+        </li>
+    </ul>
+</nav>

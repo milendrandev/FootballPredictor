@@ -10,13 +10,11 @@
     {
         private readonly IMatchesService matchesService;
         private readonly IUsersService usersService;
-        private readonly UserManager<ApplicationUser> userManager;
 
-        public MatchesController(IMatchesService matchesService, IUsersService usersService, UserManager<ApplicationUser> userManager)
+        public MatchesController(IMatchesService matchesService, IUsersService usersService)
         {
             this.matchesService = matchesService;
             this.usersService = usersService;
-            this.userManager = userManager;
         }
 
         public IActionResult All()

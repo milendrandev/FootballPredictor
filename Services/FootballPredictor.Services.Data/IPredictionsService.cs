@@ -1,5 +1,6 @@
 ﻿namespace FootballPredictor.Services.Data
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using FootballPredictor.Web.ViewModels.Predictions;
@@ -8,10 +9,12 @@
     {
         Task CreateAsync(int id, int homeGoals, int awayGoals, string description, string userId);
 
-        ListOfPredictionsViewModel All();
+        IEnumerable<PredictionsViewModel> All(int page, int itemsPerPage);
 
-        ListOfPredictionsViewModel PredictionsByUser(string id);
+        IEnumerable<PredictionsViewModel> PredictionsByUser(string id, int pageId, int itemsPerPage);
 
-        int PredictionsCount(string id);
+        int PredictionsByUserCount(string id);
+
+        int PredictionsCount();
     }
 }

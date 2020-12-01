@@ -59,7 +59,7 @@
             await this.predictionRepository.SaveChangesAsync();
         }
 
-        public ListOfPredictionsViewModel All()
+        public IEnumerable<PredictionsViewModel> All(int page, int itemsPerPage)
         {
             var predictions = this.predictionRepository.AllAsNoTracking().ToList();
 
@@ -74,6 +74,7 @@
 
                 var predictionModel = new PredictionsViewModel
                 {
+                    Id = prediction.Id,
                     HomeTeamName = homeTeamName,
                     AwayTeamName = awayTeamName,
                     HomeTeamGoals = prediction.HomeTeamGoals,
@@ -84,31 +85,28 @@
                 listOfPredictions.Add(predictionModel);
             }
 
-            var enumListOfPredictions = new ListOfPredictionsViewModel
-            {
-                Predictions = listOfPredictions,
-            };
+            var sorted = listOfPredictions.OrderByDescending(p => p.Id).Skip((page - 1) * itemsPerPage).Take(itemsPerPage);
 
-            return enumListOfPredictions;
+            return sorted;
         }
 
-        public ListOfPredictionsViewModel PredictionsByUser(string id)
+        public IEnumerable<PredictionsViewModel> PredictionsByUser(string id, int pageId, int itemsPerPage)
         {
             var user = this.userRepository.All().Where(u => u.Id == id).FirstOrDefault();
 
-            var userPredictions = this.All().Predictions.Where(p => p.Username == user.UserName);
+            var userPredictions = this.All(pageId, itemsPerPage).Where(p => p.Username == user.UserName);
 
-            var list = new ListOfPredictionsViewModel
-            {
-                Predictions = userPredictions,
-            };
-
-            return list;
+            return userPredictions;
         }
 
-        public int PredictionsCount(string id)
+        public int PredictionsByUserCount(string id)
         {
             return this.predictionRepository.All().Where(p => p.UserId.Equals(id)).Count();
+        }
+
+        public int PredictionsCount()
+        {
+            return this.predictionRepository.AllAsNoTracking().Count();
         }
     }
 }

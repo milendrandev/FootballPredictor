@@ -1,8 +1,5 @@
 ﻿namespace FootballPredictor.Web.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
@@ -17,6 +14,7 @@
     {
         private readonly IPredictionsService predictionsService;
         private readonly UserManager<ApplicationUser> userManager;
+        private const int ItemsPerPage = 1;
 
         public PredictionsController(IPredictionsService predictionsService, UserManager<ApplicationUser> userManager)
         {
@@ -30,7 +28,7 @@
         {
             var user = await this.userManager.GetUserAsync(this.User);
 
-            var predictionsCount = this.predictionsService.PredictionsCount(user.Id);
+            var predictionsCount = this.predictionsService.PredictionsByUserCount(user.Id);
 
             if (predictionsCount > 5)
             {
@@ -57,24 +55,33 @@
             // var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var user = await this.userManager.GetUserAsync(this.User);
 
-            var predictionsCount = this.predictionsService.PredictionsCount(user.Id);
-
             await this.predictionsService.CreateAsync(model.Id, model.HomeGoals, model.AwayGoals, model.Description, user.Id);
             return this.Redirect("/Matches/All");
         }
 
-        public IActionResult All()
+        public IActionResult All(int id = 1)
         {
-            var model = this.predictionsService.All();
+            var model = new ListOfPredictionsViewModel
+            {
+                PageNumber = id,
+                ItemsPerPage = ItemsPerPage,
+                PredictionsCount = this.predictionsService.PredictionsCount(),
+                Predictions = this.predictionsService.All(id, ItemsPerPage),
+            };
 
             return this.View(model);
         }
 
-        public IActionResult MyPredictions()
+        public IActionResult MyPredictions(int id = 1)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
-            var model = this.predictionsService.PredictionsByUser(userId);
+            var model = new ListOfPredictionsViewModel
+            {
+                PageNumber = id,
+                ItemsPerPage = ItemsPerPage,
+                PredictionsCount = this.predictionsService.PredictionsByUserCount(userId),
+                Predictions = this.predictionsService.PredictionsByUser(userId, id, ItemsPerPage),
+            };
 
             return this.View(model);
         }

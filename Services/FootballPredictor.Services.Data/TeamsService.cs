@@ -61,8 +61,8 @@
                     AwayGoals = m.AwayGoals,
                     HomeName = this.teamRepository.All().Where(t => t.Id == m.HomeTeamId).Select(t => t.Name).FirstOrDefault(),
                     AwayName = this.teamRepository.All().Where(t => t.Id == m.AwayTeamId).Select(t => t.Name).FirstOrDefault(),
-                    Gameweek = m.GameWeek,
-                }).OrderBy(m => m.Gameweek),
+                    GameweekId = m.GameweekId,
+                }).OrderBy(m => m.GameweekId),
             };
 
             return teamModel;

@@ -6,6 +6,6 @@
 
         public const string AdministratorRoleName = "Administrator";
 
-        public const int CurrentWeek = 1;
+        public static int CurrentWeek = 1;
     }
 }

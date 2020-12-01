@@ -20,7 +20,9 @@
 
         public int? AwayGoals { get; set; }
 
-        public int GameWeek { get; set; }
+        [ForeignKey(nameof(GameWeek))]
+        public int GameweekId { get; set; }
+        public Gameweek GameWeek { get; set; }
 
         [ForeignKey(nameof(League))]
         public int LeagueId { get; set; }

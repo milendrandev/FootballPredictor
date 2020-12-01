@@ -31,6 +31,8 @@
 
         public async Task CreateAsync(int id, int homeGoals, int awayGoals, string description, string userId)
         {
+            var gameweekId = this.matchRepository.All().Where(m => m.Id == id).Select(m => m.GameweekId).FirstOrDefault();
+
             var bet = String.Empty;
             if (homeGoals > awayGoals)
             {
@@ -52,6 +54,7 @@
                 AwayTeamGoals = awayGoals,
                 Bet = (BetType)Enum.Parse(typeof(BetType), bet),
                 Description = description,
+                GameweekId = gameweekId,
                 UserId = userId,
             };
 

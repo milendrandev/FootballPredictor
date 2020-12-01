@@ -26,8 +26,8 @@
             var seeders = new List<ISeeder>
                           {
                               new RolesSeeder(),
-                              new SettingsSeeder(),
                               new LeagueSeeder(),
+                              new GameweeksSeeder(),
                               new TeamsSeeder(),
                               new MatchsSeeder(),
                               new PlayersSeeder(),

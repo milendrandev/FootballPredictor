@@ -1,10 +1,6 @@
 ﻿namespace FootballPredictor.Data.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Text;
 
     using FootballPredictor.Data.Common.Models;
     using FootballPredictor.Data.Models.Enums;
@@ -20,6 +16,12 @@
 
         public int AwayTeamGoals { get; set; }
 
+        public bool IsPredictedResult { get; set; }
+
+        public bool IsPredictedHomeGoals { get; set; }
+
+        public bool IsPredictedAwayGoals { get; set; }
+
         [ForeignKey(nameof(User))]
         public string UserId { get; set; }
 
@@ -29,5 +31,10 @@
         public int MatchId { get; set; }
 
         public Match Match { get; set; }
+
+        [ForeignKey(nameof(Gameweek))]
+        public int GameweekId { get; set; }
+
+        public Gameweek Gameweek { get; set; }
     }
 }

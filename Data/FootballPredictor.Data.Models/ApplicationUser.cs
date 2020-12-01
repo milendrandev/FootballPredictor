@@ -17,11 +17,14 @@ namespace FootballPredictor.Data.Models
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
             this.Predictions = new HashSet<Prediction>();
+            this.UserGameweeks = new HashSet<GameweekUser>();
         }
 
         public int UserPoints { get; set; }
 
         public virtual ICollection<Prediction> Predictions { get; set; }
+
+        public virtual ICollection<GameweekUser> UserGameweeks { get; set; }
 
         // Audit info
         public DateTime CreatedOn { get; set; }

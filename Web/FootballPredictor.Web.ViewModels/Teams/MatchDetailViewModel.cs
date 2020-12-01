@@ -10,6 +10,6 @@
 
         public int? AwayGoals { get; set; }
 
-        public int Gameweek { get; set; }
+        public int GameweekId { get; set; }
     }
 }

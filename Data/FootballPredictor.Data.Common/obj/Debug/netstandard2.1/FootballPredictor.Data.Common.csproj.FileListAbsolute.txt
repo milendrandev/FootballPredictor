@@ -6,4 +6,3 @@ D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Common\obj\Debug\nets
 D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Common\obj\Debug\netstandard2.1\FootballPredictor.Data.Common.csproj.CoreCompileInputs.cache
 D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Common\obj\Debug\netstandard2.1\FootballPredictor.Data.Common.dll
 D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Common\obj\Debug\netstandard2.1\FootballPredictor.Data.Common.pdb
-D:\IT course\FootballPredictor\Data\FootballPredictor.Data.Common\obj\Debug\netstandard2.1\FootballPredictor.Data.Common.csprojAssemblyReference.cache

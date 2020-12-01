@@ -3,12 +3,7 @@
     this.ViewData["Title"] = "Predictions";
 }
 
-<div class="d-flex justify-content-center">
-    @if (this.User.Identity.IsAuthenticated)
-    {
-        <a class="btn btn-block btn-primary text-white mb-3" href="/Predictions/Create">Create a prediction</a>
-    }
-</div>
+<div class="d-flex justify-content-center"></div>
 <table class="table table-hover">
     <thead>
         <tr>
@@ -31,7 +26,7 @@
                 <th scope="row">Description</th>
                 <td> @prediction.Description</td>
             </tr>
-            <tr> <td> </td></tr>
+            <tr> </tr>
         }
     </tbody>
 </table>

@@ -42,11 +42,12 @@
                                 HomeTeamId = homeTeamId,
                                 AwayTeamId = awayTeamId,
                                 LeagueId = league.Id,
-                                GameWeek = gameweek,
+                                GameweekId = gameweek,
 
                             });
                         }
                     }
+
                     gameweek++;
                 }
 
@@ -64,7 +65,7 @@
                                 HomeTeamId = homeTeamId,
                                 AwayTeamId = awayTeamId,
                                 LeagueId = league.Id,
-                                GameWeek = gameweek,
+                                GameweekId = gameweek,
 
                             });
                         }

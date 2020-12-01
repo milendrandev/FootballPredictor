@@ -56,6 +56,7 @@
             var user = await this.userManager.GetUserAsync(this.User);
 
             await this.predictionsService.CreateAsync(model.Id, model.HomeGoals, model.AwayGoals, model.Description, user.Id);
+
             return this.Redirect("/Matches/All");
         }
 

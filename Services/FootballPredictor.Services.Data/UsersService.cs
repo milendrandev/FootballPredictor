@@ -2,6 +2,7 @@
 {
     using System.Linq;
 
+    using FootballPredictor.Common;
     using FootballPredictor.Data.Common.Repositories;
     using FootballPredictor.Data.Models;
 
@@ -25,7 +26,7 @@
         {
             var users = this.userRepository.All().ToList();
 
-            var matches = this.matchRepository.AllAsNoTracking().Where(m => m.GameWeek == 1).ToList();
+            var matches = this.matchRepository.AllAsNoTracking().Where(m => m.GameweekId == GlobalConstants.CurrentWeek).ToList();
 
             foreach (var user in users)
             {

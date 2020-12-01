@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    using FootballPredictor.Common;
     using FootballPredictor.Data.Common.Repositories;
     using FootballPredictor.Data.Models;
     using FootballPredictor.Web.ViewModels.Matches;
@@ -35,12 +36,14 @@
                 {
                     LeagueId = l.Id,
                     LeagueName = l.Name,
-                    Matches = l.Matches.Where(m => m.GameWeek == 1).Select(m => new AllMatchesForTheWeekViewModel
+                    Matches = l.Matches.Select(m => new AllMatchesForTheWeekViewModel
                     {
                         Id = m.Id,
                         HomeName = this.teamRepository.AllAsNoTracking().Where(t => t.Id == m.HomeTeamId).Select(t => t.Name).FirstOrDefault(),
                         AwayName = this.teamRepository.AllAsNoTracking().Where(t => t.Id == m.AwayTeamId).Select(t => t.Name).FirstOrDefault(),
-                        GameWeek = m.GameWeek,
+                        GameweekId = m.GameweekId,
+                        HomeGoals = m.HomeGoals,
+                        AwayGoals = m.AwayGoals,
                     }),
                 }).ToList(),
             };
@@ -50,7 +53,7 @@
 
         public void Simulate()
         {
-            var matches = this.matchRepository.All().Where(m => m.GameWeek == 1).ToList();
+            var matches = this.matchRepository.All().ToList();
 
             var random = new Random();
 
@@ -109,9 +112,9 @@
                 this.teamRepository.Update(awayTeam);
 
                 this.PlayedPlayers(homePlayers, awayPlayers, homeTeam.ScoredGoals, awayTeam.ScoredGoals);
-
             }
 
+            GlobalConstants.CurrentWeek++;
             this.matchRepository.SaveChanges();
             this.teamRepository.SaveChanges();
         }

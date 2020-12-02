@@ -465,10 +465,11 @@ D:\IT course\FootballPredictor\Web\FootballPredictor.Web\bin\Debug\netcoreapp3.1
 D:\IT course\FootballPredictor\Web\FootballPredictor.Web\bin\Debug\netcoreapp3.1\Datasets\Players\FilteredPlayers.json
 D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Predictions\Create.cshtml.g.cs
 D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Predictions\All.cshtml.g.cs
-D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Matches\All.cshtml.g.cs
 D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Standings\Leagues.cshtml.g.cs
 D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Standings\LeagueStandings.cshtml.g.cs
 D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Teams\TeamDetails.cshtml.g.cs
 D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Teams\Squad.cshtml.g.cs
 D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Predictions\MyPredictions.cshtml.g.cs
 D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Players\Rankings.cshtml.g.cs
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Matches\Fuxtures.cshtml.g.cs
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Matches\Results.cshtml.g.cs

@@ -28,27 +28,24 @@
             this.playerRepository = playerRepository;
         }
 
-        public ListOfLeaguesViewModel GetAll()
+        public IEnumerable<ListOfMatchesViewModel> GetAll(int gameweek)
         {
-            var listLeagues = new ListOfLeaguesViewModel
+            var leagues = this.leagueRepository.AllAsNoTracking().Select(l => new ListOfMatchesViewModel
             {
-                Leagues = this.leagueRepository.All().Select(l => new ListOfMatchesViewModel
+                LeagueId = l.Id,
+                LeagueName = l.Name,
+                Matches = l.Matches.Where(m => m.GameweekId == gameweek).Select(m => new AllMatchesForTheWeekViewModel
                 {
-                    LeagueId = l.Id,
-                    LeagueName = l.Name,
-                    Matches = l.Matches.Select(m => new AllMatchesForTheWeekViewModel
-                    {
-                        Id = m.Id,
-                        HomeName = this.teamRepository.AllAsNoTracking().Where(t => t.Id == m.HomeTeamId).Select(t => t.Name).FirstOrDefault(),
-                        AwayName = this.teamRepository.AllAsNoTracking().Where(t => t.Id == m.AwayTeamId).Select(t => t.Name).FirstOrDefault(),
-                        GameweekId = m.GameweekId,
-                        HomeGoals = m.HomeGoals,
-                        AwayGoals = m.AwayGoals,
-                    }),
-                }).ToList(),
-            };
+                    Id = m.Id,
+                    HomeName = this.teamRepository.AllAsNoTracking().Where(t => t.Id == m.HomeTeamId).Select(t => t.Name).FirstOrDefault(),
+                    AwayName = this.teamRepository.AllAsNoTracking().Where(t => t.Id == m.AwayTeamId).Select(t => t.Name).FirstOrDefault(),
+                    GameweekId = m.GameweekId,
+                    HomeGoals = m.HomeGoals,
+                    AwayGoals = m.AwayGoals,
+                }),
+            }).ToList();
 
-            return listLeagues;
+            return leagues;
         }
 
         public void Simulate()

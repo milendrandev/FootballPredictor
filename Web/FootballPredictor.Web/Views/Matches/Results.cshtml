@@ -1,0 +1,75 @@
+﻿@model FootballPredictor.Web.ViewModels.Matches.ListOfResultsViewModel
+
+<head>
+    <style>
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item @if (Model.LastPage){<text>disabled</text>} ">
+            <a class="page-link" asp-action="Results" asp-route-id="@Model.PreviousPage">Previous</a>
+        </li>
+        @if (!Model.LastPage)
+        {
+            <li class="page-item"><a class="page-link" asp-action="Results" asp-route-id="@Model.PreviousPage">@Model.PreviousPage</a></li>
+        }
+        <li class="page-item"><a class="page-link" asp-action="Results" asp-route-id="@Model.PageNumber">@Model.PageNumber</a></li>
+        @if (Model.PageNumber != Model.FirstPage)
+        {
+
+            <li class="page-item"><a class="page-link" asp-action="Results" asp-route-id="@Model.NextPage">@Model.NextPage</a></li>
+        }
+        <li class="page-item @if (Model.IsLastPage) { <text>disabled</text>} ">
+            <a class="page-link" asp-action="Results" asp-route-id="@Model.NextPage">Next</a>
+        </li>
+    </ul>
+</nav>
+
+<h1> Games in Gameweek:@Model.Gameweek</h1>
+<hr />
+<br />
+
+@foreach (var league in Model.Leagues)
+{
+    <div class="d-flex justify-content-left">
+    </div>
+    <head>
+        <style>
+            h2 {
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    <h2>@league.LeagueName</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Home</th>
+                <th scope="col">Result</th>
+                <th scope="col">Away</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var match in league.Matches)
+            {
+
+                <tr class="table-light">
+                    <td>@match.HomeName</td>
+                    <td>@match.HomeGoals : @match.AwayGoals</td>
+                    <td>@match.AwayName</td>
+                    @if (this.User.Identity.IsAuthenticated)
+                    {
+                        <td><a class="btn btn-block btn-primary mb-3 text-white mb-3" href="/Predictions/Create?id=@match.Id ">Create a prediction</a></td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+}

@@ -6,7 +6,7 @@
 
     public interface IMatchesService
     {
-        ListOfLeaguesViewModel GetAll();
+        public IEnumerable<ListOfMatchesViewModel> GetAll(int gameweek);
 
         void Simulate();
     }

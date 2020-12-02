@@ -2732,6 +2732,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
+          "FootballPredictor.Common": "1.0.0",
           "FootballPredictor.Data.Models": "1.0.0",
           "FootballPredictor.Services.Mapping": "1.0.0"
         },

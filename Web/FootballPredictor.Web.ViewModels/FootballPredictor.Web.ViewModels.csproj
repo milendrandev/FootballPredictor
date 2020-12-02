@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Data\FootballPredictor.Data.Models\FootballPredictor.Data.Models.csproj" />
+    <ProjectReference Include="..\..\FootballPredictor.Common\FootballPredictor.Common.csproj" />
     <ProjectReference Include="..\..\Services\FootballPredictor.Services.Mapping\FootballPredictor.Services.Mapping.csproj" />
   </ItemGroup>
 

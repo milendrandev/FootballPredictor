@@ -2,10 +2,6 @@
 {
     public class AllMatchesForTheWeekViewModel
     {
-        public AllMatchesForTheWeekViewModel()
-        {
-            this.PredictionCreated = false;
-        }
 
         public int Id { get; set; }
 

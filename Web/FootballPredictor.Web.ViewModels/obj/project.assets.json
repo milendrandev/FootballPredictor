@@ -397,6 +397,16 @@
           "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {}
         }
       },
+      "FootballPredictor.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "compile": {
+          "bin/placeholder/FootballPredictor.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FootballPredictor.Common.dll": {}
+        }
+      },
       "FootballPredictor.Data.Common/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
@@ -1294,6 +1304,11 @@
         "version.txt"
       ]
     },
+    "FootballPredictor.Common/1.0.0": {
+      "type": "project",
+      "path": "../../FootballPredictor.Common/FootballPredictor.Common.csproj",
+      "msbuildProject": "../../FootballPredictor.Common/FootballPredictor.Common.csproj"
+    },
     "FootballPredictor.Data.Common/1.0.0": {
       "type": "project",
       "path": "../../Data/FootballPredictor.Data.Common/FootballPredictor.Data.Common.csproj",
@@ -1312,6 +1327,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.1": [
+      "FootballPredictor.Common >= 1.0.0",
       "FootballPredictor.Data.Models >= 1.0.0",
       "FootballPredictor.Services.Mapping >= 1.0.0",
       "StyleCop.Analyzers >= 1.2.0-beta.205"
@@ -1345,6 +1361,9 @@
           "projectReferences": {
             "D:\\IT course\\FootballPredictor\\Data\\FootballPredictor.Data.Models\\FootballPredictor.Data.Models.csproj": {
               "projectPath": "D:\\IT course\\FootballPredictor\\Data\\FootballPredictor.Data.Models\\FootballPredictor.Data.Models.csproj"
+            },
+            "D:\\IT course\\FootballPredictor\\FootballPredictor.Common\\FootballPredictor.Common.csproj": {
+              "projectPath": "D:\\IT course\\FootballPredictor\\FootballPredictor.Common\\FootballPredictor.Common.csproj"
             },
             "D:\\IT course\\FootballPredictor\\Services\\FootballPredictor.Services.Mapping\\FootballPredictor.Services.Mapping.csproj": {
               "projectPath": "D:\\IT course\\FootballPredictor\\Services\\FootballPredictor.Services.Mapping\\FootballPredictor.Services.Mapping.csproj"

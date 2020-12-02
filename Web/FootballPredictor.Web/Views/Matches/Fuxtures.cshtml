@@ -7,7 +7,28 @@
     </style>
 </head>
 
-<h1> Games in Gameweek:</h1>
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item @if (Model.PageNumber==1){<text>disabled</text>} ">
+            <a class="page-link" asp-action="Fuxtures" asp-route-id="@Model.PreviousPage">Previous</a>
+        </li>
+        @if (Model.PageNumber != 1)
+        {
+            <li class="page-item"><a class="page-link" asp-action="Fuxtures" asp-route-id="@Model.PreviousPage">@Model.PreviousPage</a></li>
+        }
+        <li class="page-item"><a class="page-link" asp-action="Fuxtures" asp-route-id="@Model.PageNumber">@Model.PageNumber</a></li>
+        @if (!Model.LastPage)
+        {
+
+            <li class="page-item"><a class="page-link" asp-action="Fuxtures" asp-route-id="@Model.NextPage">@Model.NextPage</a></li>
+        }
+        <li class="page-item @if (Model.LastPage) { <text>disabled</text>} ">
+            <a class="page-link" asp-action="Fuxtures" asp-route-id="@Model.NextPage">Next</a>
+        </li>
+    </ul>
+</nav>
+
+<h1> Games in Gameweek:@Model.Gameweek</h1>
 <hr />
 <br />
 

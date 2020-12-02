@@ -1,7 +1,9 @@
 ﻿namespace FootballPredictor.Web.Controllers
 {
+    using FootballPredictor.Common;
     using FootballPredictor.Data.Models;
     using FootballPredictor.Services.Data;
+    using FootballPredictor.Web.ViewModels.Matches;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
@@ -17,9 +19,28 @@
             this.usersService = usersService;
         }
 
-        public IActionResult All()
+        public IActionResult Fuxtures(int id = 1)
         {
-            var viewModel = this.matchesService.GetAll();
+            var gameweek = GlobalConstants.CurrentWeek + id - 1;
+            var viewModel = new ListOfLeaguesViewModel
+            {
+                PageNumber = id,
+                Gameweek = gameweek,
+                Leagues = this.matchesService.GetAll(gameweek),
+            };
+
+            return this.View(viewModel);
+        }
+
+        public IActionResult Results(int id = 1)
+        {
+            var gameweek = GlobalConstants.CurrentWeek - id;
+            var viewModel = new ListOfResultsViewModel
+            {
+                PageNumber = id,
+                Gameweek = gameweek,
+                Leagues = this.matchesService.GetAll(gameweek),
+            };
 
             return this.View(viewModel);
         }

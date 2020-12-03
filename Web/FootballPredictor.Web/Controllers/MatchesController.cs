@@ -1,11 +1,9 @@
 ﻿namespace FootballPredictor.Web.Controllers
 {
     using FootballPredictor.Common;
-    using FootballPredictor.Data.Models;
     using FootballPredictor.Services.Data;
     using FootballPredictor.Web.ViewModels.Matches;
     using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
     public class MatchesController : BaseController

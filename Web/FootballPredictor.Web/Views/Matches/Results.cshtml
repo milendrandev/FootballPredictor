@@ -18,7 +18,7 @@
             <li class="page-item"><a class="page-link" asp-action="Results" asp-route-id="@Model.PreviousPage">@Model.PreviousPage</a></li>
         }
         <li class="page-item"><a class="page-link" asp-action="Results" asp-route-id="@Model.PageNumber">@Model.PageNumber</a></li>
-        @if (Model.PageNumber != Model.FirstPage)
+        @if (Model.PageNumber == 1)
         {
 
             <li class="page-item"><a class="page-link" asp-action="Results" asp-route-id="@Model.NextPage">@Model.NextPage</a></li>

@@ -16,17 +16,20 @@
         private readonly IDeletableEntityRepository<ApplicationUser> userRepository;
         private readonly IDeletableEntityRepository<Match> matchRepository;
         private readonly IDeletableEntityRepository<Team> teamRepository;
+        private readonly IUsersService usersService;
 
         public PredictionsService(
             IDeletableEntityRepository<Prediction> predictionRepository,
             IDeletableEntityRepository<ApplicationUser> userRepository,
             IDeletableEntityRepository<Match> matchRepository,
-            IDeletableEntityRepository<Team> teamRepository)
+            IDeletableEntityRepository<Team> teamRepository,
+            IUsersService usersService)
         {
             this.predictionRepository = predictionRepository;
             this.userRepository = userRepository;
             this.matchRepository = matchRepository;
             this.teamRepository = teamRepository;
+            this.usersService = usersService;
         }
 
         public async Task CreateAsync(int id, int homeGoals, int awayGoals, string description, string userId)
@@ -57,6 +60,8 @@
                 GameweekId = gameweekId,
                 UserId = userId,
             };
+
+            await this.usersService.CreateUserInGameweek(gameweekId, userId);
 
             await this.predictionRepository.AddAsync(prediction);
             await this.predictionRepository.SaveChangesAsync();

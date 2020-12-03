@@ -16,7 +16,9 @@
         private readonly UserManager<ApplicationUser> userManager;
         private const int ItemsPerPage = 1;
 
-        public PredictionsController(IPredictionsService predictionsService, UserManager<ApplicationUser> userManager)
+        public PredictionsController(
+            IPredictionsService predictionsService,
+            UserManager<ApplicationUser> userManager)
         {
             this.predictionsService = predictionsService;
             this.userManager = userManager;
@@ -57,7 +59,7 @@
 
             await this.predictionsService.CreateAsync(model.Id, model.HomeGoals, model.AwayGoals, model.Description, user.Id);
 
-            return this.Redirect("/Matches/All");
+            return this.Redirect("/Matches/Fuxtures");
         }
 
         public IActionResult All(int id = 1)

@@ -64,7 +64,14 @@
                     <td>@match.AwayName</td>
                     @if (this.User.Identity.IsAuthenticated)
                     {
+                        if (!match.PredictionCreated)
+                        {
                         <td><a class="btn btn-block btn-primary mb-3 text-white mb-3" href="/Predictions/Create?id=@match.Id ">Create a prediction</a></td>
+                        }
+                        else
+                        {
+                            <td scope="row">PredictionCreated</td>
+                        }
                     }
                 </tr>
             }

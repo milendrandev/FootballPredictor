@@ -15,17 +15,20 @@
         private readonly IDeletableEntityRepository<Team> teamRepository;
         private readonly IDeletableEntityRepository<League> leagueRepository;
         private readonly IDeletableEntityRepository<Player> playerRepository;
+        private readonly IDeletableEntityRepository<Prediction> predictionRepository;
 
         public MatchesService(
             IDeletableEntityRepository<Match> matchRepository,
             IDeletableEntityRepository<Team> teamRepository,
             IDeletableEntityRepository<League> leagueRepository,
-            IDeletableEntityRepository<Player> playerRepository)
+            IDeletableEntityRepository<Player> playerRepository,
+            IDeletableEntityRepository<Prediction> predictionRepository)
         {
             this.matchRepository = matchRepository;
             this.teamRepository = teamRepository;
             this.leagueRepository = leagueRepository;
             this.playerRepository = playerRepository;
+            this.predictionRepository = predictionRepository;
         }
 
         public IEnumerable<ListOfMatchesViewModel> GetAll(int gameweek)
@@ -44,6 +47,41 @@
                     AwayGoals = m.AwayGoals,
                 }),
             }).ToList();
+
+            return leagues;
+        }
+
+        public IEnumerable<ListOfMatchesViewModel> GetAll(string userId, int gameweek)
+        {
+            var leagues = this.leagueRepository.AllAsNoTracking().Select(l => new ListOfMatchesViewModel
+            {
+                LeagueId = l.Id,
+                LeagueName = l.Name,
+                Matches = l.Matches.Where(m => m.GameweekId == gameweek).Select(m => new AllMatchesForTheWeekViewModel
+                {
+                    Id = m.Id,
+                    HomeName = this.teamRepository.AllAsNoTracking().Where(t => t.Id == m.HomeTeamId).Select(t => t.Name).FirstOrDefault(),
+                    AwayName = this.teamRepository.AllAsNoTracking().Where(t => t.Id == m.AwayTeamId).Select(t => t.Name).FirstOrDefault(),
+                    GameweekId = m.GameweekId,
+                    HomeGoals = m.HomeGoals,
+                    AwayGoals = m.AwayGoals,
+                }),
+            }).ToList();
+
+            var predictions = this.predictionRepository.All().Where(p => p.UserId.Equals(userId)).ToList();
+
+            foreach (var league in leagues)
+            {
+                foreach (var match in league.Matches)
+                {
+                    var isPredcited = predictions.Any(p => p.MatchId == match.Id);
+
+                    if (isPredcited)
+                    {
+                        match.PredictionCreated = true;
+                    }
+                }
+            }
 
             return leagues;
         }

@@ -5,6 +5,7 @@
     using FootballPredictor.Web.ViewModels.Matches;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using System.Security.Claims;
 
     public class MatchesController : BaseController
     {
@@ -19,15 +20,32 @@
 
         public IActionResult Fuxtures(int id = 1)
         {
-            var gameweek = GlobalConstants.CurrentWeek + id - 1;
-            var viewModel = new ListOfLeaguesViewModel
+            if (this.User.Identity.IsAuthenticated)
             {
-                PageNumber = id,
-                Gameweek = gameweek,
-                Leagues = this.matchesService.GetAll(gameweek),
-            };
+                var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            return this.View(viewModel);
+                var gameweek = GlobalConstants.CurrentWeek + id - 1;
+                var viewModel = new ListOfLeaguesViewModel
+                {
+                    PageNumber = id,
+                    Gameweek = gameweek,
+                    Leagues = this.matchesService.GetAll(userId, gameweek),
+                };
+
+                return this.View(viewModel);
+            }
+            else
+            {
+                var gameweek = GlobalConstants.CurrentWeek + id - 1;
+                var viewModel = new ListOfLeaguesViewModel
+                {
+                    PageNumber = id,
+                    Gameweek = gameweek,
+                    Leagues = this.matchesService.GetAll(gameweek),
+                };
+
+                return this.View(viewModel);
+            }
         }
 
         public IActionResult Results(int id = 1)

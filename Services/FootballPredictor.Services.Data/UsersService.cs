@@ -53,8 +53,8 @@
                 Id = u.Id,
                 Username = u.UserName,
                 UserPoints = u.UserPoints,
-                Gameweeks = u.UserGameweeks.Select(g=> g.GameweekId),
-                GameweekPoints = u.UserGameweeks.Select(p=> p.UserPoints),
+                Gameweeks = u.UserGameweeks.Select(g => g.GameweekId),
+                GameweekPoints = u.UserGameweeks.Select(p => p.UserPoints),
             })
                  .OrderByDescending(u => u.UserPoints)
                  .ToList();

@@ -8,6 +8,8 @@
     {
         public IEnumerable<ListOfMatchesViewModel> GetAll(int gameweek);
 
+        public IEnumerable<ListOfMatchesViewModel> GetAll(string userId, int gameweek);
+
         void Simulate();
     }
 }

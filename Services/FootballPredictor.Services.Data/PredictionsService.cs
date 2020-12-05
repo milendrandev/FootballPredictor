@@ -89,6 +89,7 @@
                     AwayTeamGoals = prediction.AwayTeamGoals,
                     Description = prediction.Description,
                     Username = username,
+                    UserId = prediction.UserId,
                 };
                 listOfPredictions.Add(predictionModel);
             }
@@ -115,6 +116,21 @@
         public int PredictionsCount()
         {
             return this.predictionRepository.AllAsNoTracking().Count();
+        }
+
+        public void Delete(int predictionId,string userId)
+        {
+            var prediction = this.predictionRepository.All().Where(p => p.Id == predictionId).FirstOrDefault();
+            var predictinUserId = prediction.UserId;
+
+            if (!userId.Equals(predictinUserId))
+            {
+                return;
+            }
+
+            this.predictionRepository.Delete(prediction);
+
+            this.predictionRepository.SaveChanges();
         }
     }
 }

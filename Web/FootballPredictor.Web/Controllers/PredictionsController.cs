@@ -75,6 +75,7 @@
             return this.View(model);
         }
 
+        [Authorize]
         public IActionResult MyPredictions(int id = 1)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -87,6 +88,16 @@
             };
 
             return this.View(model);
+        }
+
+        [Authorize]
+        public IActionResult Delete (int id)
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            this.predictionsService.Delete(id, userId);
+
+            return this.Redirect("/Predictions/MyPredictions");
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿@model FootballPredictor.Web.ViewModels.Predictions.ListOfPredictionsViewModel
+﻿@using System.Security.Claims
+@model FootballPredictor.Web.ViewModels.Predictions.ListOfPredictionsViewModel
 @{
     this.ViewData["Title"] = "Predictions";
 }
@@ -25,6 +26,10 @@
             <tr class=" table-light">
                 <th scope="row">Description</th>
                 <td> @prediction.Description</td>
+                @if (prediction.UserId.Equals(this.User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                {
+                    <td><a class="btn btn-danger" asp-action="Delete" asp-route-id="@prediction.Id">Delete Prediction</a></td>
+                }
             </tr>
         }
     </tbody>

@@ -16,5 +16,7 @@
         int PredictionsByUserCount(string id);
 
         int PredictionsCount();
+
+        public void Delete(int predictionId, string userId);
     }
 }

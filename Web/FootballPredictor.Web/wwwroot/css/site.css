@@ -44,7 +44,20 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
+    background-image: url("../images/background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 0.7;
 }
+
+h1 {
+    color: #ffffff;
+}
+
+.td-4 {
+    width: 25%;
+}
+
 .footer {
     position: absolute;
     bottom: 0;

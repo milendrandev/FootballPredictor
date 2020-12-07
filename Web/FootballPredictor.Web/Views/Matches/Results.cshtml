@@ -18,7 +18,7 @@
             <li class="page-item"><a class="page-link" asp-action="Results" asp-route-id="@Model.PreviousPage">@Model.PreviousPage</a></li>
         }
         <li class="page-item"><a class="page-link" asp-action="Results" asp-route-id="@Model.PageNumber">@Model.PageNumber</a></li>
-        @if (Model.PageNumber == 1)
+        @if (!Model.IsLastPage)
         {
 
             <li class="page-item"><a class="page-link" asp-action="Results" asp-route-id="@Model.NextPage">@Model.NextPage</a></li>
@@ -41,17 +41,18 @@
         <style>
             h2 {
                 text-align: center;
+                color:azure;
             }
         </style>
     </head>
 
     <h2>@league.LeagueName</h2>
-    <table class="table table-hover">
+    <table class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th scope="col">Home</th>
-                <th scope="col">Result</th>
-                <th scope="col">Away</th>
+                <th scope="col" class="whiteColor text-center">Home</th>
+                <th scope="col" class="text-center whiteColor" >Result</th>
+                <th scope="col" class="whiteColor text-center">Away</th>
             </tr>
         </thead>
         <tbody>
@@ -59,8 +60,8 @@
             {
 
                 <tr class="table-light">
-                    <td>@match.HomeName</td>
-                    <td>@match.HomeGoals : @match.AwayGoals</td>
+                    <td class="text-right">@match.HomeName</td>
+                    <td class="text-center">@match.HomeGoals : @match.AwayGoals</td>
                     <td>@match.AwayName</td>
                 </tr>
             }

@@ -47,7 +47,7 @@ body {
     background-image: url("../images/background.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 h1 {
@@ -56,6 +56,10 @@ h1 {
 
 .td-4 {
     width: 25%;
+    
+}
+.whiteColor{
+    color:aliceblue;
 }
 
 .footer {

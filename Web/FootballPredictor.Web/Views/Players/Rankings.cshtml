@@ -1,30 +1,67 @@
 ﻿@model FootballPredictor.Web.ViewModels.Players.ListOfRankigsViewModel
 
-<h1> Player Rankings</h1>
+    <head>
+        <style>
+            h1 {
+                text-align: center;
+                color: aliceblue;
+            }
+        </style>
+    </head>
+
+<h1>Top Scorers</h1>
+<hr/>
+
+<head>
+    <style>
+        h2 {
+            text-align: center;
+            color: aliceblue;
+        }
+    </style>
+</head>
+
+<div>
+    <style>
+        table {
+            counter-reset: rowNumber;
+        }
+
+            table tr > td:first-child {
+                counter-increment: rowNumber;
+            }
+
+            table tr td:first-child::before {
+                content: counter(rowNumber);
+                min-width: 1em;
+                margin-right: 0.5em;
+            }
+    </style>
+</div>
 
 @foreach (var league in Model.Leagues)
 {
     <h2>@league.LeagueName</h2>
-    <table class="table table-hover">
+    <table class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th scope="col">Squad Number</th>
-                <th scope="col">Name</th>
-                <th scope="col">Team</th>
-                <th scope="col">Goals</th>
-                <th scope="col">Played Matches</th>
+                <th scope="col" class="whiteColor">Place</th>
+                <th scope="col" class="whiteColor">Name</th>
+                <th scope="col" class="whiteColor">Team</th>
+                <th scope="col" class="whiteColor">Goals</th>
+                <th scope="col" class="whiteColor">Played Matches</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var player in league.Players)
             {
-                <tr class="table-light">
-                    <td>@player.TeamNumber</td>
-                    <th scope="row">@player.Neam</th>
-                    <td>@player.TeamName</td>
-                    <th scope="row">@player.ScoredGoals</th>
-                    <td>@player.MatchesPlayed</td>
-                </tr>
+            <tr class="table-light">
+                <td></td>
+                <th scope="row">@player.Neam</th>
+                <td>@player.TeamName</td>
+                <th scope="row">@player.ScoredGoals</th>
+                <td>@player.MatchesPlayed</td>
+            </tr>
             }
         </tbody>
     </table>

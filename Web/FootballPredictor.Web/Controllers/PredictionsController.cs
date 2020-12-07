@@ -14,7 +14,7 @@
     {
         private readonly IPredictionsService predictionsService;
         private readonly UserManager<ApplicationUser> userManager;
-        private const int ItemsPerPage = 1;
+        private const int ItemsPerPage = 10;
 
         public PredictionsController(
             IPredictionsService predictionsService,

@@ -23,9 +23,12 @@
             var team = this.teamRepository.All().Where(t => t.Id == id)
                 .Select(t => new ListOfPlayerViewModel
                 {
+                    TeamName = t.Name,
                     Players = t.Players.Select(p => new PlayerViewModel
                     {
                         ShortName = p.ShortName,
+                        ScoredGoals = p.ScoredGoals,
+                        MatchesPlayed = p.MatchesPlayed,
                         Age = p.Age,
                         DateOfBirth = p.DateOfBirth,
                         HeightCm = p.HeightCm,

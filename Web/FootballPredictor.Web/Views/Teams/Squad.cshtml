@@ -1,33 +1,44 @@
 ﻿@model FootballPredictor.Web.ViewModels.Players.ListOfPlayerViewModel
-
-<h1> @Model.Players.Count()</h1>
+    <head>
+        <style>
+            h1 {
+                text-align: center;
+                color: aliceblue;
+            }
+        </style>
+    </head>
+<h1> @Model.TeamName</h1>
 
 <div>
-    <table class="table table-bordered">
+    <table class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th scope="col"> Number</th>
-                <th scope="col">Name</th>
-                <th scope="col">Age</th>
-                <th scope="col">Birth Date</th>
-                <th scope="col">Height</th>
-                <th scope="col">weight</th>
-                <th scope="col">Nationality</th>
+                <th scope="col" class="whiteColor"> Number</th>
+                <th scope="col" class="whiteColor">Name</th>
+                <th scope="col" class="whiteColor"> Goals Scored</th>
+                <th scope="col" class="whiteColor"> Played Matches</th>
+                <th scope="col" class="whiteColor">Age</th>
+                <th scope="col" class="whiteColor">Birth Date</th>
+                <th scope="col" class="whiteColor">Height</th>
+                <th scope="col" class="whiteColor">Weight</th>
+                <th scope="col" class="whiteColor">Nationality</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var player in this.Model.Players)
             {
 
-                <tr class="table-light">
-                    <th scope="row">@player.SquadNumber</th>
-                    <th scope="row">@player.ShortName</th>
-                    <td>@player.Age</td>
-                    <td>@player.DateOfBirth.ToShortDateString()</td>
-                    <td>@player.HeightCm cm</td>
-                    <td>@player.WeightKg kg</td>
-                    <td>@player.Nationality</td>
-                </tr>
+            <tr class="table-light">
+                <th scope="row">@player.SquadNumber</th>
+                <th scope="row">@player.ShortName</th>
+                <th scope="row" class="text-center">@player.ScoredGoals</th>
+                <th scope="row" class="text-center">@player.MatchesPlayed</th>
+                <td>@player.Age</td>
+                <td>@player.DateOfBirth.ToShortDateString()</td>
+                <td>@player.HeightCm cm</td>
+                <td>@player.WeightKg kg</td>
+                <td>@player.Nationality</td>
+            </tr>
             }
         </tbody>
     </table>

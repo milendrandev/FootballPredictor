@@ -1,11 +1,11 @@
 ﻿namespace FootballPredictor.Web.ViewModels.Players
 {
-    using System;
     using System.Collections.Generic;
-    using System.Text;
 
     public class ListOfPlayerViewModel
     {
+        public string TeamName { get; set; }
+
         public virtual IEnumerable<PlayerViewModel> Players { get; set; }
     }
 }

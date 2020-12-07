@@ -6,6 +6,10 @@ namespace FootballPredictor.Web.ViewModels.Players
     {
         public string ShortName { get; set; }
 
+        public int ScoredGoals { get; set; }
+
+        public int MatchesPlayed { get; set; }
+
         public int Age { get; set; }
 
         public DateTime DateOfBirth { get; set; }

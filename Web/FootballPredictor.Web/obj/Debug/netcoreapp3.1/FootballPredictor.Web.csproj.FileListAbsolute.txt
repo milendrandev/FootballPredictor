@@ -474,3 +474,4 @@ D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1
 D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Matches\Fuxtures.cshtml.g.cs
 D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Matches\Results.cshtml.g.cs
 D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\Users\Rankings.cshtml.g.cs
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web\bin\Debug\netcoreapp3.1\wwwroot\favicon.ico

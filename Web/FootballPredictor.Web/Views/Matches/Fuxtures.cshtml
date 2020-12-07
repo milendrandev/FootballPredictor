@@ -40,17 +40,18 @@
         <style>
             h2 {
                 text-align: center;
+                color:aliceblue;
             }
         </style>
     </head>
 
     <h2>@league.LeagueName</h2>
-    <table class="table table-hover">
+    <table class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th scope="col">Home</th>
-                <th scope="col">Result</th>
-                <th scope="col">Away</th>
+                <th scope="col" class="whiteColor text-center">Home</th>
+                <th scope="col" class="whiteColor text-center">Result</th>
+                <th scope="col" class="whiteColor text-center">Away</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -59,18 +60,18 @@
             {
 
                 <tr class="table-light">
-                    <td class="td-4">@match.HomeName</td>
-                    <td class="td-4">@match.HomeGoals : @match.AwayGoals</td>
+                    <td class="td-4 text-right">@match.HomeName</td>
+                    <td class="td-4 text-center">@match.HomeGoals : @match.AwayGoals</td>
                     <td class="td-4">@match.AwayName</td>
                     @if (this.User.Identity.IsAuthenticated)
                     {
                         if (!match.PredictionCreated)
                         {
-                        <td class="td-4"><a class="btn btn-block btn-primary mb-3 text-white mb-3" href="/Predictions/Create?id=@match.Id ">Create a prediction</a></td>
+                            <td class="td-4"><a class="btn btn-block btn-primary text-white" href="/Predictions/Create?id=@match.Id ">Create a prediction</a></td>
                         }
                         else
                         {
-                            <td scope="row" class="td-4">PredictionCreated</td>
+                            <td scope="row" class="td-4 text-center">Prediction Created</td>
                         }
                     }
                 </tr>

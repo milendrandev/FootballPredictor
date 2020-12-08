@@ -12,5 +12,7 @@
         Task CreateUserInGameweek(int gameweekId, string userId);
 
         IEnumerable<RankingsViewModel> Rankings();
+
+        UserGameweekPointsViewModel UserGameweeksPoints(string userId);
     }
 }

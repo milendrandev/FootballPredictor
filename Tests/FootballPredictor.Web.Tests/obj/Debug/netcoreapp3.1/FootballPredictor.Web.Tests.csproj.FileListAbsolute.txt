@@ -533,3 +533,4 @@ D:\IT course\FootballPredictor\Tests\FootballPredictor.Web.Tests\bin\Debug\netco
 D:\IT course\FootballPredictor\Tests\FootballPredictor.Web.Tests\bin\Debug\netcoreapp3.1\Datasets\Clubs\ItalianClubs.json
 D:\IT course\FootballPredictor\Tests\FootballPredictor.Web.Tests\bin\Debug\netcoreapp3.1\Datasets\Clubs\SpainClubs.json
 D:\IT course\FootballPredictor\Tests\FootballPredictor.Web.Tests\bin\Debug\netcoreapp3.1\Datasets\Players\FilteredPlayers.json
+D:\IT course\FootballPredictor\Tests\FootballPredictor.Web.Tests\bin\Debug\netcoreapp3.1\wwwroot\favicon.ico

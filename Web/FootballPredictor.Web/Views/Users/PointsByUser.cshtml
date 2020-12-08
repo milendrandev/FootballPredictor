@@ -1,0 +1,41 @@
+﻿@model FootballPredictor.Web.ViewModels.Users.UserGameweekPointsViewModel
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col" class="text-center whiteColor">Username</th>
+            @foreach (var gameweek in Model.GameweekPoints)
+            {
+                <th scope="col" class="whiteColor text-center">Gameweek @gameweek.Id</th>
+            }
+            <th scope="col" class="whiteColor text-center" width="15%">Total Points</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="table-light table-bordered table-hover">
+            <td class="text-center"> @Model.Username</td>
+            @foreach (var userPoints in Model.GameweekPoints)
+            {
+                <td scope="row" class="text-center">@userPoints.GameweekPoints</td>
+            }
+            <td class="text-center">@Model.TotalPoints</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<h5 class="text-danger">
+    * If the gameweek is missing, it means that the user has not participate in that gameweek
+</h5>

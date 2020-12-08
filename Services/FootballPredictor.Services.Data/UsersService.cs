@@ -53,11 +53,25 @@
                 Id = u.Id,
                 Username = u.UserName,
                 UserPoints = u.UserPoints,
-                Gameweeks = u.UserGameweeks.Select(g => g.GameweekId),
-                GameweekPoints = u.UserGameweeks.Select(p => p.UserPoints),
             })
                  .OrderByDescending(u => u.UserPoints)
                  .ToList();
+        }
+
+        public UserGameweekPointsViewModel UserGameweeksPoints(string userId)
+        {
+            var user = this.userRepository.All().Where(u => u.Id.Equals(userId)).Select(u => new UserGameweekPointsViewModel
+            {
+                Username = u.UserName,
+                GameweekPoints = u.UserGameweeks.Select(g => new GameweekPointsViewModel
+                {
+                    Id = g.GameweekId,
+                    GameweekPoints = g.UserPoints,
+                }).ToList(),
+                TotalPoints = u.UserPoints,
+            }).FirstOrDefault();
+
+            return user;
         }
 
         public void AddPointsToUser()

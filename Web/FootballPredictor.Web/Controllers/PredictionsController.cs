@@ -2,7 +2,7 @@
 {
     using System.Security.Claims;
     using System.Threading.Tasks;
-
+    using FootballPredictor.Common;
     using FootballPredictor.Data.Models;
     using FootballPredictor.Services.Data;
     using FootballPredictor.Web.ViewModels.Predictions;
@@ -30,13 +30,6 @@
         {
             var user = await this.userManager.GetUserAsync(this.User);
 
-            var predictionsCount = this.predictionsService.PredictionsByUserCount(user.Id);
-
-            if (predictionsCount > 5)
-            {
-                return this.Redirect("/");
-            }
-
             var model = new CreateViewModel
             {
                 Id = matchId,
@@ -56,8 +49,10 @@
 
             // var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var user = await this.userManager.GetUserAsync(this.User);
-
             await this.predictionsService.CreateAsync(model.Id, model.HomeGoals, model.AwayGoals, model.Description, user.Id);
+
+            var predictionsCount = this.predictionsService.PredictionsByUserCount(user.Id);
+            this.TempData["Message"] = $"You have made {predictionsCount} ! You have left {GlobalConstants.PredictionsLimit - predictionsCount} more";
 
             return this.Redirect("/Matches/Fuxtures");
         }
@@ -91,7 +86,7 @@
         }
 
         [Authorize]
-        public IActionResult Delete (int id)
+        public IActionResult Delete(int id)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
@@ -99,5 +94,10 @@
 
             return this.Redirect("/Predictions/MyPredictions");
         }
+
+        //public IActionResult Edit(int id)
+        //{
+
+        //}
     }
 }

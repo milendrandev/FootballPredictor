@@ -1,21 +1,24 @@
 ﻿namespace FootballPredictor.Web.Controllers
 {
+    using System.Security.Claims;
+
     using FootballPredictor.Common;
     using FootballPredictor.Services.Data;
     using FootballPredictor.Web.ViewModels.Matches;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using System.Security.Claims;
 
     public class MatchesController : BaseController
     {
         private readonly IMatchesService matchesService;
         private readonly IUsersService usersService;
+        private readonly IPredictionsService predictionsService;
 
-        public MatchesController(IMatchesService matchesService, IUsersService usersService)
+        public MatchesController(IMatchesService matchesService, IUsersService usersService, IPredictionsService predictionsService)
         {
             this.matchesService = matchesService;
             this.usersService = usersService;
+            this.predictionsService = predictionsService;
         }
 
         public IActionResult Fuxtures(int id = 1)
@@ -30,6 +33,7 @@
                     PageNumber = id,
                     Gameweek = gameweek,
                     Leagues = this.matchesService.GetAll(userId, gameweek),
+                    ThisUserPredictionsCount = this.predictionsService.PredictionsByUserCount(userId),
                 };
 
                 return this.View(viewModel);

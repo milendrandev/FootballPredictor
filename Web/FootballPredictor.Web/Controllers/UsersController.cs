@@ -2,6 +2,7 @@
 {
     using FootballPredictor.Services.Data;
     using FootballPredictor.Web.ViewModels.Users;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
     public class UsersController : BaseController
@@ -20,6 +21,13 @@
                 Rankings = this.usersService.Rankings(),
             };
 
+            return this.View(model);
+        }
+
+        [Authorize]
+        public IActionResult PointsByUser(string id)
+        {
+            var model = this.usersService.UserGameweeksPoints(id);
             return this.View(model);
         }
     }

@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Threading.Tasks;
 
+    using FootballPredictor.Common;
     using FootballPredictor.Data.Common.Repositories;
     using FootballPredictor.Data.Models;
     using FootballPredictor.Data.Models.Enums;
@@ -34,7 +35,25 @@
 
         public async Task CreateAsync(int id, int homeGoals, int awayGoals, string description, string userId)
         {
+            var predictionsCount = this.PredictionsByUserCount(userId);
+
+            if (predictionsCount >= GlobalConstants.PredictionsLimit)
+            {
+                return;
+            }
+
+            var predictionCreated = this.userRepository.All().Where(u => u.Id.Equals(userId)).Select(u => u.Predictions.Any(p => p.MatchId == id && !p.IsDeleted)).FirstOrDefault();
+            if (predictionCreated)
+            {
+                return;
+            }
+
             var gameweekId = this.matchRepository.All().Where(m => m.Id == id).Select(m => m.GameweekId).FirstOrDefault();
+
+            if (gameweekId < GlobalConstants.CurrentWeek)
+            {
+                return;
+            }
 
             var bet = String.Empty;
             if (homeGoals > awayGoals)
@@ -118,7 +137,7 @@
             return this.predictionRepository.AllAsNoTracking().Count();
         }
 
-        public void Delete(int predictionId,string userId)
+        public void Delete(int predictionId, string userId)
         {
             var prediction = this.predictionRepository.All().Where(p => p.Id == predictionId).FirstOrDefault();
             var predictinUserId = prediction.UserId;

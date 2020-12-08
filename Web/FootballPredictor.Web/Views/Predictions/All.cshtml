@@ -7,28 +7,23 @@
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th scope="col"class="whiteColor">Home</th>
-            <th scope="col"class="whiteColor">Predicte Result</th>
-            <th scope="col"class="whiteColor">Away</th>
-            <th scope="col"class="whiteColor">User</th>
+            <th scope="col" class="whiteColor text-center">Home</th>
+            <th scope="col" class="whiteColor text-center" width="14%">Predicte Result</th>
+            <th scope="col" class="whiteColor text-center">Away</th>
+            <th scope="col"class="whiteColor text-center">Description</th>
+            <th scope="col" class="whiteColor text-center">User</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var prediction in Model.Predictions)
         {
             <tr class="table-light">
-                <td class="td-4">@prediction.HomeTeamName</td>
-                <td class="td-4">@prediction.HomeTeamGoals : @prediction.AwayTeamGoals</td>
-                <td class="td-4">@prediction.AwayTeamName</td>
-                <td class="td-4">@prediction.Username</td>
+                <td class="text-right">@prediction.HomeTeamName</td>
+                <td class="text-center" width="14%">@prediction.HomeTeamGoals : @prediction.AwayTeamGoals</td>
+                <td >@prediction.AwayTeamName</td>
+                <td >@prediction.Description</td>
+                <td >@prediction.Username</td>
             </tr>
-            <tr class=" table-light">
-                <td></td>
-                <td></td>
-                <th scope="row" class="td-4">Description</th>
-                <td class="td-4"> @prediction.Description</td>
-            </tr>
-            <tr> </tr>
         }
     </tbody>
 </table>

@@ -2,13 +2,13 @@
 {
     using System.Collections.Generic;
 
-    using FootballPredictor.Common;
-
     public class ListOfLeaguesViewModel
     {
         public int PageNumber { get; set; }
 
         public IEnumerable<ListOfMatchesViewModel> Leagues { get; set; }
+
+        public int ThisUserPredictionsCount { get; set; }
 
         public int PreviousPage => this.PageNumber - 1;
 

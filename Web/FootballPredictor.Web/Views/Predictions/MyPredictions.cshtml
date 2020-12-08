@@ -28,7 +28,9 @@
                 <td> @prediction.Description</td>
                 @if (prediction.UserId.Equals(this.User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 {
-                    <td><a class="btn btn-danger" asp-action="Delete" asp-route-id="@prediction.Id">Delete Prediction</a></td>
+                    <td><a class="btn btn-danger btn-block" asp-action="Delete" asp-route-id="@prediction.Id">Delete</a> 
+                        <a class="btn btn-dark btn-block" asp-action="Edit" asp-route-id="@prediction.Id">Edit</a></td>
+                    
                 }
             </tr>
         }

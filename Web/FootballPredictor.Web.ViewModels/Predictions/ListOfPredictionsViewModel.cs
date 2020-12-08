@@ -1,7 +1,6 @@
 ﻿namespace FootballPredictor.Web.ViewModels.Predictions
 {
     using System.Collections.Generic;
-    using System.Linq;
 
     public class ListOfPredictionsViewModel
     {

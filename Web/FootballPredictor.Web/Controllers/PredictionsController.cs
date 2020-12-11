@@ -26,13 +26,15 @@
 
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> Create(int matchId)
+        public async Task<IActionResult> Create(int matchId, string homeTeam, string awayTeam)
         {
             var user = await this.userManager.GetUserAsync(this.User);
 
             var model = new CreateViewModel
             {
                 Id = matchId,
+                HomeTeamName = homeTeam,
+                AwayTeamName = awayTeam,
             };
 
             return this.View(model);
@@ -86,18 +88,36 @@
         }
 
         [Authorize]
-        public IActionResult Delete(int id)
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            this.predictionsService.Delete(id, userId);
+            await this.predictionsService.DeleteAsync(id, userId);
 
             return this.Redirect("/Predictions/MyPredictions");
         }
 
-        //public IActionResult Edit(int id)
-        //{
+        [Authorize]
+        public IActionResult Edit(int id)
+        {
+            var model = this.predictionsService.PredictionById(id);
 
-        //}
+            return this.View(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, CreateViewModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
+            await this.predictionsService.EditAsync(id, model);
+
+            return this.Redirect("/Predictions/MyPredictions");
+        }
     }
 }

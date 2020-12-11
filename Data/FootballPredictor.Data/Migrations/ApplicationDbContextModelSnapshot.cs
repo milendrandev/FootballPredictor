@@ -299,6 +299,79 @@ namespace FootballPredictor.Data.Migrations
                     b.ToTable("Matches");
                 });
 
+            modelBuilder.Entity("FootballPredictor.Data.Models.MiniLigue", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("MiniLigueType")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(30)")
+                        .HasMaxLength(30);
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("MiniLigues");
+                });
+
+            modelBuilder.Entity("FootballPredictor.Data.Models.MiniLigueUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MiniLigueId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("MiniLigueId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("MiniLeagueUsers");
+                });
+
             modelBuilder.Entity("FootballPredictor.Data.Models.Player", b =>
                 {
                     b.Property<int>("Id")
@@ -632,6 +705,21 @@ namespace FootballPredictor.Data.Migrations
                     b.HasOne("FootballPredictor.Data.Models.Team", null)
                         .WithMany("Matches")
                         .HasForeignKey("TeamId");
+                });
+
+            modelBuilder.Entity("FootballPredictor.Data.Models.MiniLigueUser", b =>
+                {
+                    b.HasOne("FootballPredictor.Data.Models.MiniLigue", "MiniLigue")
+                        .WithMany("Users")
+                        .HasForeignKey("MiniLigueId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("FootballPredictor.Data.Models.ApplicationUser", "User")
+                        .WithMany("MiniLigues")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("FootballPredictor.Data.Models.Player", b =>

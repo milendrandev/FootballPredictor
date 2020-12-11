@@ -17,6 +17,10 @@
 
         int PredictionsCount();
 
-        public void Delete(int predictionId, string userId);
+        public Task DeleteAsync(int predictionId, string userId);
+
+        public CreateViewModel PredictionById(int id);
+
+        public Task EditAsync(int id, CreateViewModel model);
     }
 }

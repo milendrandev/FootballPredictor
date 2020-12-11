@@ -137,19 +137,60 @@
             return this.predictionRepository.AllAsNoTracking().Count();
         }
 
-        public void Delete(int predictionId, string userId)
+        public async Task DeleteAsync(int predictionId, string userId)
         {
             var prediction = this.predictionRepository.All().Where(p => p.Id == predictionId).FirstOrDefault();
-            var predictinUserId = prediction.UserId;
-
-            if (!userId.Equals(predictinUserId))
-            {
-                return;
-            }
 
             this.predictionRepository.Delete(prediction);
 
-            this.predictionRepository.SaveChanges();
+            await this.predictionRepository.SaveChangesAsync();
+        }
+
+        public CreateViewModel PredictionById(int id)
+        {
+            var prediction = this.predictionRepository.All().FirstOrDefault(p => p.Id == id);
+
+            var homeTeamId = this.matchRepository.All().Where(m => m.Id == prediction.MatchId).Select(m => m.HomeTeamId).FirstOrDefault();
+            var awayTeamId = this.matchRepository.All().Where(m => m.Id == prediction.MatchId).Select(m => m.AwayTeamId).FirstOrDefault();
+
+            var homeTeam = this.teamRepository.All().Where(t => t.Id == homeTeamId).Select(t => t.Name).FirstOrDefault();
+            var awayTeam = this.teamRepository.All().Where(t => t.Id == awayTeamId).Select(t => t.Name).FirstOrDefault();
+
+            return new CreateViewModel
+            {
+                Id = prediction.Id,
+                HomeGoals = prediction.HomeTeamGoals,
+                AwayGoals = prediction.AwayTeamGoals,
+                Description = prediction.Description,
+                HomeTeamName = homeTeam,
+                AwayTeamName = awayTeam,
+            };
+        }
+
+        public async Task EditAsync(int id, CreateViewModel model)
+        {
+            var prediction = this.predictionRepository.All().FirstOrDefault(p => p.Id == id);
+
+            prediction.HomeTeamGoals = model.HomeGoals;
+            prediction.AwayTeamGoals = model.AwayGoals;
+            prediction.Description = model.Description;
+
+            if (model.HomeGoals > model.AwayGoals)
+            {
+                prediction.Bet = BetType.Home;
+            }
+            else if (model.HomeGoals == model.AwayGoals)
+            {
+                prediction.Bet = BetType.Draw;
+            }
+            else
+            {
+                prediction.Bet = BetType.Away;
+            }
+
+            this.predictionRepository.Update(prediction);
+
+            await this.predictionRepository.SaveChangesAsync();
         }
     }
 }

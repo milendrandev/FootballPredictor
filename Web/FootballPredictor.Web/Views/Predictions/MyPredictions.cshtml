@@ -10,9 +10,9 @@
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th scope="col"class="whiteColor">Home</th>
-            <th scope="col"class="whiteColor">Predicte Result</th>
-            <th scope="col"class="whiteColor">Away</th>
+            <th scope="col" class="whiteColor">Home</th>
+            <th scope="col" class="whiteColor">Predicte Result</th>
+            <th scope="col" class="whiteColor">Away</th>
         </tr>
     </thead>
     <tbody>
@@ -28,14 +28,32 @@
                 <td> @prediction.Description</td>
                 @if (prediction.UserId.Equals(this.User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 {
-                    <td><a class="btn btn-danger btn-block" asp-action="Delete" asp-route-id="@prediction.Id">Delete</a> 
-                        <a class="btn btn-dark btn-block" asp-action="Edit" asp-route-id="@prediction.Id">Edit</a></td>
-                    
+                    <td>
+                        <form method="post" asp-action="Delete" id="deleteForm" asp-route-id="@prediction.Id">
+                            <button type="submit" class="btn btn-danger btn-block mb-3">Delete</button>
+                        </form>
+                        <a class="btn btn-dark btn-block mb-3" asp-action="Edit" asp-route-id="@prediction.Id">Edit</a>
+                    </td>
+
                 }
             </tr>
         }
     </tbody>
 </table>
+
+<div class="modal" tabindex="-1" role="dialog" id="deleteModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Delete this prediction?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="deleteForm.submit()">Yes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">

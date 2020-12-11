@@ -18,6 +18,7 @@ namespace FootballPredictor.Data.Models
             this.Logins = new HashSet<IdentityUserLogin<string>>();
             this.Predictions = new HashSet<Prediction>();
             this.UserGameweeks = new HashSet<GameweekUser>();
+            this.MiniLigues = new HashSet<MiniLigueUser>();
         }
 
         public int UserPoints { get; set; }
@@ -25,6 +26,8 @@ namespace FootballPredictor.Data.Models
         public virtual ICollection<Prediction> Predictions { get; set; }
 
         public virtual ICollection<GameweekUser> UserGameweeks { get; set; }
+
+        public virtual ICollection<MiniLigueUser> MiniLigues { get; set; }
 
         // Audit info
         public DateTime CreatedOn { get; set; }

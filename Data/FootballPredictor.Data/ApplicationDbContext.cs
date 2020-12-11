@@ -41,6 +41,10 @@
 
         public DbSet<GameweekUser> GameweekUsers { get; set; }
 
+        public DbSet<MiniLigue> MiniLigues { get; set; }
+
+        public DbSet<MiniLigueUser> MiniLeagueUsers { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

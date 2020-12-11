@@ -18,5 +18,9 @@
         [MinLength(20)]
         [MaxLength(500)]
         public string Description { get; set; }
+
+        public string HomeTeamName { get; set; }
+
+        public string AwayTeamName { get; set; }
     }
 }

@@ -1,14 +1,13 @@
-﻿using FootballPredictor.Services.Data;
-using FootballPredictor.Web.ViewModels.MiniLigues;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace FootballPredictor.Web.Controllers
+﻿namespace FootballPredictor.Web.Controllers
 {
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+
+    using FootballPredictor.Services.Data;
+    using FootballPredictor.Web.ViewModels.MiniLigues;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+
     public class MiniLiguesController : BaseController
     {
         private readonly IMiniLiguesService miniLiguesService;
@@ -16,6 +15,14 @@ namespace FootballPredictor.Web.Controllers
         public MiniLiguesController(IMiniLiguesService miniLiguesService)
         {
             this.miniLiguesService = miniLiguesService;
+        }
+
+        [Authorize]
+        public IActionResult All()
+        {
+            var model = this.miniLiguesService.All();
+
+            return this.View(model);
         }
 
         [Authorize]
@@ -33,9 +40,33 @@ namespace FootballPredictor.Web.Controllers
                 return this.View();
             }
 
-            await this.miniLiguesService.CreateAsync(model);
+            if (model.Password != model.ConfirmPassword)
+            {
+                this.TempData["Message"] = "Your Confirm Password was differrent from your Password!";
+                return this.View();
+            }
 
-            return this.Redirect("/MiniLigues/");
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            await this.miniLiguesService.CreateAsync(model, userId);
+
+            return this.Redirect("/MiniLigues/Dashboard");
+        }
+
+        [Authorize]
+        public IActionResult Dashboard(string id)
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var member = this.miniLiguesService.IsAMember(id, userId);
+
+            if (!member)
+            {
+                return this.Redirect("/MiniLigues/All");
+            }
+
+            var model = this.miniLiguesService.Dashboard(id);
+
+            return this.View(model);
         }
     }
 }

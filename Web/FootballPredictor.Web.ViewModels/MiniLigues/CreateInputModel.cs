@@ -2,18 +2,21 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    using FootballPredictor.Data.Models.Enums;
-
     public class CreateInputModel
     {
         [Required]
+        [MinLength(4)]
         [MaxLength(30)]
         public string Name { get; set; }
 
-        public MiniLigueType MiniLigueType { get; set; }
-
+        [Required]
+        [MinLength(4)]
+        [MaxLength(12)]
         public string Password { get; set; }
 
+        [Required]
+        [MinLength(4)]
+        [MaxLength(12)]
         public string ConfirmPassword { get; set; }
     }
 }

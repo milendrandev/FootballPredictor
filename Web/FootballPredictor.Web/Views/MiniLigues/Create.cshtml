@@ -1,7 +1,11 @@
 ﻿@model FootballPredictor.Web.ViewModels.MiniLigues.CreateInputModel
+
 <h1 class="text-center mt-2">Create Your Mini Ligue</h1>
 <hr class="bg-primary w-75">
-
+@if (this.TempData.ContainsKey("Message"))
+{
+    <div class="alert alert-success text-center" role="alert"> @this.TempData["Message"]</div>
+}
 <form class="mx-auto w-50" method="post">
     <div class="form-group">
         <div class="text-dark d-flex justify-content-center">
@@ -12,16 +16,9 @@
     </div>
     <div class="form-group">
         <div class="text-dark d-flex justify-content-center">
-            <label asp-for="MiniLigueType" class="h3 mb-2"></label>
-        </div>
-        <input asp-for="MiniLigueType" class="form-control" />
-        <span asp-validation-for="MiniLigueType" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <div class="text-dark d-flex justify-content-center">
             <label asp-for="Password" class="h3 mb-2"></label>
         </div>
-        <input @if (Model.MiniLigueType == FootballPredictor.Data.Models.Enums.MiniLigueType.Open) { <text>disabled</text>} asp-for="Password" class="form-control" />
+        <input asp-for="Password" class="form-control" />
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
     <div class="form-group">
@@ -30,5 +27,8 @@
         </div>
         <input asp-for="ConfirmPassword" class="form-control" />
         <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+    <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-block btn-primary text-white mb-3">Add Mini Ligue</button>
     </div>
 </form>

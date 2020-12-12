@@ -1,0 +1,48 @@
+﻿@model FootballPredictor.Web.ViewModels.MiniLigues.DashboardViewModel
+<h1 class="text-center"> @Model.Name</h1>
+<div>
+    <style>
+        table {
+            counter-reset: rowNumber;
+        }
+
+            table tr > td:first-child {
+                counter-increment: rowNumber;
+            }
+
+            table tr td:first-child::before {
+                content: counter(rowNumber);
+                min-width: 1em;
+                margin-right: 0.5em;
+            }
+    </style>
+</div>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th scope="col" width="10%" class="text-center whiteColor">Place</th>
+            <th scope="col" class="whiteColor">Username</th>
+            <th scope="col" class="whiteColor text-center" width="15%">Total Points</th>
+            <th scope="col" width="18%"></th>
+        </tr>
+    </thead>
+    @foreach (var user in Model.Users)
+    {
+        <tbody>
+            <tr class="table-light table-bordered">
+                <td class="text-center"></td>
+                <td scope="row"><a asp-controller="Users" asp-action="PointsByUser" asp-route-id="@user.Id">@user.Username</a></td>
+                <td class="text-center">@user.UserPoints</td>
+                @if (this.User.IsInRole("Creator"))
+                {
+                    <td class="text-center"><a class="btn btn-danger mb-1" asp-action="RemoveMember" asp-route-id="@user.Id">Remove this User</a></td>
+                }
+                else
+                {
+                    <td><a class="btn btn-danger mb-1 text-center" asp-action="Leave" asp-route-id="@user.Id">Leave from The League</a></td>
+                }
+            </tr>
+        </tbody>
+    }
+</table>

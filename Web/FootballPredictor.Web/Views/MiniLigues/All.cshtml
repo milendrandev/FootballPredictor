@@ -1,0 +1,7 @@
+﻿<ul>
+    @foreach (var miniLigue in Model)
+    {
+
+        <li>><a asp-controller="MiniLigues" asp-action="Dashboard" asp-route-id="@miniLigue.Id">@miniLigue.Name</a><a class="btn btn-success" asp-action="Join" asp-route-id="@miniLigue.Id">Join this league</a></li>
+    }
+</ul>

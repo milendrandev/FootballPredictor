@@ -5,7 +5,6 @@
     using System.ComponentModel.DataAnnotations;
 
     using FootballPredictor.Data.Common.Models;
-    using FootballPredictor.Data.Models.Enums;
 
     public class MiniLigue : BaseDeletableModel<string>
     {
@@ -19,8 +18,7 @@
         [MaxLength(30)]
         public string Name { get; set; }
 
-        public MiniLigueType MiniLigueType { get; set; }
-
+        [Required]
         public string Password { get; set; }
 
         public virtual ICollection<MiniLigueUser> Users { get; set; }

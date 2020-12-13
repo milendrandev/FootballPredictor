@@ -1,0 +1,24 @@
+﻿@model FootballPredictor.Web.ViewModels.MiniLigues.JoinViewModel
+
+@if (this.TempData.ContainsKey("Message"))
+{
+    <div class="alert alert-danger text-center" role="alert"> @this.TempData["Message"]</div>
+}
+<h1 class="text-center whiteColor">Join the @Model.Name</h1>
+<br />
+<br />
+<br />
+<br />
+<form class="mx-auto w-50" method="post">
+    <div class="form-group">
+        <div class="text-dark d-flex justify-content-center">
+            <label asp-for="Password" class="h3 mb-2"></label>
+        </div>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <input type="text" hidden id="Id" name="Id" value="@Model.Id" />
+    <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-block btn-success text-lg-center text-white mb-3">Join</button>
+    </div>
+</form>

@@ -10,6 +10,8 @@
 
         public string Name { get; set; }
 
+        public string CreatorId { get; set; }
+
         public IEnumerable<RankingsViewModel> Users { get; set; }
     }
 }

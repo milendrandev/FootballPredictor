@@ -48,6 +48,7 @@
             {
                 Name = model.Name,
                 Password = ComputeHash(model.Password),
+                CreatorId = userId,
             };
 
             await this.AddUserToCreatorRole(userId);
@@ -63,12 +64,13 @@
             var miniLigue = this.miniLigueRepository.All().Where(x => x.Id.Equals(id)).Select(m => new DashboardViewModel
             {
                 Name = m.Name,
+                CreatorId = m.CreatorId,
                 Users = m.Users.Select(u => new RankingsViewModel
                 {
                     Id = u.User.Id,
                     Username = u.User.UserName,
                     UserPoints = u.User.UserPoints,
-                }),
+                }).OrderByDescending(u => u.UserPoints),
             }).FirstOrDefault();
 
             return miniLigue;
@@ -86,11 +88,63 @@
             return true;
         }
 
+        public bool IsCorrectPassword(string miniLigueId, string password)
+        {
+            var miniLigue = this.miniLigueRepository.All().FirstOrDefault(x => x.Id.Equals(miniLigueId));
+
+            if (miniLigue.Password == ComputeHash(password))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public string MiniLigueName(string id)
+        {
+            return this.miniLigueRepository.All().Where(x => x.Id.Equals(id)).Select(x => x.Name).FirstOrDefault();
+        }
+
         private async Task AddUserToCreatorRole(string userId)
         {
             var user = this.userRepository.All().FirstOrDefault(u => u.Id.Equals(userId));
 
             await this.userManager.AddToRoleAsync(user, "Creator");
+        }
+
+        public async Task Join(JoinViewModel model, string userId)
+        {
+            var memberToMiniLigue = new MiniLigueUser
+            {
+                MiniLigueId = model.Id,
+                UserId = userId,
+            };
+
+            await this.miniLigueUserRepository.AddAsync(memberToMiniLigue);
+            await this.miniLigueUserRepository.SaveChangesAsync();
+        }
+
+        public async Task RemoveAsync(string userId, string creatorId)
+        {
+            var miniLigue = this.miniLigueRepository.All().FirstOrDefault(x => x.CreatorId.Equals(creatorId));
+
+            var miniLigueUser = this.miniLigueUserRepository.All().Where(m => m.MiniLigueId.Equals(miniLigue.Id) && m.UserId.Equals(userId)).FirstOrDefault();
+
+            this.miniLigueUserRepository.Delete(miniLigueUser);
+            await this.miniLigueUserRepository.SaveChangesAsync();
+        }
+
+        public IEnumerable<AllVIewModel> MiniLiguesByUser(string userId)
+        {
+            var miniLigues = this.miniLigueUserRepository.All().Where(u => u.UserId.Equals(userId)).Select(m => new AllVIewModel
+            {
+                Id = m.MiniLigueId,
+                Name = m.MiniLigue.Name,
+            })
+                .OrderBy(m => m.Name)
+                .ToList();
+
+            return miniLigues;
         }
 
         private async Task CreateMiniLigueUser(string miniLigueId, string userId)

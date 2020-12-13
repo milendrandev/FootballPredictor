@@ -9,10 +9,20 @@
     {
         public IEnumerable<AllVIewModel> All();
 
-        Task CreateAsync( CreateInputModel model, string userId);
+        Task CreateAsync(CreateInputModel model, string userId);
 
         DashboardViewModel Dashboard(string id);
 
         bool IsAMember(string miniLigueId, string userId);
+
+        bool IsCorrectPassword(string miniLigueId, string password);
+
+        string MiniLigueName(string id);
+
+        Task Join(JoinViewModel model, string userId);
+
+        Task RemoveAsync(string userId, string creatorId);
+
+        IEnumerable<AllVIewModel> MiniLiguesByUser(string userId);
     }
 }

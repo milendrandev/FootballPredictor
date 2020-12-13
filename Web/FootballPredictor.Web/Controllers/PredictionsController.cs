@@ -26,10 +26,8 @@
 
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> Create(int matchId, string homeTeam, string awayTeam)
+        public IActionResult Create(int matchId, string homeTeam, string awayTeam)
         {
-            var user = await this.userManager.GetUserAsync(this.User);
-
             var model = new CreateViewModel
             {
                 Id = matchId,

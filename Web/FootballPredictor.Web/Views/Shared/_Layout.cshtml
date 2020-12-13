@@ -36,32 +36,30 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Predictions" asp-action="All">Predictions</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Predictions" asp-action="MyPredictions">My Predictions</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Rankings">Users Ranking</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-            <div id="navbar" class="container justify-content-center">
-                <ul class="navbar-nav flex-grow-1 justify-content-center">
+        @if (this.User.Identity.IsAuthenticated)
+        {
+            <div id="navbar" class="container" margin="50%">
+                <ul style="list-style-type:none;" class="navbar-expand collapse d-sm-inline-flex flex-sm-row text-lg-center">
                     <li class="nav-item">
-                       
-                    <li class="nav-item">
-                       
+                        <a class="nav-link text-white" asp-area="" asp-controller="MiniLigues" asp-action="All">MiniLigues</a>
                     </li>
                     <li class="nav-item">
-                        
+                        <a class="nav-link text-white" asp-area="" asp-controller="Predictions" asp-action="MyPredictions">My Predictions</a>
                     </li>
-                    <li class="nav-item justify-content-center">
-                        <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-controller="MiniLigues" asp-action="MyMiniLigues">My MiniLigues</a>
                     </li>
                 </ul>
             </div>
+        }
     </header>
-    
+
 
     <div class="container">
         <partial name="_CookieConsentPartial" />

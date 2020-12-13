@@ -21,6 +21,9 @@
         [Required]
         public string Password { get; set; }
 
+        [Required]
+        public string CreatorId { get; set; }
+
         public virtual ICollection<MiniLigueUser> Users { get; set; }
     }
 }

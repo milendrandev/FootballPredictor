@@ -1,4 +1,5 @@
-﻿@model FootballPredictor.Web.ViewModels.MiniLigues.DashboardViewModel
+﻿@using System.Security.Claims
+@model FootballPredictor.Web.ViewModels.MiniLigues.DashboardViewModel
 <h1 class="text-center"> @Model.Name</h1>
 <div>
     <style>
@@ -24,25 +25,54 @@
             <th scope="col" width="10%" class="text-center whiteColor">Place</th>
             <th scope="col" class="whiteColor">Username</th>
             <th scope="col" class="whiteColor text-center" width="15%">Total Points</th>
-            <th scope="col" width="18%"></th>
+            <th scope="col" width="18%" class="whiteColor">Members</th>
         </tr>
     </thead>
-    @foreach (var user in Model.Users)
+    @if (this.User.FindFirst(ClaimTypes.NameIdentifier).Value.Equals(Model.CreatorId))
     {
-        <tbody>
-            <tr class="table-light table-bordered">
-                <td class="text-center"></td>
-                <td scope="row"><a asp-controller="Users" asp-action="PointsByUser" asp-route-id="@user.Id">@user.Username</a></td>
-                <td class="text-center">@user.UserPoints</td>
-                @if (this.User.IsInRole("Creator"))
-                {
-                    <td class="text-center"><a class="btn btn-danger mb-1" asp-action="RemoveMember" asp-route-id="@user.Id">Remove this User</a></td>
-                }
-                else
-                {
-                    <td><a class="btn btn-danger mb-1 text-center" asp-action="Leave" asp-route-id="@user.Id">Leave from The League</a></td>
-                }
-            </tr>
-        </tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tbody>
+                <tr class="table-light table-bordered">
+                    <td class="text-center"></td>
+                    <td scope="row"><a asp-controller="Users" asp-action="PointsByUser" asp-route-id="@user.Id">@user.Username</a></td>
+                    <td class="text-center">@user.UserPoints</td>
+                    @if (user.Id.Equals(Model.CreatorId))
+                    {
+                        <td class="text-lg-center">Admin</td>
+                    }
+                    else
+                    {
+                        <td class="text-center">
+                            <form method="post" asp-action="Remove" asp-route-id="@user.Id">
+                                <button type="submit" class="btn btn-danger btn-block">Remove</button>
+                            </form>
+                        </td>
+                    }
+                </tr>
+            </tbody>
+        }
     }
+    else
+    {
+        @foreach (var user in Model.Users)
+        {
+            <tbody>
+                <tr class="table-light table-bordered">
+                    <td class="text-center"></td>
+                    <td scope="row"><a asp-controller="Users" asp-action="PointsByUser" asp-route-id="@user.Id">@user.Username</a></td>
+                    <td class="text-center">@user.UserPoints</td>
+                    @if (Model.CreatorId.Equals(user.Id))
+                    {
+                        <td>Admin</td>
+                    }
+                    else
+                    {
+                        <td>Member</td>
+                    }
+                </tr>
+            </tbody>
+        }
+    }
+
 </table>

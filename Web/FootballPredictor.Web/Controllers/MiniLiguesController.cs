@@ -68,5 +68,77 @@
 
             return this.View(model);
         }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Remove(string id)
+        {
+            var creatorId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            await this.miniLiguesService.RemoveAsync(id, creatorId);
+
+            return this.Redirect("/MiniLigues/MyMiniLigues");
+        }
+
+        public async Task<IActionResult> Leave(string id)
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            await this.miniLiguesService.RemoveAsync(userId, id);
+            return this.Redirect("/MiniLigues/MyMiniLigues");
+        }
+
+        [Authorize]
+        public IActionResult Join(string id)
+        {
+            var miniLigueName = this.miniLiguesService.MiniLigueName(id);
+            var model = new JoinViewModel
+            {
+                Id = id,
+                Name = miniLigueName,
+            };
+
+            return this.View(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Join(JoinViewModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            if (this.miniLiguesService.IsAMember(model.Id, userId))
+            {
+                var miniLigueName = this.miniLiguesService.MiniLigueName(model.Id);
+                model.Name = miniLigueName;
+                this.TempData["Message"] = "You are already a member of this League!";
+                return this.View(model);
+            }
+            else if (!this.miniLiguesService.IsCorrectPassword(model.Id, model.Password))
+            {
+                var miniLigueName = this.miniLiguesService.MiniLigueName(model.Id);
+                model.Name = miniLigueName;
+                this.TempData["Message"] = "Invalid Password!";
+                return this.View(model);
+            }
+
+            await this.miniLiguesService.Join(model, userId);
+
+            return this.Redirect("/MiniLigues/MyMiniLigues");
+        }
+
+        [Authorize]
+        public IActionResult MyMiniLigues()
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            var model = this.miniLiguesService.MiniLiguesByUser(userId);
+
+            return this.View(model);
+        }
     }
 }

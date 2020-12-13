@@ -480,3 +480,5 @@ D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1
 D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\MiniLigues\Create.cshtml.g.cs
 D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\MiniLigues\Dashboard.cshtml.g.cs
 D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\MiniLigues\All.cshtml.g.cs
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\MiniLigues\Join.cshtml.g.cs
+D:\IT course\FootballPredictor\Web\FootballPredictor.Web\obj\Debug\netcoreapp3.1\Razor\Views\MiniLigues\MyMiniLigues.cshtml.g.cs

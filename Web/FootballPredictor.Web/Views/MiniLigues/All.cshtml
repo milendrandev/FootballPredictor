@@ -1,7 +1,20 @@
-﻿<ul>
-    @foreach (var miniLigue in Model)
-    {
+﻿<h1 class="text-center whiteColor">Mini Ligues</h1>
+<br />
+<div class="text-center"><a class="btn btn-primary text-center" asp-action="Create">Create Your Own League</a></div>
+<br />
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var miniLigue in Model)
+        {
+            <tr class="table table-hover table-striped">
 
-        <li>><a asp-controller="MiniLigues" asp-action="Dashboard" asp-route-id="@miniLigue.Id">@miniLigue.Name</a><a class="btn btn-success" asp-action="Join" asp-route-id="@miniLigue.Id">Join this league</a></li>
-    }
-</ul>
+                <td class="whiteColor text-lg-center" width="50%">@miniLigue.Name</td>
+                <td class="text-center"><a class="btn btn-success mb-1 text-center" asp-action="Join" asp-route-id="@miniLigue.Id">Join this League</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

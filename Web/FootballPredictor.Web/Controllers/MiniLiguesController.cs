@@ -79,6 +79,8 @@
             return this.Redirect("/MiniLigues/MyMiniLigues");
         }
 
+        [Authorize]
+        [HttpPost]
         public async Task<IActionResult> Leave(string id)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;

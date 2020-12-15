@@ -1,9 +1,29 @@
 ﻿@using FootballPredictor.Common
 @{
-    this.ViewData["Title"] = "Home Page";
+    this.ViewData["Title"] = @GlobalConstants.SystemName;
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome to @GlobalConstants.SystemName!</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active text-center bg-light m-xl-5">
+            <a class="text-center mb-xl-3" asp-controller="Standings" asp-action="Leagues">Which is Your Favourite Europe League?</a>
+        </div>
+        <div class="carousel-item text-center bg-light m-xl-5">
+            <a class="text-center mb-xl-3" asp-controller="Matches" asp-action="Fuxtures">Choose from the Fuxtures and Create your Predictions</a>
+        </div>
+        <div class="carousel-item text-center bg-light m-xl-5">
+            <a class="text-center mb-xl-3" asp-controller="MiniLigues" asp-action="All">Invite your Friends and beat them in your Own Mini Ligue</a>
+        </div>
+        <div class="carousel-item text-center bg-light m-xl-5">
+            <a class="text-center mb-xl-3" asp-controller="MiniLigues" asp-action="All">We have The All Statistics that you need to climb The Rankings</a>
+        </div>
+        <div class="carousel-item text-center bg-light m-xl-5">
+            <a class="text-center mb-xl-3" asp-controller="Predictions" asp-action="All">Enjoy The Game</a>
+        </div>
+    </div>
 </div>

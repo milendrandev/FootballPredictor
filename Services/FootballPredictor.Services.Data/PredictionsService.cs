@@ -109,6 +109,7 @@
                     Description = prediction.Description,
                     Username = username,
                     UserId = prediction.UserId,
+                    GameweekId = prediction.GameweekId,
                 };
                 listOfPredictions.Add(predictionModel);
             }
@@ -129,7 +130,7 @@
 
         public int PredictionsByUserCount(string id)
         {
-            return this.predictionRepository.All().Where(p => p.UserId.Equals(id)).Count();
+            return this.predictionRepository.All().Where(p => p.UserId.Equals(id) && p.GameweekId == GlobalConstants.CurrentWeek).Count();
         }
 
         public int PredictionsCount()

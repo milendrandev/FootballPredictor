@@ -65,15 +65,15 @@
             return this.View(viewModel);
         }
 
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         public IActionResult Simulate()
         {
             this.matchesService.Simulate();
 
-            return this.Redirect("/Matches/All");
+            return this.Redirect("/Matches/Fuxtures");
         }
 
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         public IActionResult UserPoints()
         {
             this.usersService.AddPointsToUser();

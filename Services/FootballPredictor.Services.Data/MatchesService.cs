@@ -33,7 +33,7 @@
 
         public IEnumerable<ListOfMatchesViewModel> GetAll(int gameweek)
         {
-            var leagues = this.leagueRepository.AllAsNoTracking().Select(l => new ListOfMatchesViewModel
+            var leagues = this.leagueRepository.All().Select(l => new ListOfMatchesViewModel
             {
                 LeagueId = l.Id,
                 LeagueName = l.Name,
@@ -53,7 +53,7 @@
 
         public IEnumerable<ListOfMatchesViewModel> GetAll(string userId, int gameweek)
         {
-            var leagues = this.leagueRepository.AllAsNoTracking().Select(l => new ListOfMatchesViewModel
+            var leagues = this.leagueRepository.All().Select(l => new ListOfMatchesViewModel
             {
                 LeagueId = l.Id,
                 LeagueName = l.Name,
@@ -88,7 +88,7 @@
 
         public void Simulate()
         {
-            var matches = this.matchRepository.All().ToList();
+            var matches = this.matchRepository.All().Where(m => m.GameweekId == GlobalConstants.CurrentWeek).ToList();
 
             var random = new Random();
 
@@ -134,24 +134,24 @@
                     awayTeam.Wins++;
                 }
 
-                homeTeam.ScoredGoals = match.HomeGoals.Value;
-                homeTeam.ConcededGoals = match.AwayGoals.Value;
+                homeTeam.ScoredGoals += match.HomeGoals.Value;
+                homeTeam.ConcededGoals += match.AwayGoals.Value;
                 homeTeam.MatchesPlayed++;
 
-                awayTeam.ScoredGoals = match.AwayGoals.Value;
-                awayTeam.ConcededGoals = match.HomeGoals.Value;
+                awayTeam.ScoredGoals += match.AwayGoals.Value;
+                awayTeam.ConcededGoals += match.HomeGoals.Value;
                 awayTeam.MatchesPlayed++;
 
                 this.matchRepository.Update(match);
                 this.teamRepository.Update(homeTeam);
                 this.teamRepository.Update(awayTeam);
 
-                this.PlayedPlayers(homePlayers, awayPlayers, homeTeam.ScoredGoals, awayTeam.ScoredGoals);
+                this.PlayedPlayers(homePlayers, awayPlayers, match.HomeGoals.Value, match.AwayGoals.Value);
             }
 
-            GlobalConstants.CurrentWeek++;
             this.matchRepository.SaveChanges();
             this.teamRepository.SaveChanges();
+            GlobalConstants.CurrentWeek++;
         }
 
         private void PlayedPlayers(IEnumerable<Player> homePlayers, IEnumerable<Player> awayPlayers, int homeGoals, int awayGoals)

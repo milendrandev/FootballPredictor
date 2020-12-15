@@ -52,7 +52,7 @@
             await this.predictionsService.CreateAsync(model.Id, model.HomeGoals, model.AwayGoals, model.Description, user.Id);
 
             var predictionsCount = this.predictionsService.PredictionsByUserCount(user.Id);
-            this.TempData["Message"] = $"You have made {predictionsCount} ! You have left {GlobalConstants.PredictionsLimit - predictionsCount} more";
+            this.TempData["Message"] = $"You have made {predictionsCount} predictions ! You have left {GlobalConstants.PredictionsLimit - predictionsCount} more";
 
             return this.Redirect("/Matches/Fuxtures");
         }

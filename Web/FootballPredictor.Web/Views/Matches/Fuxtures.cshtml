@@ -77,7 +77,7 @@
                     {
                         if (!match.PredictionCreated)
                         {
-                            if (Model.ThisUserPredictionsCount <= GlobalConstants.PredictionsLimit)
+                            if (Model.ThisUserPredictionsCount <= GlobalConstants.PredictionsLimit && match.GameweekId == GlobalConstants.CurrentWeek)
                             {
                                 <td class="td-4"><a class="btn btn-block btn-primary text-white" href="/Predictions/Create?id=@match.Id ">Create a prediction</a></td>
                             }

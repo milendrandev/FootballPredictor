@@ -45,8 +45,8 @@
 
         public TeamDetailViewModel TeamDetails(int id)
         {
-            var team = this.teamRepository.AllAsNoTracking().Where(t => t.Id == id).FirstOrDefault();
-            var matches = this.matchRepository.AllAsNoTracking()
+            var team = this.teamRepository.All().Where(t => t.Id == id).FirstOrDefault();
+            var matches = this.matchRepository.All()
                 .Where(m => m.HomeTeamId == team.Id || m.AwayTeamId == team.Id).ToList();
 
             foreach (var match in matches)

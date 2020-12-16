@@ -78,7 +78,7 @@
         {
             var users = this.userRepository.All().ToList();
 
-            var matches = this.matchRepository.AllAsNoTracking().Where(m => m.GameweekId == GlobalConstants.CurrentWeek).ToList();
+            var matches = this.matchRepository.All().Where(m => m.GameweekId == GlobalConstants.CurrentWeek).ToList();
 
             foreach (var user in users)
             {

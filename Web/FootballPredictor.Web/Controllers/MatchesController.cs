@@ -21,7 +21,7 @@
             this.predictionsService = predictionsService;
         }
 
-        public IActionResult Fuxtures(int id = 1)
+        public IActionResult Fixtures(int id = 1)
         {
             if (this.User.Identity.IsAuthenticated)
             {
@@ -70,7 +70,7 @@
         {
             this.matchesService.Simulate();
 
-            return this.Redirect("/Matches/Fuxtures");
+            return this.Redirect("/Matches/Fixtures");
         }
 
         [Authorize(Roles = GlobalConstants.AdministratorRoleName)]

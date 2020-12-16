@@ -1,13 +1,11 @@
-﻿using FootballPredictor.Data.Common.Repositories;
-using FootballPredictor.Data.Models;
-using FootballPredictor.Web.ViewModels.Standings;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace FootballPredictor.Services.Data
+﻿namespace FootballPredictor.Services.Data
 {
+    using System.Linq;
+
+    using FootballPredictor.Data.Common.Repositories;
+    using FootballPredictor.Data.Models;
+    using FootballPredictor.Web.ViewModels.Standings;
+
     public class StandingsService : IStandingsService
     {
         private readonly IDeletableEntityRepository<League> leagueRepository;
@@ -19,7 +17,7 @@ namespace FootballPredictor.Services.Data
 
         public LeagueViewModel LeagueStandings(string leagueName)
         {
-            var league = this.leagueRepository.AllAsNoTracking().Where(l => l.Name == leagueName)
+            var league = this.leagueRepository.All().Where(l => l.Name == leagueName)
                 .Select(l => new LeagueViewModel
                 {
                     Name = l.Name,

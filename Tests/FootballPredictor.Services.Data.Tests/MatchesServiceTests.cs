@@ -13,7 +13,7 @@
     public class MatchesServiceTests
     {
         [Fact]
-        public void GetAllMethodReturnCorrectData()
+        public void GetAllMethodReturnCorrectDataSetProperties()
         {
             var list = new List<Match>
             {
@@ -63,24 +63,63 @@
                 },
             }.AsQueryable<League>();
 
+            var teamsList = new List<Team>()
+            {
+                new Team
+                {
+                    Id = 1,
+                    Name = "Real Madrid",
+                },
+                new Team
+                {
+                    Id = 2,
+                    Name = "Barcelona",
+                },
+            };
+
             var matchRepo = new Mock<IDeletableEntityRepository<Match>>();
             matchRepo.Setup(r => r.All()).Returns(list);
 
             var leagueRepo = new Mock<IDeletableEntityRepository<League>>();
             leagueRepo.Setup(r => r.All()).Returns(leagues);
+
             var userRepo = new Mock<IDeletableEntityRepository<ApplicationUser>>();
+
             var teamRepo = new Mock<IDeletableEntityRepository<Team>>();
+            teamRepo.Setup(x => x.All()).Returns(teamsList.AsQueryable());
+
             var playerRepo = new Mock<IDeletableEntityRepository<Player>>();
             var predictionRepo = new Mock<IDeletableEntityRepository<Prediction>>();
 
             var service = new MatchesService(matchRepo.Object, teamRepo.Object, leagueRepo.Object, playerRepo.Object, predictionRepo.Object);
 
-            var league = service.GetAll(1);
-            var matches = league.Select(m => m.Matches).FirstOrDefault();
+            var leaguesList = service.GetAll(1);
+            var matches = leaguesList.Select(m => m.Matches).FirstOrDefault();
+            var league = leaguesList.FirstOrDefault();
 
-            Assert.Equal(league.Count(), leagues.Count());
+            var leagueId = league.LeagueId;
+            var leagueName = league.LeagueName;
+
+            var matchId = league.Matches.Select(x => x.Id).FirstOrDefault();
+            var homeGoals = league.Matches.Select(x => x.HomeGoals).FirstOrDefault();
+            var awayGoals = league.Matches.Select(x => x.AwayGoals).FirstOrDefault();
+            var gameWeekId = league.Matches.Select(x => x.GameweekId).FirstOrDefault();
+            var homeName = league.Matches.Select(x => x.HomeName).FirstOrDefault();
+            var awayName = league.Matches.Select(x => x.AwayName).FirstOrDefault();
+
+
+            Assert.Equal(leaguesList.Count(), leagues.Count());
             Assert.Equal(matches.Count(), list.Where(m => m.GameweekId == 1).Count());
+            Assert.Equal(1, leagueId);
+            Assert.Equal("English", leagueName);
             leagueRepo.Verify(x => x.All(), Times.Once);
+
+            Assert.Equal(1, matchId);
+            Assert.Equal(3, homeGoals);
+            Assert.Equal(1, awayGoals);
+            Assert.Equal(1, gameWeekId);
+            Assert.Equal("Real Madrid", homeName);
+            Assert.Equal("Barcelona", awayName);
         }
 
         [Fact]
@@ -183,22 +222,13 @@
             var service = new MatchesService(matchRepo.Object, teamRepo.Object, leagueRepo.Object, playerRepo.Object, predictionRepo.Object);
 
             var leaguesModels = service.GetAll(user.Id, 1);
-            var count = 0;
-            foreach (var leagueModel in leaguesModels)
-            {
-                foreach (var match in leagueModel.Matches)
-                {
-                    if (match.PredictionCreated)
-                    {
-                        count++;
-                    }
-                }
-            }
+
+            var match = leaguesModels.Select(x => x.Matches).FirstOrDefault().FirstOrDefault();
 
             var pred = predictions[0];
             Assert.Equal(leaguesModels.Count(), leagues.Count());
             Assert.Equal(user.Id, pred.UserId);
-            Assert.Equal(1, count);
+            Assert.Equal(false, match.PredictionCreated);
             predictionRepo.Verify(x => x.All(), Times.Once);
         }
     }

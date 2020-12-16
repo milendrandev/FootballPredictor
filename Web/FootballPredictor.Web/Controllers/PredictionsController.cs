@@ -54,7 +54,7 @@
             var predictionsCount = this.predictionsService.PredictionsByUserCount(user.Id);
             this.TempData["Message"] = $"You have made {predictionsCount} predictions ! You have left {GlobalConstants.PredictionsLimit - predictionsCount} more";
 
-            return this.Redirect("/Matches/Fuxtures");
+            return this.Redirect("/Matches/Fixtures");
         }
 
         public IActionResult All(int id = 1)

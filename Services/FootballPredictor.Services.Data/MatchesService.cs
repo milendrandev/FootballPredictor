@@ -40,8 +40,8 @@
                 Matches = l.Matches.Where(m => m.GameweekId == gameweek).Select(m => new AllMatchesForTheWeekViewModel
                 {
                     Id = m.Id,
-                    HomeName = this.teamRepository.AllAsNoTracking().Where(t => t.Id == m.HomeTeamId).Select(t => t.Name).FirstOrDefault(),
-                    AwayName = this.teamRepository.AllAsNoTracking().Where(t => t.Id == m.AwayTeamId).Select(t => t.Name).FirstOrDefault(),
+                    HomeName = this.teamRepository.All().Where(t => t.Id == m.HomeTeamId).Select(t => t.Name).FirstOrDefault(),
+                    AwayName = this.teamRepository.All().Where(t => t.Id == m.AwayTeamId).Select(t => t.Name).FirstOrDefault(),
                     GameweekId = m.GameweekId,
                     HomeGoals = m.HomeGoals,
                     AwayGoals = m.AwayGoals,

@@ -9,14 +9,11 @@
     public class PlayersService : IPlayersService
     {
         private readonly IDeletableEntityRepository<League> leagueRepository;
-        private readonly IDeletableEntityRepository<Player> playerRepository;
 
         public PlayersService(
-            IDeletableEntityRepository<League> leagueRepository,
-            IDeletableEntityRepository<Player> playerRepository)
+            IDeletableEntityRepository<League> leagueRepository)
         {
             this.leagueRepository = leagueRepository;
-            this.playerRepository = playerRepository;
         }
 
         public ListOfRankigsViewModel Rankings()

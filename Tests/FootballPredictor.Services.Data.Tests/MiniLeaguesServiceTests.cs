@@ -305,34 +305,6 @@
         }
 
         [Fact]
-        public async Task CreateMiniLegueUserMethodAddCorrectly()
-        {
-            var miniLegueList = new List<MiniLigue>()
-            {
-            };
-
-            var miniLegueUsersList = new List<MiniLigueUser>();
-
-            var miniLeagueRepo = new Mock<IDeletableEntityRepository<MiniLigue>>();
-            miniLeagueRepo.Setup(x => x.All()).Returns(miniLegueList.AsQueryable());
-
-            var miniUserRepo = new Mock<IDeletableEntityRepository<MiniLigueUser>>();
-            miniUserRepo.Setup(x => x.AddAsync(It.IsAny<MiniLigueUser>())).Callback(
-                (MiniLigueUser league) => miniLegueUsersList.Add(league));
-
-            var service = new MiniLeaguesService(miniLeagueRepo.Object, miniUserRepo.Object);
-
-            var model = new JoinViewModel
-            {
-                Id = "aaaaa",
-            };
-
-            await service.(model, "Milen");
-
-            Assert.Equal(1, miniLegueUsersList.Count);
-        }
-
-        [Fact]
         public async Task RemoveAsyncMethodRemoveMember()
         {
             var miniLegueUserList = new List<MiniLigueUser>()

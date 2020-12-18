@@ -1,5 +1,9 @@
 ﻿@model FootballPredictor.Web.ViewModels.Matches.ListOfResultsViewModel
 
+@{
+    this.ViewData["Title"] = "Results";
+}
+
 <head>
     <style>
         h1 {
@@ -29,7 +33,7 @@
     </ul>
 </nav>
 
-<h1> Games in Gameweek:@Model.Gameweek</h1>
+<h1> Games in Gameweek : @Model.Gameweek</h1>
 <hr />
 <br />
 
@@ -41,7 +45,7 @@
         <style>
             h2 {
                 text-align: center;
-                color:azure;
+                color: azure;
             }
         </style>
     </head>
@@ -51,7 +55,7 @@
         <thead>
             <tr>
                 <th scope="col" class="whiteColor text-center">Home</th>
-                <th scope="col" class="text-center whiteColor" >Result</th>
+                <th scope="col" class="text-center whiteColor">Result</th>
                 <th scope="col" class="whiteColor text-center">Away</th>
             </tr>
         </thead>

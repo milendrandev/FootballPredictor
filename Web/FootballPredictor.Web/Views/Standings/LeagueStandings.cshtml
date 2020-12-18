@@ -1,36 +1,39 @@
 ﻿@model FootballPredictor.Web.ViewModels.Standings.LeagueViewModel
+@{
+    this.ViewData["Title"] = "League Standing";
+}
 <h1>@Model.Name</h1>
 
 <div>
-        <style>
-            table {
-                counter-reset: rowNumber;
+    <style>
+        table {
+            counter-reset: rowNumber;
+        }
+
+            table tr > td:first-child {
+                counter-increment: rowNumber;
             }
 
-                table tr > td:first-child {
-                    counter-increment: rowNumber;
-                }
-
-                table tr td:first-child::before {
-                    content: counter(rowNumber);
-                    min-width: 1em;
-                    margin-right: 0.5em;
-                }
-        </style>
+            table tr td:first-child::before {
+                content: counter(rowNumber);
+                min-width: 1em;
+                margin-right: 0.5em;
+            }
+    </style>
 </div>
 <div>
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th scope="col"class="whiteColor">Rank</th>
-                <th scope="col"class="whiteColor">Team</th>
-                <th scope="col"class="whiteColor">Played Matches</th>
-                <th scope="col"class="whiteColor">Wins</th>
-                <th scope="col"class="whiteColor">Draws</th>
-                <th scope="col"class="whiteColor">Looses</th>
-                <th scope="col"class="whiteColor">Scored Goals</th>
-                <th scope="col"class="whiteColor">Conceded Goals</th>
-                <th scope="col"class="whiteColor">Points</th>
+                <th scope="col" class="whiteColor">Rank</th>
+                <th scope="col" class="whiteColor">Team</th>
+                <th scope="col" class="whiteColor">Played Matches</th>
+                <th scope="col" class="whiteColor">Wins</th>
+                <th scope="col" class="whiteColor">Draws</th>
+                <th scope="col" class="whiteColor">Looses</th>
+                <th scope="col" class="whiteColor">Scored Goals</th>
+                <th scope="col" class="whiteColor">Conceded Goals</th>
+                <th scope="col" class="whiteColor">Points</th>
             </tr>
         </thead>
         <tbody>

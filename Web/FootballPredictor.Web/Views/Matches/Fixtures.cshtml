@@ -1,5 +1,9 @@
 ﻿@using FootballPredictor.Common
 @model FootballPredictor.Web.ViewModels.Matches.ListOfLeaguesViewModel
+
+@{ 
+    this.ViewData["Title"] = "Fixtures";
+}
 <head>
     <style>
         h1 {
@@ -24,7 +28,7 @@
             <li class="page-item"><a class="page-link" asp-action="Fixtures" asp-route-id="@Model.NextPage">@Model.NextPage</a></li>
         }
         <li class="page-item @if (Model.LastPage) { <text>disabled</text>} ">
-            <a class="page-link" asp-action="Fuxtures" asp-route-id="@Model.NextPage">Next</a>
+            <a class="page-link" asp-action="Fixtures" asp-route-id="@Model.NextPage">Next</a>
         </li>
     </ul>
 </nav>
@@ -38,7 +42,7 @@
     <div class="alert alert-success text-center" rolse="alert"> @this.TempData["Message"]</div>
 }
 
-<h1> Games in Gameweek:@Model.Gameweek</h1>
+<h1> Games in Gameweek : @Model.Gameweek</h1>
 <hr />
 <br />
 

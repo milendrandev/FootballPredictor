@@ -1,4 +1,7 @@
-﻿<h1 class="text-center whiteColor">Mini Ligues</h1>
+﻿@{
+    this.ViewData["Title"] = "Mini Leagues";
+}
+<h1 class="text-center whiteColor">Mini Leagues</h1>
 <br />
 <div class="text-center"><a class="btn btn-primary text-center" asp-action="Create">Create Your Own League</a></div>
 <br />
@@ -10,11 +13,12 @@
     <tbody>
         @foreach (var miniLigue in Model)
         {
-            <tr class="table table-hover table-striped">
+        <tr class="table table-hover table-striped">
 
-                <td class="whiteColor text-lg-center" width="50%">@miniLigue.Name</td>
-                <td class="text-center"><a class="btn btn-success mb-1 text-center" asp-action="Join" asp-route-id="@miniLigue.Id">Join this League</a></td>
-            </tr>
+            <td class="whiteColor text-lg-center" width="50%">@miniLigue.Name</td>
+            <td class="whiteColor text-lg-center" width="50%">@miniLigue.Members</td>
+            <td class="text-center"><a class="btn btn-success mb-1 text-center" asp-action="Join" asp-route-id="@miniLigue.Id">Join this League</a></td>
+        </tr>
         }
     </tbody>
 </table>

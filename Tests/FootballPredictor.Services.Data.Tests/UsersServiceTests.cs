@@ -165,22 +165,22 @@
             gameUserRepo.Verify(g => g.AddAsync(list[0]), Times.Never);
         }
 
-        [Fact]
-        public void AddPointsToUserMethodAddPoints()
-        {
-
-
-            var userRepo = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-
-            var matchRepo = new Mock<IDeletableEntityRepository<Match>>();
-
-            var gameUserRepo = new Mock<IDeletableEntityRepository<GameweekUser>>();
-            gameUserRepo.Setup(x => x.All()).Returns(list.AsQueryable());
-
-            var predictionRepo = new Mock<IDeletableEntityRepository<Prediction>>();
-
-            var service = new UsersService(userRepo.Object, matchRepo.Object, predictionRepo.Object, gameUserRepo.Object);
-
-        }
-    }
+      // [Fact]
+      // public void AddPointsToUserMethodAddPoints()
+      // {
+      //
+      //
+      //     var userRepo = new Mock<IDeletableEntityRepository<ApplicationUser>>();
+      //
+      //     var matchRepo = new Mock<IDeletableEntityRepository<Match>>();
+      //
+      //     var gameUserRepo = new Mock<IDeletableEntityRepository<GameweekUser>>();
+      //     gameUserRepo.Setup(x => x.All()).Returns(list.AsQueryable());
+      //
+      //     var predictionRepo = new Mock<IDeletableEntityRepository<Prediction>>();
+      //
+      //     var service = new UsersService(userRepo.Object, matchRepo.Object, predictionRepo.Object, gameUserRepo.Object);
+      //
+      // }
+    } //
 }

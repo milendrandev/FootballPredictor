@@ -26,13 +26,11 @@
 
         [HttpGet]
         [Authorize]
-        public IActionResult Create(int matchId, string homeTeam, string awayTeam)
+        public IActionResult Create(int matchId)
         {
             var model = new CreateViewModel
             {
                 Id = matchId,
-                HomeTeamName = homeTeam,
-                AwayTeamName = awayTeam,
             };
 
             return this.View(model);

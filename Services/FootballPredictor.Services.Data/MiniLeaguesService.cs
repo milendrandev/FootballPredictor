@@ -12,22 +12,16 @@
     using FootballPredictor.Web.ViewModels.Users;
     using Microsoft.AspNetCore.Identity;
 
-    public class MiniLIguesService : IMiniLiguesService
+    public class MiniLeaguesService : IMiniLiguesService
     {
         private readonly IDeletableEntityRepository<MiniLigue> miniLigueRepository;
-        private readonly IDeletableEntityRepository<ApplicationUser> userRepository;
-        private readonly UserManager<ApplicationUser> userManager;
         private readonly IDeletableEntityRepository<MiniLigueUser> miniLigueUserRepository;
 
-        public MiniLIguesService(
+        public MiniLeaguesService(
             IDeletableEntityRepository<MiniLigue> miniLigueRepository,
-            IDeletableEntityRepository<ApplicationUser> userRepository,
-            UserManager<ApplicationUser> userManager,
             IDeletableEntityRepository<MiniLigueUser> miniLigueUserRepository)
         {
             this.miniLigueRepository = miniLigueRepository;
-            this.userRepository = userRepository;
-            this.userManager = userManager;
             this.miniLigueUserRepository = miniLigueUserRepository;
         }
 
@@ -37,6 +31,7 @@
             {
                 Id = x.Id,
                 Name = x.Name,
+                Members = x.Users.Count,
             })
                 .OrderBy(x => x.Name)
                 .ToList();
@@ -50,8 +45,6 @@
                 Password = ComputeHash(model.Password),
                 CreatorId = userId,
             };
-
-            await this.AddUserToCreatorRole(userId);
 
             await this.miniLigueRepository.AddAsync(miniLigue);
             await this.miniLigueRepository.SaveChangesAsync();
@@ -103,13 +96,6 @@
         public string MiniLigueName(string id)
         {
             return this.miniLigueRepository.All().Where(x => x.Id.Equals(id)).Select(x => x.Name).FirstOrDefault();
-        }
-
-        private async Task AddUserToCreatorRole(string userId)
-        {
-            var user = this.userRepository.All().FirstOrDefault(u => u.Id.Equals(userId));
-
-            await this.userManager.AddToRoleAsync(user, "Creator");
         }
 
         public async Task Join(JoinViewModel model, string userId)

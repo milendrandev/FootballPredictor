@@ -231,5 +231,75 @@
             Assert.Equal(false, match.PredictionCreated);
             predictionRepo.Verify(x => x.All(), Times.Once);
         }
+
+        [Fact]
+        public void SimulateMethodWorkCorrectly()
+        {
+            var matchList = new List<Match>
+            {
+                new Match
+                {
+                    Id = 1,
+                    HomeTeamId = 1,
+                    AwayTeamId = 2,
+                    HomeGoals = 3,
+                    AwayGoals = 1,
+                    ResultType = FootballPredictor.Data.Models.Enums.BetType.Home,
+                    GameweekId = 1,
+                    LeagueId = 1,
+                },
+                new Match
+                {
+                     Id = 2,
+                     HomeTeamId = 1,
+                     AwayTeamId = 2,
+                     HomeGoals = 3,
+                     AwayGoals = 1,
+                     ResultType = FootballPredictor.Data.Models.Enums.BetType.Home,
+                     GameweekId = 1,
+                     LeagueId = 1,
+                },
+                new Match
+                {
+                     Id = 3,
+                     HomeTeamId = 1,
+                     AwayTeamId = 2,
+                     HomeGoals = 3,
+                     AwayGoals = 1,
+                     ResultType = FootballPredictor.Data.Models.Enums.BetType.Home,
+                     GameweekId = 2,
+                     LeagueId = 1,
+                },
+            };
+
+            var teamsList = new List<Team>()
+            {
+                new Team
+                {
+                    Id = 1,
+                    Name = "Real Madrid",
+                },
+                new Team
+                {
+                    Id = 2,
+                    Name = "Barcelona",
+                },
+            };
+
+            var matchRepo = new Mock<IDeletableEntityRepository<Match>>();
+            matchRepo.Setup(r => r.All()).Returns(matchList.AsQueryable());
+
+            var leagueRepo = new Mock<IDeletableEntityRepository<League>>();
+
+            var userRepo = new Mock<IDeletableEntityRepository<ApplicationUser>>();
+
+            var teamRepo = new Mock<IDeletableEntityRepository<Team>>();
+            teamRepo.Setup(x => x.All()).Returns(teamsList.AsQueryable());
+
+            var playerRepo = new Mock<IDeletableEntityRepository<Player>>();
+            var predictionRepo = new Mock<IDeletableEntityRepository<Prediction>>();
+
+            var service = new MatchesService(matchRepo.Object, teamRepo.Object, leagueRepo.Object, playerRepo.Object, predictionRepo.Object);
+        }
     }
 }

@@ -88,7 +88,7 @@
 
         public IEnumerable<PredictionsViewModel> All(int page, int itemsPerPage)
         {
-            var predictions = this.predictionRepository.AllAsNoTracking().ToList();
+            var predictions = this.predictionRepository.All().ToList();
 
             var listOfPredictions = new List<PredictionsViewModel>();
 
@@ -135,7 +135,7 @@
 
         public int PredictionsCount()
         {
-            return this.predictionRepository.AllAsNoTracking().Count();
+            return this.predictionRepository.All().Count();
         }
 
         public async Task DeleteAsync(int predictionId, string userId)

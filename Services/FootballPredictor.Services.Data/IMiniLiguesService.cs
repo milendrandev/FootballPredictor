@@ -17,6 +17,8 @@
 
         bool IsCorrectPassword(string miniLigueId, string password);
 
+        public bool IsACreator(string userId);
+
         string MiniLigueName(string id);
 
         Task Join(JoinViewModel model, string userId);

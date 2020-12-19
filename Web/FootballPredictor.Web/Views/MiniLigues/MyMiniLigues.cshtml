@@ -1,5 +1,11 @@
-﻿@{
+﻿@using System.Security.Claims;
+@{
     this.ViewData["Title"] = " My Mini Leagues";
+}
+
+@if (this.TempData.ContainsKey("Message"))
+{
+    <div class="alert alert-danger text-center" role="alert"> @this.TempData["Message"]</div>
 }
 <h1 class="text-center whiteColor"> My Mini Leagues</h1>
 <table class="table table-hover">
@@ -13,12 +19,22 @@
             <tr class="table table-hover table-light  table-bordered">
 
                 <td class="whiteColor text-lg-center"><a asp-action="Dashboard" asp-route-id="@miniLigue.Id">@miniLigue.Name</a></td>
-                <td class="text-center" width="30%">
-                    <form method="post" asp-action="Leave" asp-route-id="@miniLigue.Id">
-                        <button type="submit" class="btn btn-danger mb-1">Leave this League</button>
-                    </form>
-                </td>
 
+                @if (miniLigue.CreatorId.Equals(this.User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                {
+                    <td class="text-center" width="30%">
+                        Admin
+                    </td>
+                }
+                else
+                {
+                    <td class="text-center" width="30%">
+
+                        <form method="post" asp-action="Leave" asp-route-id="@miniLigue.Id">
+                            <button type="submit" class="btn btn-danger mb-1">Leave this League</button>
+                        </form>
+                    </td>
+                }
             </tr>
         }
     </tbody>

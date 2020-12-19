@@ -252,6 +252,62 @@
         }
 
         [Fact]
+        public void IsACretorMethodReturnFalse()
+        {
+            var miniLegueList = new List<MiniLigue>()
+            {
+                new MiniLigue
+                {
+                    Id = "aaaaa",
+                    CreatorId = "Milen",
+                },
+                new MiniLigue
+                {
+                    Id = "bbbbb",
+                    CreatorId = "Georgi",
+                },
+            };
+
+            var miniLeagueRepo = new Mock<IDeletableEntityRepository<MiniLigue>>();
+            miniLeagueRepo.Setup(x => x.All()).Returns(miniLegueList.AsQueryable());
+
+            var miniUserRepo = new Mock<IDeletableEntityRepository<MiniLigueUser>>();
+
+            var service = new MiniLeaguesService(miniLeagueRepo.Object, miniUserRepo.Object);
+
+            var result = service.IsACreator("Pesho");
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void IsACretorMethodReturnTrue()
+        {
+            var miniLegueList = new List<MiniLigue>()
+            {
+                new MiniLigue
+                {
+                    Id = "aaaaa",
+                    CreatorId = "Milen",
+                },
+                new MiniLigue
+                {
+                    Id = "bbbbb",
+                    CreatorId = "Georgi",
+                },
+            };
+
+            var miniLeagueRepo = new Mock<IDeletableEntityRepository<MiniLigue>>();
+            miniLeagueRepo.Setup(x => x.All()).Returns(miniLegueList.AsQueryable());
+
+            var miniUserRepo = new Mock<IDeletableEntityRepository<MiniLigueUser>>();
+
+            var service = new MiniLeaguesService(miniLeagueRepo.Object, miniUserRepo.Object);
+
+            var result = service.IsACreator("Milen");
+            Assert.True(result);
+        }
+
+        [Fact]
         public void MiniLegueNameMethodReturneTheName()
         {
             var miniLegueList = new List<MiniLigue>()

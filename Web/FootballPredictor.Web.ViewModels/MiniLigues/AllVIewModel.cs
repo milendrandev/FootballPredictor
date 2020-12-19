@@ -7,5 +7,7 @@
         public string Name { get; set; }
 
         public int Members { get; set; }
+
+        public string CreatorId { get; set; }
     }
 }

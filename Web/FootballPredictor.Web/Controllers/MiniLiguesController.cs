@@ -28,6 +28,15 @@
         [Authorize]
         public IActionResult Create()
         {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var creatorAlready = this.miniLiguesService.IsACreator(userId);
+
+            if (creatorAlready)
+            {
+                this.TempData["Message"] = "You can make only one Mini League for now.";
+                return this.Redirect("/MiniLigues/MyMiniLigues");
+            }
+
             return this.View();
         }
 

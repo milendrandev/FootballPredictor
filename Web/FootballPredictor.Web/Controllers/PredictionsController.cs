@@ -97,6 +97,16 @@
         [Authorize]
         public IActionResult Edit(int id)
         {
+            var isCurrentWeekPrediction = this.predictionsService.IsPredictionIsCurrentWeek(id);
+
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var isThisUser = this.predictionsService.IsThisUser(id, userId);
+
+            if (!isCurrentWeekPrediction || !isThisUser)
+            {
+                return this.Redirect("/Predictions/MyPredictions");
+            }
+
             var model = this.predictionsService.PredictionById(id);
 
             return this.View(model);

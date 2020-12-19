@@ -8,6 +8,6 @@
 
         public const int PredictionsLimit = 15;
 
-        public static int CurrentWeek = 3;
+        public static int CurrentWeek = 1;
     }
 }

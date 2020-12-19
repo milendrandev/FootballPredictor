@@ -786,5 +786,193 @@
             Assert.Equal("ne znam veche kakvo da pisha na towa opisanie", description);
             Assert.Equal(BetType.Draw, bet);
         }
+
+        [Fact]
+        public void IsThisUserMethodReturnFalse()
+        {
+            var predictionList = new List<Prediction>()
+            {
+                new Prediction
+                {
+                    Id = 2,
+                    HomeTeamGoals = 2,
+                    AwayTeamGoals = 3,
+                    Description = "dadadadadadadadadadadadadadadadadada",
+                    UserId = "abc",
+                    MatchId = 1,
+                    GameweekId = 3,
+                },
+                new Prediction
+                {
+                    Id = 1,
+                    HomeTeamGoals = 4,
+                    AwayTeamGoals = 1,
+                    Description = "fafafaffafafafafafafafafafaffa",
+                    UserId = "def",
+                    MatchId = 2,
+                    GameweekId = 3,
+                },
+            };
+
+            var predictionRepo = new Mock<IDeletableEntityRepository<Prediction>>();
+            predictionRepo.Setup(x => x.All()).Returns(predictionList.AsQueryable());
+
+            var userRepo = new Mock<IDeletableEntityRepository<ApplicationUser>>();
+
+            var matchRepo = new Mock<IDeletableEntityRepository<Match>>();
+
+            var teamRepo = new Mock<IDeletableEntityRepository<Team>>();
+
+            var gameWeekUserRepo = new Mock<IDeletableEntityRepository<GameweekUser>>();
+
+            var usersService = new UsersService(userRepo.Object, matchRepo.Object, predictionRepo.Object, gameWeekUserRepo.Object);
+
+            var service = new PredictionsService(predictionRepo.Object, userRepo.Object, matchRepo.Object, teamRepo.Object, usersService);
+
+            var result = service.IsThisUser(2,"Milen");
+
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void IsThisUserMethodReturnTrue()
+        {
+            var predictionList = new List<Prediction>()
+            {
+                new Prediction
+                {
+                    Id = 2,
+                    HomeTeamGoals = 2,
+                    AwayTeamGoals = 3,
+                    Description = "dadadadadadadadadadadadadadadadadada",
+                    UserId = "abc",
+                    MatchId = 1,
+                    GameweekId = 3,
+                },
+                new Prediction
+                {
+                    Id = 1,
+                    HomeTeamGoals = 4,
+                    AwayTeamGoals = 1,
+                    Description = "fafafaffafafafafafafafafafaffa",
+                    UserId = "def",
+                    MatchId = 2,
+                    GameweekId = 3,
+                },
+            };
+
+            var predictionRepo = new Mock<IDeletableEntityRepository<Prediction>>();
+            predictionRepo.Setup(x => x.All()).Returns(predictionList.AsQueryable());
+
+            var userRepo = new Mock<IDeletableEntityRepository<ApplicationUser>>();
+
+            var matchRepo = new Mock<IDeletableEntityRepository<Match>>();
+
+            var teamRepo = new Mock<IDeletableEntityRepository<Team>>();
+
+            var gameWeekUserRepo = new Mock<IDeletableEntityRepository<GameweekUser>>();
+
+            var usersService = new UsersService(userRepo.Object, matchRepo.Object, predictionRepo.Object, gameWeekUserRepo.Object);
+
+            var service = new PredictionsService(predictionRepo.Object, userRepo.Object, matchRepo.Object, teamRepo.Object, usersService);
+
+            var result = service.IsThisUser(2,"abc");
+
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void IsCurrentWeekMethodReturnFalse()
+        {
+            var predictionList = new List<Prediction>()
+            {
+                new Prediction
+                {
+                    Id = 2,
+                    HomeTeamGoals = 2,
+                    AwayTeamGoals = 3,
+                    Description = "dadadadadadadadadadadadadadadadadada",
+                    UserId = "abc",
+                    MatchId = 1,
+                    GameweekId = 2,
+                },
+                new Prediction
+                {
+                    Id = 1,
+                    HomeTeamGoals = 4,
+                    AwayTeamGoals = 1,
+                    Description = "fafafaffafafafafafafafafafaffa",
+                    UserId = "def",
+                    MatchId = 2,
+                    GameweekId = 3,
+                },
+            };
+
+            var predictionRepo = new Mock<IDeletableEntityRepository<Prediction>>();
+            predictionRepo.Setup(x => x.All()).Returns(predictionList.AsQueryable());
+
+            var userRepo = new Mock<IDeletableEntityRepository<ApplicationUser>>();
+
+            var matchRepo = new Mock<IDeletableEntityRepository<Match>>();
+
+            var teamRepo = new Mock<IDeletableEntityRepository<Team>>();
+
+            var gameWeekUserRepo = new Mock<IDeletableEntityRepository<GameweekUser>>();
+
+            var usersService = new UsersService(userRepo.Object, matchRepo.Object, predictionRepo.Object, gameWeekUserRepo.Object);
+
+            var service = new PredictionsService(predictionRepo.Object, userRepo.Object, matchRepo.Object, teamRepo.Object, usersService);
+
+            var result = service.IsPredictionIsCurrentWeek(2);
+
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void IsCurrentWeekMethodReturnTrue()
+        {
+            var predictionList = new List<Prediction>()
+            {
+                new Prediction
+                {
+                    Id = 2,
+                    HomeTeamGoals = 2,
+                    AwayTeamGoals = 3,
+                    Description = "dadadadadadadadadadadadadadadadadada",
+                    UserId = "abc",
+                    MatchId = 1,
+                    GameweekId = 2,
+                },
+                new Prediction
+                {
+                    Id = 1,
+                    HomeTeamGoals = 4,
+                    AwayTeamGoals = 1,
+                    Description = "fafafaffafafafafafafafafafaffa",
+                    UserId = "def",
+                    MatchId = 2,
+                    GameweekId = 3,
+                },
+            };
+
+            var predictionRepo = new Mock<IDeletableEntityRepository<Prediction>>();
+            predictionRepo.Setup(x => x.All()).Returns(predictionList.AsQueryable());
+
+            var userRepo = new Mock<IDeletableEntityRepository<ApplicationUser>>();
+
+            var matchRepo = new Mock<IDeletableEntityRepository<Match>>();
+
+            var teamRepo = new Mock<IDeletableEntityRepository<Team>>();
+
+            var gameWeekUserRepo = new Mock<IDeletableEntityRepository<GameweekUser>>();
+
+            var usersService = new UsersService(userRepo.Object, matchRepo.Object, predictionRepo.Object, gameWeekUserRepo.Object);
+
+            var service = new PredictionsService(predictionRepo.Object, userRepo.Object, matchRepo.Object, teamRepo.Object, usersService);
+
+            var result = service.IsPredictionIsCurrentWeek(1);
+
+            Assert.True(result);
+        }
     }
 }

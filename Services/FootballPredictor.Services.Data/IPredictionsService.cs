@@ -17,6 +17,10 @@
 
         int PredictionsCount();
 
+        public bool IsPredictionIsCurrentWeek(int id);
+
+        public bool IsThisUser(int predictionId, string id);
+
         public Task DeleteAsync(int predictionId, string userId);
 
         public CreateViewModel PredictionById(int id);

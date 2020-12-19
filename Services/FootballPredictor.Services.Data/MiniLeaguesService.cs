@@ -98,6 +98,11 @@
             return this.miniLigueRepository.All().Where(x => x.Id.Equals(id)).Select(x => x.Name).FirstOrDefault();
         }
 
+        public bool IsACreator(string userId)
+        {
+            return this.miniLigueRepository.All().Any(m => m.CreatorId == userId);
+        }
+
         public async Task Join(JoinViewModel model, string userId)
         {
             var memberToMiniLigue = new MiniLigueUser
@@ -126,6 +131,7 @@
             {
                 Id = m.MiniLigueId,
                 Name = m.MiniLigue.Name,
+                CreatorId = m.MiniLigue.CreatorId,
             })
                 .OrderBy(m => m.Name)
                 .ToList();

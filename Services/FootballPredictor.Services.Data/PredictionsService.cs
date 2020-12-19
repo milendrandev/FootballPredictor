@@ -138,6 +138,30 @@
             return this.predictionRepository.All().Count();
         }
 
+        public bool IsPredictionIsCurrentWeek(int id)
+        {
+            var prediction = this.predictionRepository.All().Where(x => x.Id == id).FirstOrDefault();
+
+            if (prediction.GameweekId == GlobalConstants.CurrentWeek)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool IsThisUser(int predictionId,string id)
+        {
+            var prediction = this.predictionRepository.All().Where(x => x.Id == predictionId).FirstOrDefault();
+
+            if (!prediction.UserId.Equals(id))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public async Task DeleteAsync(int predictionId, string userId)
         {
             var prediction = this.predictionRepository.All().Where(p => p.Id == predictionId).FirstOrDefault();
